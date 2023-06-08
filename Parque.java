@@ -1,6 +1,5 @@
 public abstract class Parque {
 
-
     private int capacidadePop;
     private int precoAmpliarAtual;
     private static int contador_id;
