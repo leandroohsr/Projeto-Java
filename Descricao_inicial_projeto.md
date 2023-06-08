@@ -15,7 +15,8 @@ Aqui serão descritos os elementos principais do jogo:
 
 ## Ideias da estrutura da base do programa
 
-- "Construcao" será classe **abstrata**, pai das construções do jogo
+- "Construcao" será classe **interface**, determinando características comuns às das construções do jogo
+- Classes como "Habtavel" serão pais **abstratos** dos tipos diferentes de contrução do mesmo nicho, como nesse caso, "Habtavel" é pai de "Casa" e "Predio".
 - A classe "Cidade" representa a sessão de jogo atual, como Stats, taxas de aumento/decréscimo, poupança etc. Ela será também uma **agregação** dos diferentes tipos de construção. Será ela o "arquivo" a ser salvo para continuar o jogo.
 - Existe uma classe "ElementosGraficos" responsável por criar e gerenciar os elementos da GUI e ligar os Triggers dos elementos às classes e métodos apropriados. Será a gerenciadora do Swing.
 - A classe "AppMain" apenas estará encarregada de instanciar e iniciar o programa.
