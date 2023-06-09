@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import Construcoes.*;
+
 
 public class Cidade {
     public List<Habitavel> listaHabitaveis = new ArrayList<>();

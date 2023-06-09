@@ -1,3 +1,4 @@
+package Construcoes;
 public class Predio extends Habitavel{
 
 
@@ -8,5 +9,13 @@ public class Predio extends Habitavel{
     }
 
 
+    @Override
+    public void comprarConstr(Cidade cidade) {
+        //to-do
+    }
 
+    @Override
+    public void ampliar() {
+        //to-do
+    }
 }

@@ -1,4 +1,6 @@
-public abstract class Habitavel {
+package Construcoes;
+
+public abstract class Habitavel implements Construcao {
 
 
     private int capacidadePop;

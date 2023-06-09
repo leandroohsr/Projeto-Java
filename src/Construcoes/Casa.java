@@ -1,3 +1,5 @@
+package Construcoes;
+
 public class Casa extends Habitavel {
 
     private int precoUpgrade;
@@ -7,4 +9,13 @@ public class Casa extends Habitavel {
         this.precoUpgrade = Constantes.PRECO_UPGR_CASA.getQtd();
     }
 
+    @Override
+    public void comprarConstr(Cidade cidade) {
+        //TO-DO
+    }
+
+    @Override
+    public void ampliar() {
+        //TO-DO
+    }
 }
