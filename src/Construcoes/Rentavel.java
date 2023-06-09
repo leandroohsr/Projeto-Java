@@ -1,5 +1,5 @@
 package Construcoes;
-public abstract class Rentaveis {
+public abstract class Rentavel implements Construcao{
 
 
     private int fatorFelic;
@@ -9,7 +9,7 @@ public abstract class Rentaveis {
     private String PathImag;
 
 
-    protected Rentaveis(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
+    protected Rentavel(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
         this.fatorFelic = fatorFelic;
         this.precoAmpliarAtual = precoAmpliarAtual;
         this.coordX = coordX;

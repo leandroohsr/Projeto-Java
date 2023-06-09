@@ -1,6 +1,6 @@
 package Construcoes;
 
-public abstract class Parque {
+public abstract class Parque implements Construcao{
 
     private int capacidadePop;
     private int precoAmpliarAtual;
