@@ -1,4 +1,5 @@
 package Construcoes;
+import ClassesJogo.*;
 
 public class Casa extends Habitavel {
 

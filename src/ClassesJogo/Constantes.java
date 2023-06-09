@@ -1,3 +1,5 @@
+package ClassesJogo;
+
 public enum Constantes {
     POP_INIC(0),
     POP_MAX(0),

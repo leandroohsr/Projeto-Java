@@ -1,4 +1,6 @@
 package Construcoes;
+import ClassesJogo.*;
+
 public class Predio extends Habitavel{
 
 

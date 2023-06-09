@@ -1,3 +1,5 @@
+package ClassesJogo;
+
 public enum Imagens {
     PATH_CASA("a"),
     PATH_PREDIO("a"),

@@ -6,12 +6,14 @@ import java.awt.*;
 public class InicioPanel extends JPanel{
     public InicioPanel() {
 
-        paintComponent(super.getGraphics());
+        JButton b = new JButton("button1");
+        JButton b1 = new JButton("button2");
+        JButton b2 = new JButton("button3");
 
+        add(b);
+        add(b1);
+        add(b2);
+        setBackground(Color.red);
     }
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Image imagem = new ImageIcon("ArquivosImagem/back_floresta1.jpeg").getImage();
-        g.drawImage(imagem, 0, 0, this);
-    }
+
 }
