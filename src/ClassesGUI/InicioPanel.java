@@ -14,7 +14,7 @@ public class InicioPanel extends JPanel{
 
         BufferedImage buffimg = null;
         try {
-            buffimg = ImageIO.read(new File("ArquivosImagem/back_floresta1.jpeg"));
+            buffimg = ImageIO.read(new File("src/ClassesGUI/ArquivosImagem/back_floresta1.jpeg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
