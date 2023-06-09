@@ -1,3 +1,4 @@
+package Construcoes;
 public abstract class Rentaveis {
 
 
