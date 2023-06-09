@@ -1,19 +1,30 @@
 package ClassesGUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
+import java.io.IOException;
 
 public class InicioPanel extends JPanel{
     public InicioPanel() {
 
-        JButton b = new JButton("button1");
-        JButton b1 = new JButton("button2");
-        JButton b2 = new JButton("button3");
+        BufferedImage buffimg = null;
+        try {
+            buffimg = ImageIO.read(new File("ArquivosImagem/back_floresta1.jpeg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        add(b);
-        add(b1);
-        add(b2);
-        setBackground(Color.red);
+        Image img = buffimg.getScaledInstance(500,500,Image.SCALE_SMOOTH);
+
+        ImageIcon imgicon = new ImageIcon(img);
+        JLabel label = new JLabel();
+        label.setIcon(imgicon);
+        this.add(label);
     }
 
 }
