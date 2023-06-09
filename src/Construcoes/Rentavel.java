@@ -1,28 +1,32 @@
 package Construcoes;
 public abstract class Rentavel implements Construcao{
-
-
-    private int fatorFelic;
+    private int fatorDin;
     private int precoAmpliarAtual;
+    private static int contadorID = 0;
+    private final int ID;
     private int coordX;
     private int coordY;
-    private String PathImag;
+    private final String pathImag;
+    private int precoConstru;
 
 
-    protected Rentavel(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
-        this.fatorFelic = fatorFelic;
+    protected Rentavel(int fatorDin, int precoAmpliarAtual, int coordX, int coordY, String pathImag, int precoConstru) {
+        this.fatorDin = fatorDin;
         this.precoAmpliarAtual = precoAmpliarAtual;
+        ID = contadorID;
+        contadorID += 1;
         this.coordX = coordX;
         this.coordY = coordY;
-        PathImag = pathImag;
+        this.pathImag = pathImag;
+        this.precoConstru = precoConstru;
     }
 
-    public int getFatorFelic() {
-        return fatorFelic;
+    public int getFatorDin() {
+        return fatorDin;
     }
 
-    public void setFatorFelic(int fatorFelic) {
-        this.fatorFelic = fatorFelic;
+    public void setFatorDin(int fatorDin) {
+        this.fatorDin = fatorDin;
     }
 
     public int getPrecoAmpliarAtual() {
@@ -50,10 +54,18 @@ public abstract class Rentavel implements Construcao{
     }
 
     public String getPathImag() {
-        return PathImag;
+        return pathImag;
     }
 
-    public void setPathImag(String pathImag) {
-        PathImag = pathImag;
+    public static int getContadorID() {
+        return contadorID;
+    }
+
+    public static void setContadorID(int contadorID) {
+        Rentavel.contadorID = contadorID;
+    }
+
+    public int getID() {
+        return ID;
     }
 }

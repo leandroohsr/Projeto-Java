@@ -10,8 +10,19 @@ public enum Constantes {
     TAXA_FELIC(0),
     TAXA_INFRA(0),
     TAXA_DIN(0),
+
+
+    PRECO_CASA(0),
     PRECO_UPGR_CASA(0),
-    PRECO_UPGR_PARQUE(0);
+    CAPACIDADE_POP_CASA(0),
+    CAPACIDADE_POP_PREDIO(0),
+    PRECO_DELEGACIA(0),
+    PRECO_HOSPITAL(0),
+    PRECO_PARQUE_ARB(0),
+    PRECO_UPGR_PARQUE_ARB(0),
+    PRECO_LOJA(0),
+    PRECO_INDUSTRIA(0);
+
 
     private final int qtd;
 

@@ -1,38 +1,38 @@
 package Construcoes;
 
+import ClassesJogo.Constantes;
+
 public abstract class Habitavel implements Construcao {
-
-
     private int capacidadePop;
     private int precoAmpliarAtual;
-    private static int contador_id;
-    private int id;
+    private static int contadorID = 0;
+    private final int ID;
     private int coordX;
     private int coordY;
-    private String PathImag;
+    private final String pathImag;
 
-    public Habitavel(int capacidadePop, int precoAmpliarAtual, int id, int coordX, int coordY, String pathImag) {
+
+
+    public Habitavel(int capacidadePop, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
         this.capacidadePop = capacidadePop;
         this.precoAmpliarAtual = precoAmpliarAtual;
-        this.id = id;
+        this.ID = contadorID;
+        contadorID += 1;
         this.coordX = coordX;
         this.coordY = coordY;
-        PathImag = pathImag;
+        this.pathImag = pathImag;
     }
 
     public int getId(){
-        return this.id;
-    }
-    public void setId(int id){
-        this.id = id;
+        return this.ID;
     }
 
     public static int getContador_id() {
-        return contador_id;
+        return contadorID;
     }
 
     public static void setContador_id(int contador_id) {
-        Habitavel.contador_id = contador_id;
+        Habitavel.contadorID = contador_id;
     }
 
 
@@ -53,11 +53,7 @@ public abstract class Habitavel implements Construcao {
     }
 
     public String getPathImag() {
-        return PathImag;
-    }
-
-    public void setPathImag(String pathImag) {
-        PathImag = pathImag;
+        return pathImag;
     }
 
     public int getCapacidadePop() {
