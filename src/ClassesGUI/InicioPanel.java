@@ -43,7 +43,7 @@ public class InicioPanel extends JPanel {
         bCarregarJogo.setBounds(600, 400, 200, 30);
 
         bNovoJogo.addActionListener(new actionNovoJogo(fieldCidade));
-        bNovoJogo.addActionListener(new actionCarregarJogo(fieldCidade));
+        bCarregarJogo.addActionListener(new actionCarregarJogo(fieldCidade));
 
         add(labelNome);
         add(descrFieldCidade);
@@ -100,7 +100,7 @@ public class InicioPanel extends JPanel {
             } catch (ExceptionFileNotFound erro) {
                 Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
                 JDialog dialog = new JDialog();
-                dialog.setBounds(500,300,300,100);
+                dialog.setBounds(500,300,400,100);
                 JLabel labelErro = new JLabel("A cidade não existe nos arquivos");
                 labelErro.setFont(fonte_padrao);
                 dialog.add(labelErro);
