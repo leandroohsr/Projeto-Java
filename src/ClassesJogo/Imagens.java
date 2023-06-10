@@ -1,6 +1,7 @@
 package ClassesJogo;
 
 public enum Imagens {
+    PATH_LOADS("src/PastaLoads/"),
     PATH_CASA("a"),
     PATH_PREDIO("a"),
     PATH_DELEGACIA("a"),

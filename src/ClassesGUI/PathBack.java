@@ -1,6 +1,7 @@
 package ClassesGUI;
 
 public enum PathBack {
+    PATH_TELA_INICIO("src/ClassesGUI/ArquivosImagem/tela_inicio.jpeg"),
     PATH_DESERTO1("src/ClassesGUI/ArquivosImagem/back_deserto1.jpeg"),
     PATH_DESERTO2("src/ClassesGUI/ArquivosImagem/back_deserto2.jpeg"),
     PATH_FLORESTA1("src/ClassesGUI/ArquivosImagem/back_floresta1.jpeg"),
