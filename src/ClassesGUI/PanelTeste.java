@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class InicioPanel extends JLayeredPane{
-    public InicioPanel() {
+public class PanelTeste extends JLayeredPane{
+    public PanelTeste() {
         this.setBounds(0,0,500,500);
         JButton b1 = new JButton();
         b1.setText("legal");
