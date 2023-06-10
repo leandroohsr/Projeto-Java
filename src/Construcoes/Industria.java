@@ -1,10 +1,12 @@
 package Construcoes;
 
 import ClassesJogo.Cidade;
+import ClassesJogo.Constantes;
+import ClassesJogo.Imagens;
 
 public class Industria extends Rentavel {
-    protected Industria(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
-        super(fatorFelic, precoAmpliarAtual, coordX, coordY, pathImag);
+    protected Industria(int fatorDin, int precoAmpliarAtual, int coordX, int coordY) {
+        super(fatorDin, precoAmpliarAtual, coordX, coordY, Imagens.PATH_INDUSTRIA.getPath(), Constantes.PRECO_INDUSTRIA.getQtd());
     }
 
     @Override

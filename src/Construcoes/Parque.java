@@ -2,36 +2,34 @@ package Construcoes;
 
 public abstract class Parque implements Construcao{
 
-    private int capacidadePop;
+    private int fatorFelic;
     private int precoAmpliarAtual;
-    private static int contador_id;
-    private int id;
+    private static int contadorID;
+    private final int ID;
     private int coordX;
     private int coordY;
-    private String PathImag;
+    private final String PathImag;
 
-    public Parque(int capacidadePop, int precoAmpliarAtual, int id, int coordX, int coordY, String pathImag) {
-        this.capacidadePop = capacidadePop;
+    public Parque(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
+        this.fatorFelic = fatorFelic;
         this.precoAmpliarAtual = precoAmpliarAtual;
-        this.id = id;
+        this.ID = contadorID;
+        contadorID += 1;
         this.coordX = coordX;
         this.coordY = coordY;
         PathImag = pathImag;
     }
 
-    public int getId(){
-        return this.id;
-    }
-    public void setId(int id){
-        this.id = id;
+    public int getID(){
+        return this.ID;
     }
 
-    public static int getContador_id() {
-        return contador_id;
+    public static int getContadorID() {
+        return contadorID;
     }
 
-    public static void setContador_id(int contador_id) {
-        Parque.contador_id = contador_id;
+    public static void setContador_id(int contadorID) {
+        Parque.contadorID = contadorID;
     }
 
 
@@ -55,16 +53,12 @@ public abstract class Parque implements Construcao{
         return PathImag;
     }
 
-    public void setPathImag(String pathImag) {
-        PathImag = pathImag;
+    public int getFatorFelic() {
+        return fatorFelic;
     }
 
-    public int getCapacidadePop() {
-        return capacidadePop;
-    }
-
-    public void setCapacidadePop(int capacidadePop) {
-        this.capacidadePop = capacidadePop;
+    public void setFatorFelic(int capacidadePop) {
+        this.fatorFelic = capacidadePop;
     }
 
     public int getPrecoAmpliarAtual() {
