@@ -11,8 +11,8 @@ public class InicioFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.add(new InicioPanel());
-        this.setSize(500,500);
+        this.add(new PanelTeste());
+        this.setSize(TamanhoCompon.X_FRAME.getTam(), TamanhoCompon.Y_FRAME.getTam());
         this.setVisible(true);
 
     }

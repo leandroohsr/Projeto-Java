@@ -1,4 +1,9 @@
 package ClassesGUI;
 
-public class InicioPanel {
+import javax.swing.*;
+
+public class InicioPanel extends JPanel {
+    public InicioPanel() {
+
+    }
 }

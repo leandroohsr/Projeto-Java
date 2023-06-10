@@ -9,13 +9,13 @@ import java.io.IOException;
 
 public class PanelTeste extends JLayeredPane{
     public PanelTeste() {
-        this.setBounds(0,0,500,500);
+        this.setBounds(0,0,TamanhoCompon.X_FRAME.getTam(), TamanhoCompon.Y_FRAME.getTam());
         JButton b1 = new JButton();
         b1.setText("legal");
         b1.setBounds(100,100,100,100);
         this.add(b1);
-        ImageIcon icon1 = new ImageIcon("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg");
-        ImageIcon icon2 = new ImageIcon("src/ClassesGUI/ArquivosImagem/back_deserto1.jpeg");
+        ImageIcon icon1 = new ImageIcon(PathBack.PATH_NEVE1.getPath());
+        ImageIcon icon2 = new ImageIcon(PathBack.PATH_DESERTO1.getPath());
         icon1.setImage(icon1.getImage().getScaledInstance(100,100,Image.SCALE_SMOOTH));
         icon2.setImage(icon2.getImage().getScaledInstance(100,100,Image.SCALE_SMOOTH));
         JLabel label1 = new JLabel();
@@ -28,9 +28,10 @@ public class PanelTeste extends JLayeredPane{
         this.add(label2);
     }
     public void paintComponent(Graphics g) {
-        ImageIcon img = new ImageIcon("src/ClassesGUI/ArquivosImagem/back_floresta1.jpeg");
-        img.setImage(img.getImage().getScaledInstance(500,500,Image.SCALE_SMOOTH));
-        g.drawImage(img.getImage(), 0,0,500,500,null);
+        ImageIcon img = new ImageIcon(PathBack.PATH_FLORESTA1.getPath());
+        int proporcaoImg = TamanhoCompon.DIM_PANEL_JOGO.getTam();
+        img.setImage(img.getImage().getScaledInstance(proporcaoImg, proporcaoImg, Image.SCALE_SMOOTH));
+        g.drawImage(img.getImage(), 0,0, proporcaoImg,proporcaoImg,null);
     }
 
 }
