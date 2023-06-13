@@ -72,7 +72,7 @@ public class InicioPanel extends JPanel {
                 GerenciadorArquivos.procurarArquivo(nome);
                 Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
                 JDialog dialog = new JDialog();
-                dialog.setBounds(500,300,300,100);
+                dialog.setBounds(400,300,300,100);
                 JLabel labelErro = new JLabel("A cidade já existe");
                 labelErro.setFont(fonte_padrao);
                 dialog.add(labelErro);

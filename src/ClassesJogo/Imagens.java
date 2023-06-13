@@ -2,14 +2,14 @@ package ClassesJogo;
 
 public enum Imagens {
     PATH_LOADS("src/PastaLoads/"),
-    PATH_CASA("a"),
-    PATH_PREDIO("a"),
-    PATH_DELEGACIA("a"),
-    PATH_HOSPITAL("a"),
-    PATH_PARQUEARB("a"),
-    PATH_PARQUEDIV("a"),
-    PATH_LOJA("a"),
-    PATH_INDUSTRIA("a");
+    PATH_CASA("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_PREDIO("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_DELEGACIA("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_HOSPITAL("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_PARQUEARB("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_PARQUEDIV("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_LOJA("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg"),
+    PATH_INDUSTRIA("src/ClassesGUI/ArquivosImagem/back_neve1.jpeg");
 
     private final String img;
 
