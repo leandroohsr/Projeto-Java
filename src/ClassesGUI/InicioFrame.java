@@ -10,7 +10,7 @@ public class InicioFrame extends JFrame {
         setTitle("Projeto-Java: NoCity");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setLocation(0,0);
+        setLocation(1000,500);
         setSize(TamanhoCompon.X_FRAME.getTam(), TamanhoCompon.Y_FRAME.getTam());
         setContentPane(new InicioPanel());
         setVisible(true);
