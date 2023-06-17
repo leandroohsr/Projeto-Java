@@ -3,13 +3,17 @@ package ClassesGUI;
 import javax.swing.*;
 import java.awt.*;
 
-import ClassesJogo.Imagens;
+import ClassesJogo.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class MenuLateralPanel extends JPanel {
-
-    public MenuLateralPanel() {
+    Cidade cidade;
+    public MenuLateralPanel(Cidade cidade) {
+        this.cidade = cidade;
         GridLayout gridLayout = new GridLayout(3,2);
         setLayout(gridLayout);
         setSize(TamanhoCompon.X_PANEL_LATERAL.getTam(), TamanhoCompon.Y_PANEL_LATERAL.getTam());
@@ -57,6 +61,13 @@ public class MenuLateralPanel extends JPanel {
         ArrayList<JButton> arrayBotoes = new ArrayList<>();
         Collections.addAll(arrayBotoes, bCasa, bParque, bHosp, bDeleg, bLoja, bIndust);
 
+        bCasa.addActionListener(new comprarCasa());
+        bParque.addActionListener(new comprarParque());
+        bHosp.addActionListener(new comprarHospital());
+        bDeleg.addActionListener(new comprarDeleg());
+        bLoja.addActionListener(new comprarLoja());
+        bIndust.addActionListener(new comprarIndust());
+
         for (JButton b : arrayBotoes) {
             b.setHorizontalTextPosition(SwingConstants.CENTER);
             b.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -64,6 +75,60 @@ public class MenuLateralPanel extends JPanel {
         }
 
 
+    }
+
+
+     class comprarCasa implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(cidade.getStats().getDin() >= Constantes.PRECO_CASA.getQtd()){
+                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_CASA.getQtd());
+                System.out.println("CASA COMPRADA");
+            }else {
+                System.out.println("FALTOU DINHEIRO");
+            }
+        }
+    }
+
+    class comprarParque implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(cidade.getStats().getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()) {
+                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_PARQUE_ARB.getQtd());
+            }
+        }
+    }
+
+    class comprarHospital implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(cidade.getStats().getDin() >= Constantes.PRECO_HOSPITAL.getQtd()) {
+                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_HOSPITAL.getQtd());
+            }
+        }
+    }
+
+    class comprarDeleg implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(cidade.getStats().getDin() >= Constantes.PRECO_DELEGACIA.getQtd()) {
+                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_DELEGACIA.getQtd());
+            }
+        }
+    }
+
+    static class comprarLoja implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    static class comprarIndust implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 
 }

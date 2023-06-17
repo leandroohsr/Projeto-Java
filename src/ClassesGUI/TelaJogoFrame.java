@@ -2,9 +2,10 @@ package ClassesGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import ClassesJogo.*;
 
 public class TelaJogoFrame extends JFrame{
-
+    Cidade cidade = new Cidade();
     public TelaJogoFrame() {
 
         setTitle("Projeto-Java: NoCity");
@@ -16,8 +17,8 @@ public class TelaJogoFrame extends JFrame{
         BorderLayout layout = new BorderLayout(10,10);
         setLayout(layout);
 
-        add(new MenuLateralPanel(), BorderLayout.WEST);
-        add(new MenuSuperiorPanel(), BorderLayout.NORTH);
+        add(new MenuLateralPanel(cidade), BorderLayout.WEST);
+        add(new MenuSuperiorPanel(cidade), BorderLayout.NORTH);
         add(new TelaJogoPanel(), BorderLayout.CENTER);
 
         setVisible(true);
