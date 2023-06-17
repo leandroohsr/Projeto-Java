@@ -4,11 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 import ClassesJogo.*;
+import Construcoes.Casa;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class MenuLateralPanel extends JPanel {
     Cidade cidade;
@@ -83,6 +85,14 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_CASA.getQtd()){
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_CASA.getQtd());
+
+                Random gerador = new Random();
+                int x = gerador.nextInt(600);
+                int y = gerador.nextInt(600);
+                Casa casa = new Casa(x, y);
+                MenuSuperiorPanel.addCadaComboBox();
+                cidade.listaHabitaveis.add(casa);
+                TelaJogoPanel.addCasa(x, y);
                 System.out.println("CASA COMPRADA");
             }else {
                 System.out.println("FALTOU DINHEIRO");
@@ -95,6 +105,8 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_PARQUE_ARB.getQtd());
+            }else {
+                System.out.println("FALTOU DINHEIRO");
             }
         }
     }
@@ -104,6 +116,8 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_HOSPITAL.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_HOSPITAL.getQtd());
+            }else {
+                System.out.println("FALTOU DINHEIRO");
             }
         }
     }
@@ -113,21 +127,31 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_DELEGACIA.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_DELEGACIA.getQtd());
+            }else {
+                System.out.println("FALTOU DINHEIRO");
             }
         }
     }
 
-    static class comprarLoja implements ActionListener {
+    class comprarLoja implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            if(cidade.getStats().getDin() >= Constantes.PRECO_LOJA.getQtd()) {
+                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_LOJA.getQtd());
+            }else {
+                System.out.println("FALTOU DINHEIRO");
+            }
         }
     }
 
-    static class comprarIndust implements ActionListener {
+    class comprarIndust implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            if(cidade.getStats().getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()) {
+                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_INDUSTRIA.getQtd());
+            } else {
+                System.out.println("FALTOU DINHEIRO");
+            }
         }
     }
 
