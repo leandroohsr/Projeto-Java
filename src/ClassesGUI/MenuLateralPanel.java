@@ -14,17 +14,23 @@ import java.util.Random;
 
 public class MenuLateralPanel extends JPanel {
     Cidade cidade;
-    public MenuLateralPanel(Cidade cidade) {
+    JLabel pop;
+    JLabel din;
+    JLabel infra;
+    JLabel felic;
+    TelaJogoPanel jogoPanel;
+
+    public MenuLateralPanel(Cidade cidade, TelaJogoPanel jogoPanel) {
+
         this.cidade = cidade;
-        GridLayout gridLayout = new GridLayout(3,2);
+        this.jogoPanel = jogoPanel;
+        GridLayout gridLayout = new GridLayout(5,2);
         setLayout(gridLayout);
         setSize(TamanhoCompon.X_PANEL_LATERAL.getTam(), TamanhoCompon.Y_PANEL_LATERAL.getTam());
 
+        setLabelStats();
 
         setBotoesConstr();
-
-
-
 
         setVisible(true);
     }
@@ -51,12 +57,12 @@ public class MenuLateralPanel extends JPanel {
 
 
 
-        JButton bCasa = new JButton("Casa", imgCasa);
-        JButton bParque = new JButton("Parque", imgParque);
-        JButton bHosp = new JButton("Hospital", imgHosp);
-        JButton bDeleg = new JButton("Delegacia", imgDeleg);
-        JButton bLoja = new JButton("Loja", imgLoja);
-        JButton bIndust = new JButton("Industria", imgIndust);
+        JButton bCasa = new JButton(String.format("Casa: $" + Constantes.PRECO_CASA.getQtd()), imgCasa);
+        JButton bParque = new JButton(String.format("Parque arborizado: $" + Constantes.PRECO_PARQUE_ARB.getQtd()), imgParque);
+        JButton bHosp = new JButton(String.format("Hospital: $" + Constantes.PRECO_HOSPITAL.getQtd()), imgHosp);
+        JButton bDeleg = new JButton(String.format("Delegacia: $" + Constantes.PRECO_DELEGACIA.getQtd()), imgDeleg);
+        JButton bLoja = new JButton(String.format("Loja: $" + Constantes.PRECO_LOJA.getQtd()), imgLoja);
+        JButton bIndust = new JButton(String.format("Indústria: $" + Constantes.PRECO_INDUSTRIA.getQtd()), imgIndust);
 
 
 
@@ -79,6 +85,40 @@ public class MenuLateralPanel extends JPanel {
 
     }
 
+    private void setLabelStats() {
+
+        pop = new JLabel(String.format("População: " + cidade.getStats().getPop()));
+        din = new JLabel(String.format("Dinheiro: $" + cidade.getStats().getDin()));
+        infra = new JLabel(String.format("Infraestrutura: " + cidade.getStats().getInfra()));
+        felic = new JLabel(String.format("Felicidade: " + cidade.getStats().getFelic()));
+
+        add(pop);
+        add(din);
+        add(infra);
+        add(felic);
+    }
+
+     private void dialogFaltouDin() {
+         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+         JDialog dialog = new JDialog();
+         dialog.setBounds(400,300,300,100);
+         JLabel labelErro = new JLabel("Faltou dinheiro!");
+         labelErro.setFont(fonte_padrao);
+         dialog.add(labelErro);
+         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+         dialog.setVisible(true);
+     }
+
+    private void dialogComprado() {
+        Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+        JDialog dialog = new JDialog();
+        dialog.setBounds(400,300,300,100);
+        JLabel labelErro = new JLabel("Comprado com sucesso!");
+        labelErro.setFont(fonte_padrao);
+        dialog.add(labelErro);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+    }
 
      class comprarCasa implements ActionListener {
         @Override
@@ -90,12 +130,12 @@ public class MenuLateralPanel extends JPanel {
                 int x = gerador.nextInt(600);
                 int y = gerador.nextInt(600);
                 Casa casa = new Casa(x, y);
-                MenuSuperiorPanel.addCadaComboBox();
+                //MenuSuperiorPanel.addCadaComboBox();
                 cidade.listaHabitaveis.add(casa);
-                TelaJogoPanel.addCasa(x, y);
-                System.out.println("CASA COMPRADA");
+                jogoPanel.addConstrucao(casa);
+                dialogComprado();
             }else {
-                System.out.println("FALTOU DINHEIRO");
+                dialogFaltouDin();
             }
         }
     }
@@ -105,8 +145,9 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_PARQUE_ARB.getQtd());
+                dialogComprado();
             }else {
-                System.out.println("FALTOU DINHEIRO");
+                dialogFaltouDin();
             }
         }
     }
@@ -116,8 +157,9 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_HOSPITAL.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_HOSPITAL.getQtd());
+                dialogComprado();
             }else {
-                System.out.println("FALTOU DINHEIRO");
+                dialogFaltouDin();
             }
         }
     }
@@ -127,8 +169,9 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_DELEGACIA.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_DELEGACIA.getQtd());
+                dialogComprado();
             }else {
-                System.out.println("FALTOU DINHEIRO");
+                dialogFaltouDin();
             }
         }
     }
@@ -138,8 +181,9 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_LOJA.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_LOJA.getQtd());
+                dialogComprado();
             }else {
-                System.out.println("FALTOU DINHEIRO");
+                dialogFaltouDin();
             }
         }
     }
@@ -149,8 +193,9 @@ public class MenuLateralPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(cidade.getStats().getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()) {
                 cidade.getStats().atualizarDinAtual(-Constantes.PRECO_INDUSTRIA.getQtd());
+                dialogComprado();
             } else {
-                System.out.println("FALTOU DINHEIRO");
+                dialogFaltouDin();
             }
         }
     }

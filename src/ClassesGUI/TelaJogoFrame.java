@@ -5,9 +5,13 @@ import java.awt.*;
 import ClassesJogo.*;
 
 public class TelaJogoFrame extends JFrame{
-    Cidade cidade = new Cidade();
-    public TelaJogoFrame() {
+    Cidade cidade;
+    TelaJogoPanel jogoPanel;
+    MenuLateralPanel menuLateralPanel;
+    MenuSuperiorPanel menuSuperiorPanel;
+    public TelaJogoFrame(Cidade cidade) {
 
+        this.cidade = cidade;
         setTitle("Projeto-Java: NoCity");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -17,9 +21,12 @@ public class TelaJogoFrame extends JFrame{
         BorderLayout layout = new BorderLayout(10,10);
         setLayout(layout);
 
-        add(new MenuLateralPanel(cidade), BorderLayout.WEST);
-        add(new MenuSuperiorPanel(cidade), BorderLayout.NORTH);
-        add(new TelaJogoPanel(), BorderLayout.CENTER);
+        jogoPanel = new TelaJogoPanel();
+        menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel);
+        menuSuperiorPanel = new MenuSuperiorPanel(cidade);
+        add(menuLateralPanel, BorderLayout.WEST);
+        add(menuSuperiorPanel, BorderLayout.NORTH);
+        add(jogoPanel, BorderLayout.CENTER);
 
         setVisible(true);
 

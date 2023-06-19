@@ -1,6 +1,8 @@
 package ClassesGUI;
 
 import ClassesJogo.Imagens;
+import Construcoes.Construcao;
+import Construcoes.Casa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +10,7 @@ import java.awt.*;
 public class TelaJogoPanel extends JPanel {
 
     public TelaJogoPanel() {
+        setLayout(null);
         setVisible(true);
     }
 
@@ -18,9 +21,10 @@ public class TelaJogoPanel extends JPanel {
         g.drawImage(img.getImage(), 0,0, proporcaoImg,proporcaoImg,null);
     }
 
-    static public void addCasa(int x, int y){
-
-
+    public void addConstrucao(Casa constr){
+        JLabel labelImg = constr.getLabelImg();
+        labelImg.setBounds(labelImg.getX(), labelImg.getY(), constr.getCoordX(), constr.getCoordY());
+        this.add(labelImg);
     }
 
 }

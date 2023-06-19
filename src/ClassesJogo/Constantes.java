@@ -12,7 +12,7 @@ public enum Constantes {
     TAXA_DIN(0),
 
 
-    PRECO_CASA(100),
+    PRECO_CASA(0),
     PRECO_UPGR_CASA(0),
     CAPACIDADE_POP_CASA(0),
     CAPACIDADE_POP_PREDIO(0),
