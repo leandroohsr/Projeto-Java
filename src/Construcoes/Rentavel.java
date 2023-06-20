@@ -1,4 +1,5 @@
 package Construcoes;
+
 public abstract class Rentavel implements Construcao{
     private int fatorDin;
     private int precoAmpliarAtual;
@@ -7,10 +8,11 @@ public abstract class Rentavel implements Construcao{
     private int coordX;
     private int coordY;
     private final String pathImag;
-    private int precoConstru;
+    private final int precoConstru;
 
 
-    protected Rentavel(int fatorDin, int precoAmpliarAtual, int coordX, int coordY, String pathImag, int precoConstru) {
+    public Rentavel(int fatorDin, int precoAmpliarAtual, int coordX, int coordY, String pathImag, int precoConstru) {
+
         this.fatorDin = fatorDin;
         this.precoAmpliarAtual = precoAmpliarAtual;
         ID = contadorID;
@@ -19,6 +21,11 @@ public abstract class Rentavel implements Construcao{
         this.coordY = coordY;
         this.pathImag = pathImag;
         this.precoConstru = precoConstru;
+    }
+
+
+    public int getID() {
+        return ID;
     }
 
     public int getFatorDin() {
@@ -57,7 +64,5 @@ public abstract class Rentavel implements Construcao{
         return pathImag;
     }
 
-    public int getID() {
-        return ID;
-    }
+
 }

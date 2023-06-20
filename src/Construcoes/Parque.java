@@ -11,6 +11,7 @@ public abstract class Parque implements Construcao{
     private final String PathImag;
 
     public Parque(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
+
         this.fatorFelic = fatorFelic;
         this.precoAmpliarAtual = precoAmpliarAtual;
         this.ID = contadorID;

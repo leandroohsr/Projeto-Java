@@ -3,21 +3,20 @@ import ClassesJogo.*;
 
 public class Predio extends Habitavel{
 
+    public Predio(int coordX, int coordY) {
 
-
-    public Predio(int capacidadePop, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
-
-        super(Constantes.CAPACIDADE_POP_PREDIO.getQtd(), precoAmpliarAtual, coordX, coordY, pathImag);
+        super(Constantes.CAPACIDADE_POP_PREDIO.getQtd(), Constantes.PRECO_UPGR_CASA.getQtd() / 2,
+                coordX, coordY, Imagens.PATH_PREDIO.getPath());
     }
 
-
-    @Override
-    public void comprarConstr(Cidade cidade) {
-        //to-do
+    //Hidding
+    public static Predio comprarConstr(Cidade cidade) {
+        return null;
+        //TODO
     }
 
     @Override
     public void ampliar() {
-        //to-do
+        //TODO
     }
 }

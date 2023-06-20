@@ -5,13 +5,21 @@ import ClassesJogo.Constantes;
 import ClassesJogo.Imagens;
 
 public class Industria extends Rentavel {
-    protected Industria(int fatorDin, int precoAmpliarAtual, int coordX, int coordY) {
-        super(fatorDin, precoAmpliarAtual, coordX, coordY, Imagens.PATH_INDUSTRIA.getPath(), Constantes.PRECO_INDUSTRIA.getQtd());
+
+    public Industria(int coordX, int coordY) {
+        super(Constantes.FATOR_DIN_INDUSTRIA.getQtd(), Constantes.PRECO_INDUSTRIA.getQtd() / 2,
+                coordX, coordY, Imagens.PATH_INDUSTRIA.getPath(), Constantes.PRECO_INDUSTRIA.getQtd());
     }
 
-    @Override
-    public void comprarConstr(Cidade cidade) {
+    //Hidding
+    public static Industria comprarConstr(Cidade cidade) {
 
+        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_INDUSTRIA.getQtd());
+        int x = cidade.getGerador().nextInt(600);
+        int y = cidade.getGerador().nextInt(600);
+        Industria industria = new Industria(x, y);
+        cidade.getListaRentaveis().add(industria);
+        return industria;
     }
 
     @Override

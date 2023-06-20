@@ -5,14 +5,21 @@ import ClassesJogo.Constantes;
 import ClassesJogo.Imagens;
 
 public class Hospital extends Infraestrutura {
-    public Hospital(int fatorInfra, int precoAmpliarAtual, int coordX, int coordY) {
-        super(fatorInfra, precoAmpliarAtual, coordX, coordY,
-                Constantes.PRECO_HOSPITAL.getQtd(), Imagens.PATH_HOSPITAL.getPath());
+
+    public Hospital(int coordX, int coordY) {
+        super(Constantes.FATOR_INFRA_HOSPITAL.getQtd(), Constantes.PRECO_HOSPITAL.getQtd() / 2,
+                coordX, coordY, Constantes.PRECO_HOSPITAL.getQtd(), Imagens.PATH_HOSPITAL.getPath());
     }
 
-    @Override
-    public void comprarConstr(Cidade cidade) {
-        //TO-DO
+    //Hidding
+    public static Hospital comprarConstr(Cidade cidade) {
+
+        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_HOSPITAL.getQtd());
+        int x = cidade.getGerador().nextInt(600);
+        int y = cidade.getGerador().nextInt(600);
+        Hospital hospital = new Hospital(x, y);
+        cidade.getListaInfraestrutura().add(hospital);
+        return hospital;
     }
 
     @Override

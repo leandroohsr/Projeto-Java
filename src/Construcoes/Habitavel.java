@@ -24,7 +24,7 @@ public abstract class Habitavel implements Construcao {
     }
 
     public int getId(){
-        return this.ID;
+        return ID;
     }
 
     public int getCoordX() {

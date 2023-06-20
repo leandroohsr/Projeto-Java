@@ -5,13 +5,21 @@ import ClassesJogo.Constantes;
 import ClassesJogo.Imagens;
 
 public class Loja extends Rentavel{
-    protected Loja(int fatorDin, int precoAmpliarAtual, int coordX, int coordY) {
-        super(fatorDin, precoAmpliarAtual, coordX, coordY, Imagens.PATH_LOJA.getPath(), Constantes.PRECO_LOJA.getQtd());
+
+    public Loja(int coordX, int coordY) {
+        super(Constantes.FATOR_DIN_LOJA.getQtd(), Constantes.PRECO_LOJA.getQtd() / 2,
+                coordX, coordY, Imagens.PATH_LOJA.getPath(), Constantes.PRECO_LOJA.getQtd());
     }
 
-    @Override
-    public void comprarConstr(Cidade cidade) {
-        //TO-DO
+    //Hidding
+    public static Loja comprarConstr(Cidade cidade) {
+
+        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_LOJA.getQtd());
+        int x = cidade.getGerador().nextInt(600);
+        int y = cidade.getGerador().nextInt(600);
+        Loja loja = new Loja(x, y);
+        cidade.getListaRentaveis().add(loja);
+        return loja;
     }
 
     @Override

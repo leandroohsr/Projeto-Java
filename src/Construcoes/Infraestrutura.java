@@ -1,7 +1,5 @@
 package Construcoes;
 
-import ClassesJogo.Cidade;
-
 public abstract class Infraestrutura implements Construcao{
     private int fatorInfra;
     private int precoAmpliarAtual;
@@ -11,6 +9,8 @@ public abstract class Infraestrutura implements Construcao{
     private int coordY;
     private final String pathImag;
     private final int precoConstru;
+
+
     public Infraestrutura(int fatorInfra, int precoAmpliarAtual, int coordX, int coordY,
                              int precoConstru, String pathImag) {
         this.fatorInfra = fatorInfra;
@@ -21,6 +21,9 @@ public abstract class Infraestrutura implements Construcao{
         this.precoConstru = precoConstru;
         this.pathImag = pathImag;
     }
+
+    public int getID() { return ID; }
+
     public int getFatorInfra() {
         return fatorInfra;
     }
@@ -57,7 +60,5 @@ public abstract class Infraestrutura implements Construcao{
         return pathImag;
     }
 
-    public int getID() {
-        return ID;
-    }
+
 }

@@ -63,80 +63,50 @@ public class Cidade {
                     return Casa.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
-                break;
 
             case DELEGACIA:
                 if(stats.getDin() >= Constantes.PRECO_DELEGACIA.getQtd()){
-
-                    stats.atualizarDinAtual( -Constantes.PRECO_DELEGACIA.getQtd());
-                    int x = gerador.nextInt(600);
-                    int y = gerador.nextInt(600);
-                    Delegacia delegacia = new Delegacia(x, y);
-                    listaInfraestrutura.add(delegacia);
-                    return delegacia;
+                    return Delegacia.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
-                break;
 
 
             case HOSPITAL:
                 if(stats.getDin() >= Constantes.PRECO_HOSPITAL.getQtd()){
-
-                    stats.atualizarDinAtual( -Constantes.PRECO_HOSPITAL.getQtd());
-                    int x = gerador.nextInt(600);
-                    int y = gerador.nextInt(600);
-                    Hospital hospital = new Hospital(x, y);
-                    listaInfraestrutura.add(hospital);
-                    return hospital;
+                    return Hospital.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
-                break;
 
 
             case PARQUE_ARB:
                 if(stats.getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()){
-
-                    stats.atualizarDinAtual( -Constantes.PRECO_PARQUE_ARB.getQtd());
-                    int x = gerador.nextInt(600);
-                    int y = gerador.nextInt(600);
-                    ParqueArborizado parqueArborizado = new ParqueArborizado(x, y);
-                    listaParques.add(parqueArborizado);
-                    return parqueArborizado;
+                    return  ParqueArborizado.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
-                break;
 
 
             case LOJA:
                 if(stats.getDin() >= Constantes.PRECO_LOJA.getQtd()){
-
-                    stats.atualizarDinAtual( -Constantes.PRECO_LOJA.getQtd());
-                    int x = gerador.nextInt(600);
-                    int y = gerador.nextInt(600);
-                    Loja loja = new Loja(x, y);
-                    listaRentaveis.add(loja);
-                    return loja;
+                    return Loja.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
-                break;
 
 
             case INDUSTRIA:
-                if(stats.getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()){
-
-                    stats.atualizarDinAtual( -Constantes.PRECO_INDUSTRIA.getQtd());
-                    int x = gerador.nextInt(600);
-                    int y = gerador.nextInt(600);
-                    Industria industria = new Industria(x, y);
-                    listaRentaveis.add(industria);
-                    return industria;
+                if (stats.getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()){
+                    return Industria.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
-                break;
+
+            default:
+                throw new ExceptionLackOfMoney();
         }
     }
 
-    public void ampliarConstr (ConstrucoesCompraveis tipo_constr, int id) throws ExceptionLackOfMoney {}
+    public void ampliarConstr (ConstrucoesTipos tipo_constr, int id) throws ExceptionLackOfMoney {}
 
-    public void fazerUpgrade (ConstrucoesCompraveis tipo_constr, int id) throws ExceptionLackOfMoney {}
+    public Construcao fazerUpgrade (ConstrucoesTipos tipo_constr, int id) throws ExceptionLackOfMoney {
+        return null;
+        //TODO
+    }
 }

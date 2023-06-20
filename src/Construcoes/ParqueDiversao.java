@@ -8,9 +8,10 @@ public class ParqueDiversao extends Parque{
         super(fatorFelic, precoAmpliarAtual, coordX, coordY, Imagens.PATH_PARQUEDIV.getPath());
     }
 
-    @Override
-    public void comprarConstr(Cidade cidade) {
-        //TO-DO
+    //Hidding
+    public ParqueDiversao comprarConstr(Cidade cidade) {
+        return null;
+        //TODO
     }
 
     @Override
