@@ -24,15 +24,6 @@ public abstract class Parque implements Construcao{
         return this.ID;
     }
 
-    public static int getContadorID() {
-        return contadorID;
-    }
-
-    public static void setContador_id(int contadorID) {
-        Parque.contadorID = contadorID;
-    }
-
-
     public int getCoordX() {
         return coordX;
     }

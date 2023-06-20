@@ -2,7 +2,7 @@ package Construcoes;
 
 import ClassesJogo.Cidade;
 
-public class Infraestrutura implements Construcao{
+public abstract class Infraestrutura implements Construcao{
     private int fatorInfra;
     private int precoAmpliarAtual;
     private static int contadorID = 0;
@@ -21,14 +21,43 @@ public class Infraestrutura implements Construcao{
         this.precoConstru = precoConstru;
         this.pathImag = pathImag;
     }
-
-    @Override
-    public void comprarConstr(Cidade cidade) {
-
+    public int getFatorInfra() {
+        return fatorInfra;
     }
 
-    @Override
-    public void ampliar() {
+    public void setFatorInfra(int fatorDin) {
+        this.fatorInfra = fatorInfra;
+    }
 
+    public int getPrecoAmpliarAtual() {
+        return precoAmpliarAtual;
+    }
+
+    public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
+        this.precoAmpliarAtual = precoAmpliarAtual;
+    }
+
+    public int getCoordX() {
+        return coordX;
+    }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public int getCoordY() {
+        return coordY;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public String getPathImag() {
+        return pathImag;
+    }
+
+    public int getID() {
+        return ID;
     }
 }

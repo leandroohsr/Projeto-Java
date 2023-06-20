@@ -25,26 +25,6 @@ public class Casa extends Habitavel {
         labelImg.setSize(70,70);
     }
 
-    @Override
-    public int getCoordX() {
-        return coordX;
-    }
-
-    @Override
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
-    @Override
-    public int getCoordY() {
-        return coordY;
-    }
-
-    @Override
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
-
     public JLabel getLabelImg() {
         return labelImg;
     }

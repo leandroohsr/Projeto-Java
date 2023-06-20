@@ -27,15 +27,6 @@ public abstract class Habitavel implements Construcao {
         return this.ID;
     }
 
-    public static int getContador_id() {
-        return contadorID;
-    }
-
-    public static void setContador_id(int contador_id) {
-        Habitavel.contadorID = contador_id;
-    }
-
-
     public int getCoordX() {
         return coordX;
     }

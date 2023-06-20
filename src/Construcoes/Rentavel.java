@@ -57,14 +57,6 @@ public abstract class Rentavel implements Construcao{
         return pathImag;
     }
 
-    public static int getContadorID() {
-        return contadorID;
-    }
-
-    public static void setContadorID(int contadorID) {
-        Rentavel.contadorID = contadorID;
-    }
-
     public int getID() {
         return ID;
     }
