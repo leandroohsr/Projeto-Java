@@ -4,11 +4,12 @@ import ClassesJogo.*;
 import javax.swing.*;
 
 public interface Construcao {
-    public void comprarConstr(Cidade cidade);
+    public static Construcao comprarConstr(Cidade cidade) {
+        return null;
+    }
+
     public void ampliar();
 
     //public JLabel getLabelImg();
 
-    //public int getCoordX();
-    //public int getCoordY();
 }

@@ -33,9 +33,15 @@ public class Casa extends Habitavel {
         this.labelImg = labelImg;
     }
 
-    @Override
-    public void comprarConstr(Cidade cidade) {
-        //TO-DO
+    //Hidding
+    public static Casa comprarConstr(Cidade cidade) {
+
+        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_CASA.getQtd());
+        int x = cidade.getGerador().nextInt(600);
+        int y = cidade.getGerador().nextInt(600);
+        Casa casa = new Casa(x, y);
+        cidade.getListaHabitaveis().add(casa);
+        return casa;
     }
 
     @Override

@@ -132,22 +132,9 @@ public class MenuLateralPanel extends JPanel {
      class comprarCasa implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(cidade.getStats().getDin() >= Constantes.PRECO_CASA.getQtd()){
-                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_CASA.getQtd());
-
-                Random gerador = new Random();
-                int x = gerador.nextInt(600);
-                int y = gerador.nextInt(600);
-                Casa casa = new Casa(x, y);
-                //MenuSuperiorPanel.addCadaComboBox();
-                cidade.listaHabitaveis.add(casa);
-                jogoPanel.addConstrucao(casa);
-                dialogComprado();
-            }else {
-                dialogFaltouDin();
-            }
             try {
-                cidade.comprarConstr(ConstrucoesCompraveis.CASA);
+                Casa casa = (Casa)cidade.comprarConstr(ConstrucoesCompraveis.CASA);
+                jogoPanel.addConstrucao(casa);
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();

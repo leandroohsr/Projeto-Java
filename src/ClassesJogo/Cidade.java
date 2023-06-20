@@ -15,18 +15,21 @@ public class Cidade {
     public List<Rentavel> listaRentaveis = new ArrayList<>();
     public List<Infraestrutura> listaInfraestrutura = new ArrayList<>();
     private Stats stats;
-
     private String pathBackground;
+    private Random gerador;
 
     public Cidade(){
         stats = new Stats();
-        int backAleatorio = new Random().nextInt(PathBack.values().length);
+        Random gerador = new Random();
+        int backAleatorio = gerador.nextInt(PathBack.values().length);
         pathBackground = (PathBack.values()[backAleatorio]).getPath();
     }
 
     public Stats getStats() {
         return stats;
     }
+
+    public Random getGerador() { return gerador; }
 
     public void setStats(Stats stats) {
         this.stats = stats;
@@ -51,7 +54,87 @@ public class Cidade {
 
     public String getPathBackground() { return pathBackground; }
 
-    public void comprarConstr (ConstrucoesCompraveis tipo_constr) throws ExceptionLackOfMoney {}
+
+
+    public Construcao comprarConstr (ConstrucoesCompraveis tipo_constr) throws ExceptionLackOfMoney {
+        switch (tipo_constr) {
+            case CASA:
+                if(stats.getDin() >= Constantes.PRECO_CASA.getQtd()){
+                    return Casa.comprarConstr(this);
+                } else
+                    throw new ExceptionLackOfMoney();
+                break;
+
+            case DELEGACIA:
+                if(stats.getDin() >= Constantes.PRECO_DELEGACIA.getQtd()){
+
+                    stats.atualizarDinAtual( -Constantes.PRECO_DELEGACIA.getQtd());
+                    int x = gerador.nextInt(600);
+                    int y = gerador.nextInt(600);
+                    Delegacia delegacia = new Delegacia(x, y);
+                    listaInfraestrutura.add(delegacia);
+                    return delegacia;
+                } else
+                    throw new ExceptionLackOfMoney();
+                break;
+
+
+            case HOSPITAL:
+                if(stats.getDin() >= Constantes.PRECO_HOSPITAL.getQtd()){
+
+                    stats.atualizarDinAtual( -Constantes.PRECO_HOSPITAL.getQtd());
+                    int x = gerador.nextInt(600);
+                    int y = gerador.nextInt(600);
+                    Hospital hospital = new Hospital(x, y);
+                    listaInfraestrutura.add(hospital);
+                    return hospital;
+                } else
+                    throw new ExceptionLackOfMoney();
+                break;
+
+
+            case PARQUE_ARB:
+                if(stats.getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()){
+
+                    stats.atualizarDinAtual( -Constantes.PRECO_PARQUE_ARB.getQtd());
+                    int x = gerador.nextInt(600);
+                    int y = gerador.nextInt(600);
+                    ParqueArborizado parqueArborizado = new ParqueArborizado(x, y);
+                    listaParques.add(parqueArborizado);
+                    return parqueArborizado;
+                } else
+                    throw new ExceptionLackOfMoney();
+                break;
+
+
+            case LOJA:
+                if(stats.getDin() >= Constantes.PRECO_LOJA.getQtd()){
+
+                    stats.atualizarDinAtual( -Constantes.PRECO_LOJA.getQtd());
+                    int x = gerador.nextInt(600);
+                    int y = gerador.nextInt(600);
+                    Loja loja = new Loja(x, y);
+                    listaRentaveis.add(loja);
+                    return loja;
+                } else
+                    throw new ExceptionLackOfMoney();
+                break;
+
+
+            case INDUSTRIA:
+                if(stats.getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()){
+
+                    stats.atualizarDinAtual( -Constantes.PRECO_INDUSTRIA.getQtd());
+                    int x = gerador.nextInt(600);
+                    int y = gerador.nextInt(600);
+                    Industria industria = new Industria(x, y);
+                    listaRentaveis.add(industria);
+                    return industria;
+                } else
+                    throw new ExceptionLackOfMoney();
+                break;
+        }
+    }
 
     public void ampliarConstr (ConstrucoesCompraveis tipo_constr, int id) throws ExceptionLackOfMoney {}
 
