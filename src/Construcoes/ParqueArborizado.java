@@ -6,7 +6,7 @@ import ClassesJogo.Imagens;
 
 public class ParqueArborizado extends Parque{
 
-    private int precoUpgrade;
+    private final int precoUpgrade;
     private final int precoConstru;
 
     public ParqueArborizado(int coordX, int coordY) {
@@ -32,8 +32,12 @@ public class ParqueArborizado extends Parque{
         //TO-DO
     }
 
-
     public void fazerUpgrade() {
         //TODO
     }
+
+    public int getPrecoUpgrade(){ return precoUpgrade;}
+
+    public int getPrecoConstru(){ return precoConstru;}
+
 }

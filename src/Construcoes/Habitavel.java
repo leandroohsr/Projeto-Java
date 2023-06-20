@@ -23,7 +23,17 @@ public abstract class Habitavel implements Construcao {
         this.pathImag = pathImag;
     }
 
-    public int getId(){
+
+    //getters
+    public int getCapacidadePop() {
+        return capacidadePop;
+    }
+
+    public int getPrecoAmpliarAtual() {
+        return precoAmpliarAtual;
+    }
+
+    public int getID(){
         return ID;
     }
 
@@ -31,35 +41,32 @@ public abstract class Habitavel implements Construcao {
         return coordX;
     }
 
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
     public int getCoordY() {
         return coordY;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
     }
 
     public String getPathImag() {
         return pathImag;
     }
 
-    public int getCapacidadePop() {
-        return capacidadePop;
-    }
-
+    //setters
     public void setCapacidadePop(int capacidadePop) {
         this.capacidadePop = capacidadePop;
-    }
-
-    public int getPrecoAmpliarAtual() {
-        return precoAmpliarAtual;
     }
 
     public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
         this.precoAmpliarAtual = precoAmpliarAtual;
     }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+
+
+
 }

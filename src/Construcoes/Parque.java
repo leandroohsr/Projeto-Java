@@ -21,6 +21,16 @@ public abstract class Parque implements Construcao{
         PathImag = pathImag;
     }
 
+
+    //getters
+    public int getFatorFelic() {
+        return fatorFelic;
+    }
+
+    public int getPrecoAmpliarAtual() {
+        return precoAmpliarAtual;
+    }
+
     public int getID(){
         return this.ID;
     }
@@ -29,35 +39,31 @@ public abstract class Parque implements Construcao{
         return coordX;
     }
 
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
     public int getCoordY() {
         return coordY;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
     }
 
     public String getPathImag() {
         return PathImag;
     }
 
-    public int getFatorFelic() {
-        return fatorFelic;
-    }
 
+    //setters
     public void setFatorFelic(int capacidadePop) {
         this.fatorFelic = capacidadePop;
-    }
-
-    public int getPrecoAmpliarAtual() {
-        return precoAmpliarAtual;
     }
 
     public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
         this.precoAmpliarAtual = precoAmpliarAtual;
     }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+
 }

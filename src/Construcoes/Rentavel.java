@@ -24,45 +24,47 @@ public abstract class Rentavel implements Construcao{
     }
 
 
-    public int getID() {
-        return ID;
-    }
-
-    public int getFatorDin() {
-        return fatorDin;
-    }
-
-    public void setFatorDin(int fatorDin) {
-        this.fatorDin = fatorDin;
-    }
+    //getters
+    public int getFatorDin(){ return fatorDin;}
 
     public int getPrecoAmpliarAtual() {
         return precoAmpliarAtual;
     }
 
-    public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
-        this.precoAmpliarAtual = precoAmpliarAtual;
+    public int getID() {
+        return ID;
     }
 
     public int getCoordX() {
         return coordX;
     }
 
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
     public int getCoordY() {
         return coordY;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
     }
 
     public String getPathImag() {
         return pathImag;
     }
 
+    public int getPrecoConstru(){ return precoConstru;}
+
+
+    //setters
+    public void setFatorDin(int fatorDin) {
+        this.fatorDin = fatorDin;
+    }
+
+    public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
+        this.precoAmpliarAtual = precoAmpliarAtual;
+    }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
 
 }

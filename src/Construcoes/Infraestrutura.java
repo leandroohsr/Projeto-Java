@@ -14,6 +14,7 @@ public abstract class Infraestrutura implements Construcao{
     public Infraestrutura(int fatorInfra, int precoAmpliarAtual, int coordX, int coordY,
                              int precoConstru, String pathImag) {
         this.fatorInfra = fatorInfra;
+        this.precoAmpliarAtual = precoAmpliarAtual;
         this.ID = contadorID;
         contadorID += 1;
         this.coordX = coordX;
@@ -22,43 +23,47 @@ public abstract class Infraestrutura implements Construcao{
         this.pathImag = pathImag;
     }
 
-    public int getID() { return ID; }
-
+    //getters
     public int getFatorInfra() {
         return fatorInfra;
-    }
-
-    public void setFatorInfra(int fatorDin) {
-        this.fatorInfra = fatorInfra;
     }
 
     public int getPrecoAmpliarAtual() {
         return precoAmpliarAtual;
     }
 
-    public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
-        this.precoAmpliarAtual = precoAmpliarAtual;
-    }
+    public int getID() { return ID; }
 
     public int getCoordX() {
         return coordX;
-    }
-
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
     }
 
     public int getCoordY() {
         return coordY;
     }
 
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
-
     public String getPathImag() {
         return pathImag;
     }
 
+    public int getPrecoConstru(){ return precoConstru;}
+
+
+    //setters
+    public void setFatorInfra(int fatorInfra) {
+        this.fatorInfra = fatorInfra;
+    }
+
+    public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
+        this.precoAmpliarAtual = precoAmpliarAtual;
+    }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
 
 }
