@@ -2,6 +2,10 @@ package ClassesJogo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import ClassesGUI.PathBack;
+import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import Construcoes.*;
 
 
@@ -12,8 +16,12 @@ public class Cidade {
     public List<Infraestrutura> listaInfraestrutura = new ArrayList<>();
     private Stats stats;
 
+    private String pathBackground;
+
     public Cidade(){
         stats = new Stats();
+        int backAleatorio = new Random().nextInt(PathBack.values().length);
+        pathBackground = (PathBack.values()[backAleatorio]).getPath();
     }
 
     public Stats getStats() {
@@ -37,12 +45,15 @@ public class Cidade {
         return listaRentaveis;
     }
 
-
     public List<Infraestrutura> getListaInfraestrutura() {
         return listaInfraestrutura;
     }
 
-    public void comprarConstr (String tipo_constr) {}
-    public void ampliarConstr (String tipo_constr, int id) {}
-    public void fazerUpgrade (String tipo_constr, int id) {}
+    public String getPathBackground() { return pathBackground; }
+
+    public void comprarConstr (ConstrucoesCompraveis tipo_constr) throws ExceptionLackOfMoney {}
+
+    public void ampliarConstr (ConstrucoesCompraveis tipo_constr, int id) throws ExceptionLackOfMoney {}
+
+    public void fazerUpgrade (ConstrucoesCompraveis tipo_constr, int id) throws ExceptionLackOfMoney {}
 }

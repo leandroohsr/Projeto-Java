@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import ClassesJogo.*;
+import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import Construcoes.Casa;
 
 import java.awt.event.ActionEvent;
@@ -35,6 +36,7 @@ public class MenuLateralPanel extends JPanel {
         setVisible(true);
     }
 
+    //Cria os botoes de compra das construcoes no menu lateral
     private void setBotoesConstr() {
 
         //ImageIcons para botoes
@@ -55,7 +57,7 @@ public class MenuLateralPanel extends JPanel {
             i.setImage(i.getImage().getScaledInstance(ximg, yimg, Image.SCALE_SMOOTH));
         }
 
-
+        //Legendas:
 
         JButton bCasa = new JButton(String.format("Casa: $" + Constantes.PRECO_CASA.getQtd()), imgCasa);
         JButton bParque = new JButton(String.format("Parque arborizado: $" + Constantes.PRECO_PARQUE_ARB.getQtd()), imgParque);
@@ -68,6 +70,8 @@ public class MenuLateralPanel extends JPanel {
 
         ArrayList<JButton> arrayBotoes = new ArrayList<>();
         Collections.addAll(arrayBotoes, bCasa, bParque, bHosp, bDeleg, bLoja, bIndust);
+
+        //Adicionando escutadores de acao:
 
         bCasa.addActionListener(new comprarCasa());
         bParque.addActionListener(new comprarParque());
@@ -85,6 +89,7 @@ public class MenuLateralPanel extends JPanel {
 
     }
 
+    //Cria as legendas que indicam os stats do jogo
     private void setLabelStats() {
 
         pop = new JLabel(String.format("População: " + cidade.getStats().getPop()));
@@ -120,6 +125,10 @@ public class MenuLateralPanel extends JPanel {
         dialog.setVisible(true);
     }
 
+
+    //Escutadores de acao:
+
+
      class comprarCasa implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -137,16 +146,22 @@ public class MenuLateralPanel extends JPanel {
             }else {
                 dialogFaltouDin();
             }
+            try {
+                cidade.comprarConstr(ConstrucoesCompraveis.CASA);
+                dialogComprado();
+            } catch (ExceptionLackOfMoney erro) {
+                dialogFaltouDin();
+            }
         }
     }
 
     class comprarParque implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(cidade.getStats().getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()) {
-                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_PARQUE_ARB.getQtd());
+            try {
+                cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
                 dialogComprado();
-            }else {
+            } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
             }
         }
@@ -155,10 +170,10 @@ public class MenuLateralPanel extends JPanel {
     class comprarHospital implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(cidade.getStats().getDin() >= Constantes.PRECO_HOSPITAL.getQtd()) {
-                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_HOSPITAL.getQtd());
+            try {
+                cidade.comprarConstr(ConstrucoesCompraveis.HOSPITAL);
                 dialogComprado();
-            }else {
+            } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
             }
         }
@@ -167,10 +182,10 @@ public class MenuLateralPanel extends JPanel {
     class comprarDeleg implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(cidade.getStats().getDin() >= Constantes.PRECO_DELEGACIA.getQtd()) {
-                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_DELEGACIA.getQtd());
+            try {
+                cidade.comprarConstr(ConstrucoesCompraveis.DELEGACIA);
                 dialogComprado();
-            }else {
+            } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
             }
         }
@@ -179,10 +194,10 @@ public class MenuLateralPanel extends JPanel {
     class comprarLoja implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(cidade.getStats().getDin() >= Constantes.PRECO_LOJA.getQtd()) {
-                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_LOJA.getQtd());
+            try {
+                cidade.comprarConstr(ConstrucoesCompraveis.LOJA);
                 dialogComprado();
-            }else {
+            } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
             }
         }
@@ -191,10 +206,10 @@ public class MenuLateralPanel extends JPanel {
     class comprarIndust implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(cidade.getStats().getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()) {
-                cidade.getStats().atualizarDinAtual(-Constantes.PRECO_INDUSTRIA.getQtd());
+            try {
+                cidade.comprarConstr(ConstrucoesCompraveis.INDUSTRIA);
                 dialogComprado();
-            } else {
+            } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
             }
         }

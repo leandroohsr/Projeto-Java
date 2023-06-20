@@ -3,6 +3,7 @@ package ClassesGUI;
 import ClassesJogo.AppMain;
 import ClassesJogo.Excepts.ExceptionFileNotFound;
 import ClassesJogo.GerenciadorArquivos;
+import ClassesJogo.Imagens;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +53,7 @@ public class InicioPanel extends JPanel {
         add(bCarregarJogo);
     }
     public void paintComponent(Graphics g) {
-        ImageIcon img = new ImageIcon(PathBack.PATH_TELA_INICIO.getPath());
+        ImageIcon img = new ImageIcon(Imagens.PATH_TELA_INICIO.getPath());
         int ximg = TamanhoCompon.X_FRAME.getTam();
         int yimg = TamanhoCompon.Y_FRAME.getTam();
         img.setImage(img.getImage().getScaledInstance(ximg, yimg, Image.SCALE_SMOOTH));

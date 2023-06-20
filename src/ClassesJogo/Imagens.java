@@ -1,6 +1,7 @@
 package ClassesJogo;
 
 public enum Imagens {
+    PATH_TELA_INICIO("src/ClassesGUI/ArquivosImagem/tela_inicio.jpeg"),
     PATH_LOADS("src/PastaLoads/"),
     PATH_CASA("src/ClassesGUI/ArquivosImagem/casa.png"),
     PATH_PREDIO("src/ClassesGUI/ArquivosImagem/predio.png"),

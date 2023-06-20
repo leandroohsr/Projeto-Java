@@ -21,7 +21,7 @@ public class TelaJogoFrame extends JFrame{
         BorderLayout layout = new BorderLayout(10,10);
         setLayout(layout);
 
-        jogoPanel = new TelaJogoPanel();
+        jogoPanel = new TelaJogoPanel(cidade.getPathBackground());
         menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel);
         menuSuperiorPanel = new MenuSuperiorPanel(cidade);
         add(menuLateralPanel, BorderLayout.WEST);
