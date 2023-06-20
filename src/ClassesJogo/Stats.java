@@ -63,6 +63,10 @@ public class Stats {
 
     public void atualizarDinAtual(int incremento){ listaStats.set(3, listaStats.get(3) + incremento); }
 
+    public void atualizarValores(){
+        //TODO
+    }
+
     //getters
     public int getPop(){
         return listaStats.get(0);

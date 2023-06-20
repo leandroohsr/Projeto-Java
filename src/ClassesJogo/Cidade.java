@@ -42,20 +42,7 @@ public class Cidade {
         return listaInfraestrutura;
     }
 
-
-    public void setListaHabitaveis(List<Habitavel> listaHabitaveis) {
-        this.listaHabitaveis = listaHabitaveis;
-    }
-
-    public void setListaParques(List<Parque> listaParques) {
-        this.listaParques = listaParques;
-    }
-
-    public void setListaRentaveis(List<Rentavel> listaRentaveis) {
-        this.listaRentaveis = listaRentaveis;
-    }
-
-    public void setListaInfraestrutura(List<Infraestrutura> listaInfraestrutura) {
-        this.listaInfraestrutura = listaInfraestrutura;
-    }
+    public void comprarConstr (String tipo_constr) {}
+    public void ampliarConstr (String tipo_constr, int id) {}
+    public void fazerUpgrade (String tipo_constr, int id) {}
 }
