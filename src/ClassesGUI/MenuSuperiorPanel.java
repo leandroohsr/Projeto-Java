@@ -38,7 +38,7 @@ public class MenuSuperiorPanel extends JPanel {
     }
 
 
-
+    //Nome | Casas | Predio | Hospital | Delegacia | Loja | Indústria | Parques Arborizados | Parque de Divercoes | Populacao | Dinheiro | Infraestrutura | Felicidade
     class salvaJogo implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
