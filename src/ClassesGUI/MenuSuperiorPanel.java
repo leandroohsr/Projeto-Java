@@ -53,7 +53,7 @@ public class MenuSuperiorPanel extends JPanel {
 
                 FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
                 BufferedWriter out = new BufferedWriter(fw);
-                String info_jogo = String.format("%s,", Cidade.getNome(), Cidade.qtdHabitaveis());
+                String info_jogo = String.format("%s,", Cidade.getNome(), );
                 out.write(info_jogo);
                 out.newLine();
                 out.close();
