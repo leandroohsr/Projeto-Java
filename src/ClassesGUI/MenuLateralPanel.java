@@ -203,4 +203,15 @@ public class MenuLateralPanel extends JPanel {
         }
     }
 
+
+    public void atualizaLabels(){
+        pop.setText(String.format("População: " + cidade.getStats().getPop()));
+        din.setText(String.format("Dinheiro: $" + cidade.getStats().getDin()));
+        infra.setText(String.format("Infraestrutura: " + cidade.getStats().getInfra()));
+        felic.setText(String.format("Felicidade: " + cidade.getStats().getFelic()));
+        revalidate();
+        repaint();
+    }
+
+
 }
