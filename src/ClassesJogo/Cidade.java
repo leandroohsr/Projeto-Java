@@ -56,7 +56,7 @@ public class Cidade {
     public String getPathBackground() { return pathBackground; }
 
     public int gerarCoordRandom() {
-        int margem = 50;
+        int margem = 120;
         return gerador.nextInt(margem, TamanhoCompon.DIM_PANEL_JOGO.getTam() - margem);
     }
 
