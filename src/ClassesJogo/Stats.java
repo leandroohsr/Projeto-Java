@@ -57,11 +57,11 @@ public class Stats {
     }
 
     public void atualizarFelicTimer(){
-        listaStats.set(1, listaStats.get(1) - listaTaxas.get(1));
+        listaStats.set(1, listaStats.get(1) + listaTaxas.get(1));
     }
 
     public void atualizarInfraTimer(){
-        listaStats.set(2,listaStats.get(2) - listaTaxas.get(2));
+        listaStats.set(2,listaStats.get(2) + listaTaxas.get(2));
     }
 
     public void atualizarDinTimer(){
