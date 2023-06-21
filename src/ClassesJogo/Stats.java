@@ -61,7 +61,7 @@ public class Stats {
     }
 
     public void atualizarInfraTimer(){
-        listaStats.set(2,listaStats.get(2) + listaTaxas.get(2));
+        listaStats.set(2,listaStats.get(2) - listaTaxas.get(2));
     }
 
     public void atualizarDinTimer(){
