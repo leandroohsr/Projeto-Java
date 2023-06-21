@@ -17,6 +17,7 @@ public class TelaJogoPanel extends JPanel {
         setVisible(true);
     }
 
+    //Pintando o background
     public void paintComponent(Graphics g) {
         ImageIcon img = new ImageIcon(pathBackground);
         int proporcaoImg = TamanhoCompon.DIM_PANEL_JOGO.getTam();
@@ -24,6 +25,7 @@ public class TelaJogoPanel extends JPanel {
         g.drawImage(img.getImage(), 0,0, proporcaoImg,proporcaoImg,null);
     }
 
+    //Funcao de adicionar a construcao
     public void addConstrucao(Construcao constr){
         JLabel labelImg = constr.getLabelImg();
         labelImg.setBounds(constr.getCoordX(), constr.getCoordY(),constr.getLabelImg().getWidth(),

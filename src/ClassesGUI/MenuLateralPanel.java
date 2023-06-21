@@ -103,6 +103,7 @@ public class MenuLateralPanel extends JPanel {
         add(felic);
     }
 
+    //Pop-up se faltou dinheiro
      private void dialogFaltouDin() {
          Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
          JDialog dialog = new JDialog();
@@ -114,6 +115,7 @@ public class MenuLateralPanel extends JPanel {
          dialog.setVisible(true);
      }
 
+     //Pop-up se comprado com sucesso
     private void dialogComprado() {
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
         JDialog dialog = new JDialog();
@@ -207,7 +209,7 @@ public class MenuLateralPanel extends JPanel {
         }
     }
 
-
+    //Atualiza o texto das labels dos stats
     public void atualizaLabels(){
         pop.setText(String.format("População: " + cidade.getStats().getPop()));
         din.setText(String.format("Dinheiro: $" + cidade.getStats().getDin()));
