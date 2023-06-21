@@ -25,11 +25,6 @@ public class MenuSuperiorPanel extends JPanel {
         JButton b = new JButton("botao cima");
         JButton salvar = new JButton("Salvar");
 
-//        box.addItem(0);
-//        box.addItem("bb");
-//
-//        box.setBounds(50,50,90,20);
-//        add(box);
         add(salvar);
         salvar.addActionListener(new salvaJogo());
         add(b);
@@ -40,8 +35,8 @@ public class MenuSuperiorPanel extends JPanel {
 
     //Nome | Casas | Predio | Hospital | Delegacia | Loja | Indústria | Parques Arborizados | Parque de Divercoes | Populacao | Dinheiro | Infraestrutura | Felicidade
     class salvaJogo implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
+
             try {
 
                 FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
@@ -50,6 +45,7 @@ public class MenuSuperiorPanel extends JPanel {
                         cidade.qtdConstr(ConstrucoesTipos.LOJA), cidade.qtdConstr(ConstrucoesTipos.INDUSTRIA),
                         cidade.qtdConstr(ConstrucoesTipos.PARQUE_ARB), cidade.qtdConstr(ConstrucoesTipos.PARQUE_DIVERS), cidade.getStats().getPop(),
                         cidade.getStats().getDin(), cidade.getStats().getInfra(), cidade.getStats().getFelic());
+
                 out.write(info_jogo);
                 out.newLine();
                 out.close();
@@ -74,6 +70,7 @@ public class MenuSuperiorPanel extends JPanel {
                 dialog.setVisible(true);
             }
         }
+
     }
 
 

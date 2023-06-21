@@ -139,50 +139,62 @@ public class Cidade {
                 }
                 return qtd;
             case DELEGACIA:
-                for(int i=0;i<listaHabitaveis.size();i++){
+
+                for(int i=0;i<listaInfraestrutura.size();i++){
                     if(listaInfraestrutura.get(i).getClass() == Delegacia.class){
                         qtd+=1;
                     }
                 }
 
             case HOSPITAL:
-                for(int i=0;i<listaHabitaveis.size();i++){
-                    if(listaInfraestrutura.get(i).getClass() == Hospital.class){
-                        qtd+=1;
+
+                    for(int i=0;i<listaInfraestrutura.size();i++){
+                        if(listaInfraestrutura.get(i).getClass() == Hospital.class){
+                            qtd+=1;
+                        }
                     }
-                }
-                return qtd;
+                    return qtd;
+
+
 
             case PARQUE_ARB:
-                for(int i=0;i<listaHabitaveis.size();i++){
-                    if(listaParques.get(i).getClass() == ParqueArborizado.class){
-                        qtd+=1;
+
+                    for(int i=0;i<listaParques.size();i++){
+                        if(listaParques.get(i).getClass() == ParqueArborizado.class){
+                            qtd+=1;
+                        }
                     }
-                }
-                return qtd;
+                    return qtd;
             case PARQUE_DIVERS:
 
-                for(int i=0;i<listaHabitaveis.size();i++){
-                    if(listaParques.get(i).getClass() == ParqueDiversao.class){
-                        qtd+=1;
+
+                    for(int i=0;i<listaParques.size();i++){
+                        if(listaParques.get(i).getClass() == ParqueDiversao.class){
+                            qtd+=1;
+                        }
                     }
-                }
-                return qtd;
+                    return qtd;
+
             case LOJA:
-                for(int i=0;i<listaHabitaveis.size();i++){
-                    if(listaRentaveis.get(i).getClass() == Loja.class){
-                        qtd+=1;
+
+
+                    for(int i=0;i<listaRentaveis.size();i++){
+                        if(listaRentaveis.get(i).getClass() == Loja.class){
+                            qtd+=1;
+                        }
                     }
-                }
-                return qtd;
+                    return qtd;
+
 
             case INDUSTRIA:
-                for(int i=0;i<listaHabitaveis.size();i++){
-                    if(listaRentaveis.get(i).getClass() == Industria.class){
-                        qtd+=1;
+
+                    for(int i=0;i<listaRentaveis.size();i++){
+                        if(listaRentaveis.get(i).getClass() == Industria.class){
+                            qtd+=1;
+                        }
                     }
-                }
-                return qtd;
+                    return qtd;
+
 
             default:
                 throw new ExceptionLackOfMoney();
