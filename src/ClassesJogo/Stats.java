@@ -10,7 +10,7 @@ public class Stats {
 
     private int limitePop;
 
-    public Stats(){
+    public Stats() {
         limitePop = Constantes.POP_MAX.getQtd();
 
         listaStats.add(Constantes.POP_INIC.getQtd());
@@ -25,49 +25,11 @@ public class Stats {
 
     }
 
+    //getters
     public int getLimitePop() {
         return limitePop;
     }
 
-    public void setLimitePop(int limitePop) {
-        this.limitePop = limitePop;
-    }
-
-    public void atualizarTaxaPop(int incremento){
-        listaTaxas.set(0,listaTaxas.get(0) + incremento);
-    }
-
-    public void atualizarPopAtual(int incremento){
-        listaStats.set(0,listaStats.get(0) + incremento);
-    }
-
-    public void atualizarTaxaFelic(int incremento){
-        listaTaxas.set(1,listaTaxas.get(1) + incremento);
-    }
-
-    public void atualizarFelicAtual(int incremento){
-        listaStats.set(1,listaStats.get(1) + incremento);
-    }
-
-    public void atualizarTaxaInfra(int incremento){
-        listaTaxas.set(2,listaTaxas.get(2) + incremento);
-    }
-
-    public void atualizarInfraAtual(int incremento){
-        listaStats.set(2,listaStats.get(2) + incremento);
-    }
-
-    public void atualizarTaxaDin(int incremento){
-        listaTaxas.set(3,listaTaxas.get(3) + incremento);
-    }
-
-    public void atualizarDinAtual(int incremento){ listaStats.set(3, listaStats.get(3) + incremento); }
-
-    public void atualizarValores(){
-        //TODO
-    }
-
-    //getters
     public int getPop(){
         return listaStats.get(0);
     }
@@ -83,5 +45,50 @@ public class Stats {
     public int getDin(){
         return listaStats.get(3);
     }
+
+    //setters
+    public void setLimitePop(int limitePop) {
+        this.limitePop = limitePop;
+    }
+
+    //atualiza de acordo com o Timer
+    public void atualizarPopTimer(){
+        listaStats.set(0,listaStats.get(0) + listaTaxas.get(0));
+    }
+
+    public void atualizarFelicTimer(){
+        listaStats.set(1, listaStats.get(1) - listaTaxas.get(1));
+    }
+
+    public void atualizarInfraTimer(){
+        listaStats.set(2,listaStats.get(2) + listaTaxas.get(2));
+    }
+
+    public void atualizarDinTimer(){
+        listaStats.set(3, listaStats.get(3) + listaTaxas.get(3));
+    }
+
+
+    //atualiza a partir de um parametro
+    public void atualizarPopAtual(int incremento){
+        listaStats.set(0,listaStats.get(0) + incremento);
+    }
+
+    public void atualizarFelicAtual(int incremento){
+        listaStats.set(1,listaStats.get(1) + incremento);
+    }
+
+    public void atualizarInfraAtual(int incremento){
+        listaStats.set(2,listaStats.get(2) + incremento);
+    }
+
+    public void atualizarDinAtual(int incremento){
+        listaStats.set(3, listaStats.get(3) + incremento);
+    }
+
+    public void atualizarTaxaDin(int incremento){
+        listaTaxas.set(3,listaTaxas.get(3) + incremento);
+    }
+
 
 }
