@@ -5,10 +5,10 @@ import java.awt.*;
 import ClassesJogo.*;
 
 public class TelaJogoFrame extends JFrame{
-    Cidade cidade;
-    TelaJogoPanel jogoPanel;
-    MenuLateralPanel menuLateralPanel;
-    MenuSuperiorPanel menuSuperiorPanel;
+    private Cidade cidade;
+    private TelaJogoPanel jogoPanel;
+    private MenuLateralPanel menuLateralPanel;
+    private MenuSuperiorPanel menuSuperiorPanel;
     public TelaJogoFrame(Cidade cidade) {
 
         this.cidade = cidade;

@@ -11,10 +11,10 @@ import Construcoes.*;
 
 
 public class Cidade {
-    public List<Habitavel> listaHabitaveis = new ArrayList<>();
-    public List<Parque> listaParques = new ArrayList<>();
-    public List<Rentavel> listaRentaveis = new ArrayList<>();
-    public List<Infraestrutura> listaInfraestrutura = new ArrayList<>();
+    private List<Habitavel> listaHabitaveis = new ArrayList<>();
+    private List<Parque> listaParques = new ArrayList<>();
+    private List<Rentavel> listaRentaveis = new ArrayList<>();
+    private List<Infraestrutura> listaInfraestrutura = new ArrayList<>();
     private Stats stats;
     private String pathBackground;
     private Random gerador;

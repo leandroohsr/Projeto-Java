@@ -14,12 +14,12 @@ import java.util.Collections;
 import java.util.Random;
 
 public class MenuLateralPanel extends JPanel {
-    Cidade cidade;
-    JLabel pop;
-    JLabel din;
-    JLabel infra;
-    JLabel felic;
-    TelaJogoPanel jogoPanel;
+    private Cidade cidade;
+    private JLabel pop;
+    private JLabel din;
+    private JLabel infra;
+    private JLabel felic;
+    private TelaJogoPanel jogoPanel;
 
     public MenuLateralPanel(Cidade cidade, TelaJogoPanel jogoPanel) {
 
