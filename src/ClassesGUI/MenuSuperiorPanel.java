@@ -14,7 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class MenuSuperiorPanel extends JPanel {
-    Cidade cidade;
+    private Cidade cidade;
     JComboBox box = new JComboBox();
 
     public MenuSuperiorPanel(Cidade cidade) {
@@ -38,22 +38,18 @@ public class MenuSuperiorPanel extends JPanel {
     }
 
 
-    public static int qtdHabitaveis(Habitavel construcao){
-        int qtd=0;
-        for(int i=0;i<Cidade.listaHabitaveis.size();i++){
 
-        }
-        return qtd;
-    }
-
-    static class salvaJogo implements ActionListener {
+    class salvaJogo implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
             try {
 
                 FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
                 BufferedWriter out = new BufferedWriter(fw);
-                String info_jogo = String.format("%s,", Cidade.getNome(), );
+                String info_jogo = String.format("%s, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d,", Cidade.getNome(), cidade.qtdConstr(ConstrucoesTipos.CASA), cidade.qtdConstr(ConstrucoesTipos.PREDIO), cidade.qtdConstr(ConstrucoesTipos.HOSPITAL), cidade.qtdConstr(ConstrucoesTipos.DELEGACIA),
+                        cidade.qtdConstr(ConstrucoesTipos.LOJA), cidade.qtdConstr(ConstrucoesTipos.INDUSTRIA),
+                        cidade.qtdConstr(ConstrucoesTipos.PARQUE_ARB), cidade.qtdConstr(ConstrucoesTipos.PARQUE_DIVERS), cidade.getStats().getPop(),
+                        cidade.getStats().getDin(), cidade.getStats().getInfra(), cidade.getStats().getFelic());
                 out.write(info_jogo);
                 out.newLine();
                 out.close();
@@ -67,7 +63,7 @@ public class MenuSuperiorPanel extends JPanel {
                 dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 dialog.setVisible(true);
 
-            } catch (IOException erro) {
+            } catch (IOException | ExceptionLackOfMoney erro) {
                 Font fonte_padrao = new Font("Arial", Font.PLAIN, 50);
                 JDialog dialog = new JDialog();
                 dialog.setBounds(400,300,300,150);

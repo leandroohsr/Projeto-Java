@@ -119,7 +119,75 @@ public class Cidade {
     public static String getNome() {
         return nome;
     }
+    public int qtdConstr (ConstrucoesTipos tipo_constr) throws ExceptionLackOfMoney {
+        int qtd =0;
+        switch (tipo_constr) {
+            case CASA:
 
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaHabitaveis.get(i).getClass() == Casa.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+            case PREDIO:
+
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaHabitaveis.get(i).getClass() == Predio.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+            case DELEGACIA:
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaInfraestrutura.get(i).getClass() == Delegacia.class){
+                        qtd+=1;
+                    }
+                }
+
+            case HOSPITAL:
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaInfraestrutura.get(i).getClass() == Hospital.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+
+            case PARQUE_ARB:
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaParques.get(i).getClass() == ParqueArborizado.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+            case PARQUE_DIVERS:
+
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaParques.get(i).getClass() == ParqueDiversao.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+            case LOJA:
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaRentaveis.get(i).getClass() == Loja.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+
+            case INDUSTRIA:
+                for(int i=0;i<listaHabitaveis.size();i++){
+                    if(listaRentaveis.get(i).getClass() == Industria.class){
+                        qtd+=1;
+                    }
+                }
+                return qtd;
+
+            default:
+                throw new ExceptionLackOfMoney();
+        }
+    }
 
 
 }
