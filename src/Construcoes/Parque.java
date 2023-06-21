@@ -1,5 +1,7 @@
 package Construcoes;
 
+import javax.swing.*;
+
 public abstract class Parque implements Construcao{
 
     private int fatorFelic;
@@ -9,6 +11,8 @@ public abstract class Parque implements Construcao{
     private int coordX;
     private int coordY;
     private final String PathImag;
+
+    protected JLabel labelImg;
 
     public Parque(int fatorFelic, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
 
@@ -43,6 +47,22 @@ public abstract class Parque implements Construcao{
         return coordY;
     }
 
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public JLabel getLabelImg() {
+        return labelImg;
+    }
+
+    public void setLabelImg(JLabel labelImg) {
+        this.labelImg = labelImg;
+    }
+
     public String getPathImag() {
         return PathImag;
     }
@@ -57,13 +77,7 @@ public abstract class Parque implements Construcao{
         this.precoAmpliarAtual = precoAmpliarAtual;
     }
 
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
 
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
 
 
 }

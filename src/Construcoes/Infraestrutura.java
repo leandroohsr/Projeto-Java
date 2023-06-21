@@ -1,5 +1,7 @@
 package Construcoes;
 
+import javax.swing.*;
+
 public abstract class Infraestrutura implements Construcao{
     private int fatorInfra;
     private int precoAmpliarAtual;
@@ -10,6 +12,7 @@ public abstract class Infraestrutura implements Construcao{
     private final String pathImag;
     private final int precoConstru;
 
+    protected JLabel labelImg;
 
     public Infraestrutura(int fatorInfra, int precoAmpliarAtual, int coordX, int coordY,
                              int precoConstru, String pathImag) {
@@ -42,6 +45,23 @@ public abstract class Infraestrutura implements Construcao{
         return coordY;
     }
 
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+
+    public JLabel getLabelImg() {
+        return labelImg;
+    }
+
+    public void setLabelImg(JLabel labelImg) {
+        this.labelImg = labelImg;
+    }
+
     public String getPathImag() {
         return pathImag;
     }
@@ -56,14 +76,6 @@ public abstract class Infraestrutura implements Construcao{
 
     public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
         this.precoAmpliarAtual = precoAmpliarAtual;
-    }
-
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
     }
 
 }

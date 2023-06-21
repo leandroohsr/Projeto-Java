@@ -10,6 +10,15 @@ public interface Construcao {
 
     public void ampliar();
 
-    //public JLabel getLabelImg();
+    public JLabel getLabelImg();
+
+    /* Monta a Label com o ImageIcon que sera impresso na tela do jogo.
+     * Chamado apenas no construtor
+     */
+    public void montarLabelImg();
+
+    public int getCoordX();
+
+    public int getCoordY();
 
 }
