@@ -9,9 +9,6 @@ import java.util.Random;
 public class Casa extends Habitavel {
     private int precoUpgrade;
     private final int precoConstru;
-    private JLabel labelImg;
-
-
     private int precoAmpliarAtual = Constantes.PRECO_CASA.getQtd() / 2;
 
     public Casa(int x, int y) {
@@ -21,6 +18,11 @@ public class Casa extends Habitavel {
         this.precoUpgrade = Constantes.PRECO_UPGR_CASA.getQtd();
         this.precoConstru = Constantes.PRECO_CASA.getQtd();
 
+        montarLabelImg();
+    }
+
+    public void montarLabelImg() {
+
         ImageIcon img = new ImageIcon(Imagens.PATH_CASA.getPath());
         int ximg = TamanhoCompon.X_BOTAO_LAT.getTam();
         int yimg = TamanhoCompon.Y_BOTAO_LAT.getTam();
@@ -28,18 +30,7 @@ public class Casa extends Habitavel {
         labelImg = new JLabel();
         labelImg.setIcon(img);
         labelImg.setSize(70,70);
-
     }
-
-    public JLabel getLabelImg() {
-        return labelImg;
-    }
-
-    public void setLabelImg(JLabel labelImg) {
-        this.labelImg = labelImg;
-    }
-
-
 
     //Hidding
     public static Casa comprarConstr(Cidade cidade) {

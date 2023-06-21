@@ -24,9 +24,10 @@ public class TelaJogoPanel extends JPanel {
         g.drawImage(img.getImage(), 0,0, proporcaoImg,proporcaoImg,null);
     }
 
-    public void addConstrucao(Casa constr){
+    public void addConstrucao(Construcao constr){
         JLabel labelImg = constr.getLabelImg();
-        labelImg.setBounds(constr.getCoordX(), constr.getCoordY(), 70, 70);
+        labelImg.setBounds(constr.getCoordX(), constr.getCoordY(),constr.getLabelImg().getWidth(),
+                            constr.getLabelImg().getHeight());
         this.add(labelImg);
         labelImg.setVisible(true);
         revalidate(); //refresh do panel

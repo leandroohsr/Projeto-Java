@@ -2,6 +2,8 @@ package Construcoes;
 
 import ClassesJogo.Constantes;
 
+import javax.swing.*;
+
 public abstract class Habitavel implements Construcao {
     private int capacidadePop;
     private int precoAmpliarAtual;
@@ -11,6 +13,7 @@ public abstract class Habitavel implements Construcao {
     private int coordY;
     private final String pathImag;
 
+    protected JLabel labelImg;
 
 
     public Habitavel(int capacidadePop, int precoAmpliarAtual, int coordX, int coordY, String pathImag) {
@@ -45,6 +48,22 @@ public abstract class Habitavel implements Construcao {
         return coordY;
     }
 
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public JLabel getLabelImg() {
+        return labelImg;
+    }
+
+    public void setLabelImg(JLabel labelImg) {
+        this.labelImg = labelImg;
+    }
+
     public String getPathImag() {
         return pathImag;
     }
@@ -57,16 +76,4 @@ public abstract class Habitavel implements Construcao {
     public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
         this.precoAmpliarAtual = precoAmpliarAtual;
     }
-
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
-
-
-
-
 }
