@@ -2,6 +2,11 @@ package ClassesGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import ClassesJogo.*;
 
 public class TelaJogoFrame extends JFrame{
@@ -30,5 +35,24 @@ public class TelaJogoFrame extends JFrame{
 
         setVisible(true);
 
+        repetirTarefa();
+
     }
+
+    public void repetirTarefa(){
+        Timer timer = new Timer();
+        final int[] numero = {0};
+        TimerTask tarefa = new TimerTask() {
+            @Override
+            public void run() { //repete a cada 1000ms
+                cidade.getStats().atualizarPopTimer();
+                cidade.getStats().atualizarDinTimer();
+                cidade.getStats().atualizarInfraTimer();
+                cidade.getStats().atualizarFelicTimer();
+            }
+        };
+        timer.scheduleAtFixedRate(tarefa, 1000, 1000);
+
+    }
+
 }
