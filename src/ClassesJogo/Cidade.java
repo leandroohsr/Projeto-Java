@@ -18,8 +18,10 @@ public class Cidade {
     private Stats stats;
     private String pathBackground;
     private Random gerador;
+    private static String nome;
 
-    public Cidade(){
+    public Cidade(String nome){
+        this.nome = nome;
         stats = new Stats();
         gerador = new Random();
         int backAleatorio = gerador.nextInt(PathBack.values().length);
@@ -113,4 +115,14 @@ public class Cidade {
         return null;
         //TODO
     }
+
+    public static String getNome() {
+        return nome;
+    }
+
+
+
+
+
+
 }

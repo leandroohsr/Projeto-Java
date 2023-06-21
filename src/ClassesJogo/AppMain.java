@@ -21,7 +21,7 @@ public class AppMain {
         //Teste
         tela.setVisible(false);
         tela.dispose();
-        Cidade cidade = new Cidade();
+        Cidade cidade = new Cidade(nome);
         tela = new TelaJogoFrame(cidade);
 
         //TODO

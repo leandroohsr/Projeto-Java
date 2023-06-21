@@ -4,6 +4,7 @@ import javax.swing.*;
 import ClassesJogo.*;
 import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import Construcoes.Casa;
+import Construcoes.Habitavel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,6 +38,13 @@ public class MenuSuperiorPanel extends JPanel {
     }
 
 
+    public static int qtdHabitaveis(Habitavel construcao){
+        int qtd=0;
+        for(int i=0;i<Cidade.listaHabitaveis.size();i++){
+
+        }
+        return qtd;
+    }
 
     static class salvaJogo implements ActionListener {
 
@@ -45,7 +53,8 @@ public class MenuSuperiorPanel extends JPanel {
 
                 FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
                 BufferedWriter out = new BufferedWriter(fw);
-                out.write("test");
+                String info_jogo = String.format("%s,", Cidade.getNome(), Cidade.qtdHabitaveis());
+                out.write(info_jogo);
                 out.newLine();
                 out.close();
 
