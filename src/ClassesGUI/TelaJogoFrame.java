@@ -18,7 +18,7 @@ public class TelaJogoFrame extends JFrame{
         setLocation(0,0);
         setSize(TamanhoCompon.X_FRAME.getTam(), TamanhoCompon.Y_FRAME.getTam());
 
-        BorderLayout layout = new BorderLayout(10,10);
+        BorderLayout layout = new BorderLayout(0,0);
         setLayout(layout);
 
         jogoPanel = new TelaJogoPanel(cidade.getPathBackground());

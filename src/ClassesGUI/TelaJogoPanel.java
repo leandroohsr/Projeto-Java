@@ -12,6 +12,8 @@ public class TelaJogoPanel extends JPanel {
     public TelaJogoPanel(String pathBackground) {
         this.pathBackground = pathBackground;
         setLayout(null);
+        int proporcaoImg = TamanhoCompon.DIM_PANEL_JOGO.getTam();
+        setPreferredSize(new Dimension(proporcaoImg, proporcaoImg));
         setVisible(true);
     }
 
@@ -24,8 +26,11 @@ public class TelaJogoPanel extends JPanel {
 
     public void addConstrucao(Casa constr){
         JLabel labelImg = constr.getLabelImg();
-        labelImg.setBounds(labelImg.getX(), labelImg.getY(), constr.getCoordX(), constr.getCoordY());
+        labelImg.setBounds(constr.getCoordX(), constr.getCoordY(), 70, 70);
         this.add(labelImg);
+        labelImg.setVisible(true);
+        revalidate(); //refresh do panel
+        repaint();
     }
 
 }

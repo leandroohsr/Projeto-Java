@@ -27,7 +27,8 @@ public class MenuLateralPanel extends JPanel {
         this.jogoPanel = jogoPanel;
         GridLayout gridLayout = new GridLayout(5,2);
         setLayout(gridLayout);
-        setSize(TamanhoCompon.X_PANEL_LATERAL.getTam(), TamanhoCompon.Y_PANEL_LATERAL.getTam());
+
+        setPreferredSize(new Dimension(TamanhoCompon.X_PANEL_LATERAL.getTam(), TamanhoCompon.Y_PANEL_LATERAL.getTam()));
 
         setLabelStats();
 

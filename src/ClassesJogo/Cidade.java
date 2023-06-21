@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import ClassesGUI.PathBack;
+import ClassesGUI.TamanhoCompon;
 import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import Construcoes.*;
 
@@ -20,7 +21,7 @@ public class Cidade {
 
     public Cidade(){
         stats = new Stats();
-        Random gerador = new Random();
+        gerador = new Random();
         int backAleatorio = gerador.nextInt(PathBack.values().length);
         pathBackground = (PathBack.values()[backAleatorio]).getPath();
     }
@@ -54,7 +55,10 @@ public class Cidade {
 
     public String getPathBackground() { return pathBackground; }
 
-
+    public int gerarCoordRandom() {
+        int margem = 50;
+        return gerador.nextInt(margem, TamanhoCompon.DIM_PANEL_JOGO.getTam() - margem);
+    }
 
     public Construcao comprarConstr (ConstrucoesCompraveis tipo_constr) throws ExceptionLackOfMoney {
         switch (tipo_constr) {

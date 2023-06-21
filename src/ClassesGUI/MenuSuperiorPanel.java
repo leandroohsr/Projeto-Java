@@ -18,9 +18,11 @@ public class MenuSuperiorPanel extends JPanel {
 
     public MenuSuperiorPanel(Cidade cidade) {
         this.cidade = cidade;
+
+        setPreferredSize(new Dimension(TamanhoCompon.X_PANEL_MENU_CIMA.getTam(), TamanhoCompon.Y_PANEL_MENU_CIMA.getTam()));
+
         JButton b = new JButton("botao cima");
         JButton salvar = new JButton("Salvar");
-
 
 //        box.addItem(0);
 //        box.addItem("bb");
