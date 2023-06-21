@@ -5,13 +5,12 @@ import java.awt.*;
 
 import ClassesJogo.*;
 import ClassesJogo.Excepts.ExceptionLackOfMoney;
-import Construcoes.Casa;
+import Construcoes.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class MenuLateralPanel extends JPanel {
     private Cidade cidade;
@@ -147,7 +146,8 @@ public class MenuLateralPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
+                ParqueArborizado parqueArborizado = (ParqueArborizado)cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
+                jogoPanel.addConstrucao(parqueArborizado);
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -159,7 +159,8 @@ public class MenuLateralPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                cidade.comprarConstr(ConstrucoesCompraveis.HOSPITAL);
+                Hospital hospital = (Hospital)cidade.comprarConstr(ConstrucoesCompraveis.HOSPITAL);
+                jogoPanel.addConstrucao(hospital);
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -171,7 +172,8 @@ public class MenuLateralPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                cidade.comprarConstr(ConstrucoesCompraveis.DELEGACIA);
+                Delegacia delegacia = (Delegacia)cidade.comprarConstr(ConstrucoesCompraveis.DELEGACIA);
+                jogoPanel.addConstrucao(delegacia);
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -183,7 +185,8 @@ public class MenuLateralPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                cidade.comprarConstr(ConstrucoesCompraveis.LOJA);
+                Loja loja = (Loja)cidade.comprarConstr(ConstrucoesCompraveis.LOJA);
+                jogoPanel.addConstrucao(loja);
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -195,7 +198,8 @@ public class MenuLateralPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                cidade.comprarConstr(ConstrucoesCompraveis.INDUSTRIA);
+                Industria industria= (Industria) cidade.comprarConstr(ConstrucoesCompraveis.INDUSTRIA);
+                jogoPanel.addConstrucao(industria);
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
