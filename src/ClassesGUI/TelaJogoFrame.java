@@ -8,6 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import ClassesJogo.*;
+import ClassesJogo.Excepts.ExceptionGameOver;
 
 public class TelaJogoFrame extends JFrame{
     private Cidade cidade;
@@ -46,16 +47,18 @@ public class TelaJogoFrame extends JFrame{
             @Override
             public void run() { //repete a cada 1000ms
 
-                try{
-
-                }catch(Exception e){
-
-                }
                 cidade.getStats().atualizarPopTimer();
                 cidade.getStats().atualizarDinTimer();
                 cidade.getStats().atualizarInfraTimer();
                 cidade.getStats().atualizarFelicTimer();
                 menuLateralPanel.atualizaLabels();
+                try{
+                    cidade.getStats().verificarJogo();
+
+                }catch(ExceptionGameOver e){
+                    AppMain.GameOver();
+                }
+
             }
         };
         timer.scheduleAtFixedRate(tarefa, 1000, 1000);

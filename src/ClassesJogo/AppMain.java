@@ -29,4 +29,8 @@ public class AppMain {
     public static void carregarJogo(String nome) {
         //TODO
     }
+
+    public static void GameOver() {
+        //TODO
+    }
 }

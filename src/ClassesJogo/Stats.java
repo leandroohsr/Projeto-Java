@@ -1,5 +1,7 @@
 package ClassesJogo;
 
+import ClassesJogo.Excepts.ExceptionGameOver;
+
 import java.util.ArrayList;
 import java.util.List;
 public class Stats {
@@ -91,4 +93,13 @@ public class Stats {
     }
 
 
+    public void verificarJogo() throws ExceptionGameOver {
+        if(listaStats.get(0) > limitePop){         //checa se a população estourou
+            throw new ExceptionGameOver();
+        }else if(listaStats.get(1) <= 0){          //checa se a felicidade zerou
+            throw new ExceptionGameOver();
+        }else if(listaStats.get(2) <= 0){          //checa se a infraestrutura zerou
+            throw new ExceptionGameOver();
+        }
+    }
 }
