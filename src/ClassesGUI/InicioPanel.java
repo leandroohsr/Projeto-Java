@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 public class InicioPanel extends JPanel {
 
     public InicioPanel() {
+
+        //propriedades do panel
         this.setBounds(0,0,TamanhoCompon.X_FRAME.getTam(), TamanhoCompon.Y_FRAME.getTam());
         setLayout(null);
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
@@ -22,7 +24,9 @@ public class InicioPanel extends JPanel {
         labelNome.setFont(new Font("Arial", Font.BOLD, 50));
         labelNome.setForeground(Color.white);
 
-        JTextField fieldCidade = new JTextField(); // Campo para entrada do nome
+
+        // Campo e Label para entrada do nome
+        JTextField fieldCidade = new JTextField();
         JLabel descrFieldCidade = new JLabel("Insira o nome da sua cidade:");
         descrFieldCidade.setFont(fonte_padrao);
         descrFieldCidade.setForeground(Color.white);
@@ -46,6 +50,7 @@ public class InicioPanel extends JPanel {
         bNovoJogo.addActionListener(new actionNovoJogo(fieldCidade));
         bCarregarJogo.addActionListener(new actionCarregarJogo(fieldCidade));
 
+        //Adicionando os botoes
         add(labelNome);
         add(descrFieldCidade);
         add(fieldCidade);
@@ -71,6 +76,8 @@ public class InicioPanel extends JPanel {
             String nome = fieldCidade.getText();
             try {
                 GerenciadorArquivos.procurarArquivo(nome);
+
+                //pop-up de erro
                 Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
                 JDialog dialog = new JDialog();
                 dialog.setBounds(400,300,300,100);
@@ -99,6 +106,8 @@ public class InicioPanel extends JPanel {
                 AppMain.carregarJogo(nome);
 
             } catch (ExceptionFileNotFound erro) {
+
+                //pop-up de erro
                 Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
                 JDialog dialog = new JDialog();
                 dialog.setBounds(500,300,400,100);
