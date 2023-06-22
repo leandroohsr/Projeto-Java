@@ -65,41 +65,53 @@ public class Cidade {
     public Construcao comprarConstr (ConstrucoesCompraveis tipo_constr) throws ExceptionLackOfMoney {
         switch (tipo_constr) {
             case CASA:
-                if(stats.getDin() >= Constantes.PRECO_CASA.getQtd()){
+                if(stats.getDin() > Constantes.PRECO_CASA.getQtd()){
+                    stats.atualizarDinAtual(- Constantes.PRECO_CASA.getQtd());
+                    stats.atualizarPopAtual(- Constantes.CAPACIDADE_POP_CASA.getQtd());
                     return Casa.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
 
             case DELEGACIA:
-                if(stats.getDin() >= Constantes.PRECO_DELEGACIA.getQtd()){
+                if(stats.getDin() > Constantes.PRECO_DELEGACIA.getQtd()){
+                    stats.atualizarDinAtual(- Constantes.PRECO_DELEGACIA.getQtd());
+                    stats.atualizarInfraAtual(Constantes.FATOR_INFRA_DELEGACIA.getQtd());
                     return Delegacia.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
 
 
             case HOSPITAL:
-                if(stats.getDin() >= Constantes.PRECO_HOSPITAL.getQtd()){
+                if(stats.getDin() > Constantes.PRECO_HOSPITAL.getQtd()){
+                    stats.atualizarDinAtual(- Constantes.PRECO_HOSPITAL.getQtd());
+                    stats.atualizarInfraAtual(Constantes.FATOR_INFRA_HOSPITAL.getQtd());
                     return Hospital.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
 
 
             case PARQUE_ARB:
-                if(stats.getDin() >= Constantes.PRECO_PARQUE_ARB.getQtd()){
+                if(stats.getDin() > Constantes.PRECO_PARQUE_ARB.getQtd()){
+                    stats.atualizarDinAtual(- Constantes.PRECO_PARQUE_ARB.getQtd());
+                    stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_ARB.getQtd());
                     return  ParqueArborizado.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
 
 
             case LOJA:
-                if(stats.getDin() >= Constantes.PRECO_LOJA.getQtd()){
+                if(stats.getDin() > Constantes.PRECO_LOJA.getQtd()){
+                    stats.atualizarDinAtual(- Constantes.PRECO_LOJA.getQtd());
+                    stats.atualizarTaxaDin(Constantes.FATOR_DIN_LOJA.getQtd());
                     return Loja.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
 
 
             case INDUSTRIA:
-                if (stats.getDin() >= Constantes.PRECO_INDUSTRIA.getQtd()){
+                if (stats.getDin() > Constantes.PRECO_INDUSTRIA.getQtd()){
+                    stats.atualizarDinAtual(- Constantes.PRECO_INDUSTRIA.getQtd());
+                    stats.atualizarTaxaDin(Constantes.FATOR_DIN_INDUSTRIA.getQtd());
                     return Industria.comprarConstr(this);
                 } else
                     throw new ExceptionLackOfMoney();
