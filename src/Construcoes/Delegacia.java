@@ -31,7 +31,6 @@ public class Delegacia extends Infraestrutura{
     //Hidding
     public static Delegacia comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_DELEGACIA.getQtd());
         Delegacia delegacia = new Delegacia(cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaInfraestrutura().add(delegacia);
         return delegacia;

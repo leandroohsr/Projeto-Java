@@ -31,7 +31,6 @@ public class Loja extends Rentavel{
     //Hidding
     public static Loja comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_LOJA.getQtd());
         Loja loja = new Loja(cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaRentaveis().add(loja);
         return loja;

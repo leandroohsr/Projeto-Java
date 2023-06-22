@@ -31,7 +31,6 @@ public class Industria extends Rentavel {
     //Hidding
     public static Industria comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_INDUSTRIA.getQtd());
         Industria industria = new Industria(cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaRentaveis().add(industria);
         return industria;
