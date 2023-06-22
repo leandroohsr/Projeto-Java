@@ -68,6 +68,7 @@ public class AppMain {
     }
 
     public static void GameOver(String motivoTermino) {
+        
         String saida = switch (motivoTermino) {
             case "populacao" -> "a população explodiu";
             case "felicidade" -> "a felicidade zerou";

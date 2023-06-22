@@ -46,19 +46,9 @@ public abstract class Rentavel implements Construcao{
     public int getCoordY() {
         return coordY;
     }
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
 
     public JLabel getLabelImg() {
         return labelImg;
-    }
-
-    public void setLabelImg(JLabel labelImg) {
-        this.labelImg = labelImg;
     }
 
     public String getPathImag() {
@@ -75,5 +65,17 @@ public abstract class Rentavel implements Construcao{
 
     public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
         this.precoAmpliarAtual = precoAmpliarAtual;
+    }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public void setLabelImg(JLabel labelImg) {
+        this.labelImg = labelImg;
     }
 }

@@ -81,9 +81,9 @@ public class TelaJogoFrame extends JFrame{
                 cidade.getStats().atualizarFelicTimer();
                 menuLateralPanel.atualizaLabels();
                 try{
-                    cidade.getStats().verificarJogoPop();
-                    cidade.getStats().verificarJogoFelic();
-                    cidade.getStats().verificarJogoInfra();
+                    cidade.getStats().verificarJogoPop();    //verifica se populacao explodiu
+                    cidade.getStats().verificarJogoFelic();  //verifica se felicidade zerou
+                    cidade.getStats().verificarJogoInfra();  //verifica de infraestrutura zerou
 
                 }catch(ExceptionGameOverPop e){
                     AppMain.GameOver("populacao");

@@ -45,21 +45,8 @@ public abstract class Infraestrutura implements Construcao{
         return coordY;
     }
 
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
-
-
     public JLabel getLabelImg() {
         return labelImg;
-    }
-
-    public void setLabelImg(JLabel labelImg) {
-        this.labelImg = labelImg;
     }
 
     public String getPathImag() {
@@ -68,7 +55,6 @@ public abstract class Infraestrutura implements Construcao{
 
     public int getPrecoConstru(){ return precoConstru;}
 
-
     //setters
     public void setFatorInfra(int fatorInfra) {
         this.fatorInfra = fatorInfra;
@@ -76,6 +62,18 @@ public abstract class Infraestrutura implements Construcao{
 
     public void setPrecoAmpliarAtual(int precoAmpliarAtual) {
         this.precoAmpliarAtual = precoAmpliarAtual;
+    }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public void setLabelImg(JLabel labelImg) {
+        this.labelImg = labelImg;
     }
 
 }
