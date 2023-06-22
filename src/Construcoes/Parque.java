@@ -47,26 +47,13 @@ public abstract class Parque implements Construcao{
         return coordY;
     }
 
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
-    }
-
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
-    }
-
     public JLabel getLabelImg() {
         return labelImg;
-    }
-
-    public void setLabelImg(JLabel labelImg) {
-        this.labelImg = labelImg;
     }
 
     public String getPathImag() {
         return PathImag;
     }
-
 
     //setters
     public void setFatorFelic(int capacidadePop) {
@@ -77,7 +64,17 @@ public abstract class Parque implements Construcao{
         this.precoAmpliarAtual = precoAmpliarAtual;
     }
 
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
 
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public void setLabelImg(JLabel labelImg) {
+        this.labelImg = labelImg;
+    }
 
 
 }
