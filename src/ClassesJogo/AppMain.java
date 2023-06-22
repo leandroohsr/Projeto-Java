@@ -35,7 +35,7 @@ public class AppMain {
         //TODO
     }
     public static void carregarJogo(String nome) throws IOException, ExceptionLackOfMoney {
-        //TODO
+
         GerenciadorArquivos.carregarJogo(nome, tela);
         //System.out.printf("%s %d", infos[0], Integer.parseInt(infos[1]));
     }
