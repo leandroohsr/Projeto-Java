@@ -14,8 +14,6 @@ import java.io.IOException;
 
 public class GerenciadorArquivos {
 
-    static final String pasta_loads = Imagens.PATH_LOADS.getPath();
-
     public static void procurarArquivo (String nome) throws ExceptionFileNotFound, IOException {
         int verificador =0;
         String arquivoCSV = "src/ClassesJogo/Jogos.csv";
@@ -72,7 +70,7 @@ public class GerenciadorArquivos {
                                                 int parque_arb, int parque_div, Cidade cidade, TelaJogoPanel jogoPanel){
         for(int i=0;i<casas;i++){
             try {
-                cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_CASA.getQtd());
+                //cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_CASA.getQtd());
                 Casa casa = (Casa)cidade.comprarConstr(ConstrucoesCompraveis.CASA);
                 jogoPanel.addConstrucao(casa);
 
@@ -82,7 +80,7 @@ public class GerenciadorArquivos {
         }
         for(int i=0;i<hospital;i++){
             try {
-                cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_HOSPITAL.getQtd());
+                //cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_HOSPITAL.getQtd());
                 Hospital hospitais = (Hospital) cidade.comprarConstr(ConstrucoesCompraveis.HOSPITAL);
                 jogoPanel.addConstrucao(hospitais);
 
@@ -92,7 +90,7 @@ public class GerenciadorArquivos {
         }
         for(int i=0;i<delegacia;i++){
             try {
-                cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_DELEGACIA.getQtd());
+                //cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_DELEGACIA.getQtd());
                 Delegacia delegacias = (Delegacia) cidade.comprarConstr(ConstrucoesCompraveis.DELEGACIA);
                 jogoPanel.addConstrucao(delegacias);
 
@@ -102,7 +100,7 @@ public class GerenciadorArquivos {
         }
         for(int i=0;i<loja;i++){
             try {
-                cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_LOJA.getQtd());
+                //cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_LOJA.getQtd());
                 Loja lojas = (Loja) cidade.comprarConstr(ConstrucoesCompraveis.LOJA);
                 jogoPanel.addConstrucao(lojas);
 
@@ -112,7 +110,7 @@ public class GerenciadorArquivos {
         }
         for(int i=0;i<industria;i++){
             try {
-                cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_INDUSTRIA.getQtd());
+                //cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_INDUSTRIA.getQtd());
                 Industria industrias = (Industria) cidade.comprarConstr(ConstrucoesCompraveis.INDUSTRIA);
                 jogoPanel.addConstrucao(industrias);
 
@@ -122,7 +120,7 @@ public class GerenciadorArquivos {
         }
         for(int i=0;i<parque_arb;i++){
             try {
-                cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_PARQUE_ARB.getQtd());
+                //cidade.getStats().atualizarDinAtual(+ Constantes.PRECO_PARQUE_ARB.getQtd());
                 ParqueArborizado parque = (ParqueArborizado) cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
                 jogoPanel.addConstrucao(parque);
 
