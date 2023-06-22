@@ -8,7 +8,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import ClassesJogo.*;
-import ClassesJogo.Excepts.ExceptionGameOver;
+import ClassesJogo.Excepts.ExceptionGameOverFelic;
+import ClassesJogo.Excepts.ExceptionGameOverInfra;
+import ClassesJogo.Excepts.ExceptionGameOverPop;
 
 public class TelaJogoFrame extends JFrame{
     private Cidade cidade;
@@ -79,12 +81,17 @@ public class TelaJogoFrame extends JFrame{
                 cidade.getStats().atualizarFelicTimer();
                 menuLateralPanel.atualizaLabels();
                 try{
-                    cidade.getStats().verificarJogo();
+                    cidade.getStats().verificarJogoPop();
+                    cidade.getStats().verificarJogoFelic();
+                    cidade.getStats().verificarJogoInfra();
 
-                }catch(ExceptionGameOver e){
-                    AppMain.GameOver();
+                }catch(ExceptionGameOverPop e){
+                    AppMain.GameOver("populacao");
+                }catch(ExceptionGameOverFelic e){
+                    AppMain.GameOver("felicidade");
+                }catch(ExceptionGameOverInfra e){
+                    AppMain.GameOver("infraestrutura");
                 }
-
             }
         };
         timer.scheduleAtFixedRate(tarefa, 1000, 1000);

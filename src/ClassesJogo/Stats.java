@@ -1,6 +1,8 @@
 package ClassesJogo;
 
-import ClassesJogo.Excepts.ExceptionGameOver;
+import ClassesJogo.Excepts.ExceptionGameOverFelic;
+import ClassesJogo.Excepts.ExceptionGameOverInfra;
+import ClassesJogo.Excepts.ExceptionGameOverPop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,13 +110,21 @@ public class Stats {
     }
 
 
-    public void verificarJogo() throws ExceptionGameOver {
-        if(listaStats.get(0) > limitePop){         //checa se a população estourou
-            throw new ExceptionGameOver();
-        }else if(listaStats.get(1) <= 0){          //checa se a felicidade zerou
-            throw new ExceptionGameOver();
-        }else if(listaStats.get(2) <= 0){          //checa se a infraestrutura zerou
-            throw new ExceptionGameOver();
+    public void verificarJogoPop() throws ExceptionGameOverPop {
+        if(listaStats.get(0) > limitePop) {         //checa se a população estourou
+            throw new ExceptionGameOverPop();
+        }
+    }
+
+    public void verificarJogoFelic() throws ExceptionGameOverFelic{
+        if(listaStats.get(1) <= 0) {          //checa se a felicidade zerou
+            throw new ExceptionGameOverFelic();
+        }
+    }
+
+    public void verificarJogoInfra() throws ExceptionGameOverInfra{
+        if(listaStats.get(2) <= 0){          //checa se a infraestrutura zerou
+            throw new ExceptionGameOverInfra();
         }
     }
 }
