@@ -23,9 +23,15 @@ public class Delegacia extends Infraestrutura{
         int ximg = TamanhoCompon.X_BOTAO_LAT.getTam();
         int yimg = TamanhoCompon.Y_BOTAO_LAT.getTam();
         img.setImage(img.getImage().getScaledInstance(ximg,yimg, Image.SCALE_SMOOTH));
-        labelImg = new JLabel();
+
+        //Legenda da identificacao da construcao
+        labelImg = new JLabel(String.format("Infraestr. " + getID()));
+        labelImg.setHorizontalTextPosition(SwingConstants.CENTER);
+        labelImg.setVerticalTextPosition(SwingConstants.BOTTOM);
+        labelImg.setFont(new Font("Arial", Font.BOLD, 15));
+
         labelImg.setIcon(img);
-        labelImg.setSize(70,70);
+        labelImg.setSize(2 * ximg,2 * yimg);
     }
 
     //Hidding
