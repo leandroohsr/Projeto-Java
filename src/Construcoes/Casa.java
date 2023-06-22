@@ -28,11 +28,14 @@ public class Casa extends Habitavel {
         int yimg = TamanhoCompon.Y_BOTAO_LAT.getTam();
         img.setImage(img.getImage().getScaledInstance(ximg,yimg, Image.SCALE_SMOOTH));
 
-        labelImg = new JLabel(String.format("Casa " + getID()));
-        labelImg.setHorizontalTextPosition(SwingConstants.LEFT);
+        //Legenda da identificacao da construcao
+        labelImg = new JLabel(String.format("Habitável " + getID()));
+        labelImg.setHorizontalTextPosition(SwingConstants.CENTER);
         labelImg.setVerticalTextPosition(SwingConstants.BOTTOM);
+        labelImg.setFont(new Font("Arial", Font.BOLD, 15));
+
         labelImg.setIcon(img);
-        labelImg.setSize(ximg,yimg);
+        labelImg.setSize(2 * ximg,2 * yimg);
 
     }
 
