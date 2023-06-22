@@ -31,7 +31,6 @@ public class Hospital extends Infraestrutura {
     //Hidding
     public static Hospital comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_HOSPITAL.getQtd());
         Hospital hospital = new Hospital (cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaInfraestrutura().add(hospital);
         return hospital;

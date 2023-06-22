@@ -37,7 +37,6 @@ public class ParqueArborizado extends Parque{
     //Hidding
     public static ParqueArborizado comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_PARQUE_ARB.getQtd());
         ParqueArborizado parqueArborizado = new ParqueArborizado(cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaParques().add(parqueArborizado);
         return parqueArborizado;

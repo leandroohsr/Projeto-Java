@@ -29,7 +29,6 @@ public class Predio extends Habitavel{
     //Hidding
     public static Predio comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_UPGR_CASA.getQtd());
         Predio predio = new Predio(cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaHabitaveis().add(predio);
         return predio;

@@ -31,7 +31,6 @@ public class ParqueDiversao extends Parque{
     //Hidding
     public ParqueDiversao comprarConstr(Cidade cidade) {
 
-        cidade.getStats().atualizarDinAtual( -Constantes.PRECO_UPGR_PARQUE_ARB.getQtd());
         ParqueDiversao parqueDiversao = new ParqueDiversao(cidade.gerarCoordRandom(), cidade.gerarCoordRandom());
         cidade.getListaParques().add(parqueDiversao);
         return parqueDiversao;
