@@ -67,7 +67,6 @@ public class MenuLateralPanel extends JPanel {
         JButton bIndust = new JButton(String.format("Indústria: $" + Constantes.PRECO_INDUSTRIA.getQtd()), imgIndust);
 
 
-
         ArrayList<JButton> arrayBotoes = new ArrayList<>();
         Collections.addAll(arrayBotoes, bCasa, bParque, bHosp, bDeleg, bLoja, bIndust);
 
@@ -97,6 +96,13 @@ public class MenuLateralPanel extends JPanel {
         infra = new JLabel(String.format("Infraestrutura: " + cidade.getStats().getInfra()));
         felic = new JLabel(String.format("Felicidade: " + cidade.getStats().getFelic()));
 
+        //fonte padrao para stats
+        Font fonte_padrao = new Font("Arial", Font.BOLD, 15);
+        pop.setFont(fonte_padrao);
+        din.setFont(fonte_padrao);
+        infra.setFont(fonte_padrao);
+        felic.setFont(fonte_padrao);
+
         add(pop);
         add(din);
         add(infra);
@@ -104,18 +110,18 @@ public class MenuLateralPanel extends JPanel {
     }
 
     //Pop-up se faltou dinheiro
-     private void dialogFaltouDin() {
-         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
-         JDialog dialog = new JDialog();
-         dialog.setBounds(400,300,300,100);
-         JLabel labelErro = new JLabel("Faltou dinheiro!");
-         labelErro.setFont(fonte_padrao);
-         dialog.add(labelErro);
-         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-         dialog.setVisible(true);
-     }
+    private void dialogFaltouDin() {
+        Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+        JDialog dialog = new JDialog();
+        dialog.setBounds(400,300,300,100);
+        JLabel labelErro = new JLabel("Faltou dinheiro!");
+        labelErro.setFont(fonte_padrao);
+        dialog.add(labelErro);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+    }
 
-     //Pop-up se comprado com sucesso
+    //Pop-up se comprado com sucesso
     private void dialogComprado() {
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
         JDialog dialog = new JDialog();
@@ -131,7 +137,7 @@ public class MenuLateralPanel extends JPanel {
     //Escutadores de acao:
 
 
-     class comprarCasa implements ActionListener {
+    class comprarCasa implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -218,7 +224,7 @@ public class MenuLateralPanel extends JPanel {
         revalidate();
         repaint();
     }
-//
+    //
     public void carregarConstr(int casas, int predios, int hospital, int delegacia, int loja, int industria,
                                int parque_arb, int parque_div) {
         GerenciadorArquivos.carregarTodasConstrucoes(casas, predios, hospital, delegacia, loja, industria, parque_arb, parque_div, cidade, jogoPanel);

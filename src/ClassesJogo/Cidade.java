@@ -59,7 +59,7 @@ public class Cidade {
 
     public int gerarCoordRandom() {
         int margem = 200;
-        return gerador.nextInt(margem, TamanhoCompon.DIM_PANEL_JOGO.getTam() - margem);
+        return gerador.nextInt(0, TamanhoCompon.DIM_PANEL_JOGO.getTam() - margem);
     }
 
     public Construcao comprarConstr (ConstrucoesCompraveis tipo_constr) throws ExceptionLackOfMoney {

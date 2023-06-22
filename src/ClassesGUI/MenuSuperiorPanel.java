@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MenuSuperiorPanel extends JPanel {
     private Cidade cidade;
@@ -21,18 +23,139 @@ public class MenuSuperiorPanel extends JPanel {
         this.cidade = cidade;
 
         setPreferredSize(new Dimension(TamanhoCompon.X_PANEL_MENU_CIMA.getTam(), TamanhoCompon.Y_PANEL_MENU_CIMA.getTam()));
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER);
+        setLayout(flowLayout);
 
-        JButton b = new JButton("botao cima");
-        JButton salvar = new JButton("Salvar");
-
-        add(salvar);
-        salvar.addActionListener(new salvaJogo());
-        add(b);
+        addBotoes();
 
         setVisible(true);
     }
 
 
+    private void addBotoes() {
+
+        JButton a1 = new JButton("Ampliar Habitável");
+        JButton a2 = new JButton("Ampliar Infraestr.");
+        JButton a3 = new JButton("Ampliar Parque");
+        JButton a4 = new JButton("Ampliar Rentável");
+        JButton u5 = new JButton("Upgrade Casa");
+        JButton u6 = new JButton("Upgrade Parque");
+        JButton s7 = new JButton("Salvar");
+
+        ArrayList<JButton> arrayBotoes = new ArrayList<>();
+        Collections.addAll(arrayBotoes, a1, a2, a3, a4, u5, u6, s7);
+
+        //Adicionando escutadores de acao
+        a1.addActionListener(new ampliarHab());
+        a2.addActionListener(new ampliarInfra());
+        a3.addActionListener(new ampliarParque());
+        a4.addActionListener(new ampliarRent());
+        u5.addActionListener(new upgradeCasa());
+        u6.addActionListener(new upgradeParque());
+        s7.addActionListener(new salvaJogo());
+
+        //Setando a fonte e adicionando no panel
+        Font font = new Font("Arial", Font.PLAIN, 15);
+        for (JButton b : arrayBotoes) {
+            b.setFont(font);
+            add(b);
+        }
+    }
+
+    //Pop-up para ampliar construcao
+    private void dialogAmpliar() throws ExceptionLackOfMoney {
+        Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+        JDialog dialog = new JDialog();
+        dialog.setBounds(400,300,400,100);
+
+        // Campo e Label para entrada do nome
+        JTextField fieldID = new JTextField();
+        JLabel descrFieldID = new JLabel("Digite o número/ID:");
+        descrFieldID.setFont(fonte_padrao);
+        descrFieldID.setForeground(Color.white);
+        descrFieldID.setLabelFor(fieldID);
+        descrFieldID.setBounds(180, 300, 300, 40);
+        fieldID.setBounds(500, 300, 370, 40);
+        fieldID.setFont(fonte_padrao);
+
+        dialog.add(fieldID);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+    }
+
+    class ampliarHab implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                dialogAmpliar();
+
+            } catch (ExceptionLackOfMoney erro) {
+
+            }
+        }
+    }
+
+    class ampliarInfra implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                dialogAmpliar();
+
+            } catch (ExceptionLackOfMoney erro) {
+
+            }
+        }
+    }
+
+    class ampliarParque implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                dialogAmpliar();
+
+            } catch (ExceptionLackOfMoney erro) {
+
+            }
+        }
+    }
+
+    class ampliarRent implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                dialogAmpliar();
+
+            } catch (ExceptionLackOfMoney erro) {
+
+            }
+        }
+    }
+
+    class upgradeCasa implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                dialogAmpliar();
+
+            } catch (ExceptionLackOfMoney erro) {
+
+            }
+        }
+    }
+
+    class upgradeParque implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                dialogAmpliar();
+
+            } catch (ExceptionLackOfMoney erro) {
+
+            }
+        }
+    }
+
+    //O arquivo eh escrito na convencao a seguir:
     //Nome | Casas | Predio | Hospital | Delegacia | Loja | Indústria | Parques Arborizados | Parque de Divercoes | Populacao | Dinheiro | Infraestrutura | Felicidade
     class salvaJogo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -72,7 +195,6 @@ public class MenuSuperiorPanel extends JPanel {
         }
 
     }
-
 
 
 }
