@@ -2,6 +2,7 @@ package ClassesGUI;
 
 import ClassesJogo.AppMain;
 import ClassesJogo.Excepts.ExceptionFileNotFound;
+import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import ClassesJogo.GerenciadorArquivos;
 import ClassesJogo.Imagens;
 
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class InicioPanel extends JPanel {
 
@@ -88,6 +90,8 @@ public class InicioPanel extends JPanel {
                 dialog.setVisible(true);
             } catch (ExceptionFileNotFound erro) {
                 AppMain.criarNovoJogo(nome);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         }
     }
@@ -105,7 +109,7 @@ public class InicioPanel extends JPanel {
                 GerenciadorArquivos.procurarArquivo(nome);
                 AppMain.carregarJogo(nome);
 
-            } catch (ExceptionFileNotFound erro) {
+            } catch (ExceptionFileNotFound | IOException erro) {
 
                 //pop-up de erro
                 Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
@@ -116,6 +120,8 @@ public class InicioPanel extends JPanel {
                 dialog.add(labelErro);
                 dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 dialog.setVisible(true);
+            } catch (ExceptionLackOfMoney ex) {
+                throw new RuntimeException(ex);
             }
         }
     }

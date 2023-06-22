@@ -41,7 +41,7 @@ public class MenuSuperiorPanel extends JPanel {
 
                 FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
                 BufferedWriter out = new BufferedWriter(fw);
-                String info_jogo = String.format("%s, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d,", Cidade.getNome(), cidade.qtdConstr(ConstrucoesTipos.CASA), cidade.qtdConstr(ConstrucoesTipos.PREDIO), cidade.qtdConstr(ConstrucoesTipos.HOSPITAL), cidade.qtdConstr(ConstrucoesTipos.DELEGACIA),
+                String info_jogo = String.format("%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,", Cidade.getNome(), cidade.qtdConstr(ConstrucoesTipos.CASA), cidade.qtdConstr(ConstrucoesTipos.PREDIO), cidade.qtdConstr(ConstrucoesTipos.HOSPITAL), cidade.qtdConstr(ConstrucoesTipos.DELEGACIA),
                         cidade.qtdConstr(ConstrucoesTipos.LOJA), cidade.qtdConstr(ConstrucoesTipos.INDUSTRIA),
                         cidade.qtdConstr(ConstrucoesTipos.PARQUE_ARB), cidade.qtdConstr(ConstrucoesTipos.PARQUE_DIVERS), cidade.getStats().getPop(),
                         cidade.getStats().getDin(), cidade.getStats().getInfra(), cidade.getStats().getFelic());

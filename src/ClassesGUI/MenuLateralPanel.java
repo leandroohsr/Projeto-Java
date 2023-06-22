@@ -218,6 +218,65 @@ public class MenuLateralPanel extends JPanel {
         revalidate();
         repaint();
     }
+//
+    public void carregarConstr(int casas, int predios, int hospital, int delegacia, int loja, int industria,
+                               int parque_arb, int parque_div) {
+        for(int i=0;i<casas;i++){
+            try {
+                Casa casa = (Casa)cidade.comprarConstr(ConstrucoesCompraveis.CASA);
+                jogoPanel.addConstrucao(casa);
+
+            } catch (ExceptionLackOfMoney erro) {
+                System.out.println("");
+            }
+        }
+        for(int i=0;i<hospital;i++){
+            try {
+                Hospital hospitais = (Hospital) cidade.comprarConstr(ConstrucoesCompraveis.HOSPITAL);
+                jogoPanel.addConstrucao(hospitais);
+
+            } catch (ExceptionLackOfMoney erro) {
+                System.out.println("");
+            }
+        }
+        for(int i=0;i<delegacia;i++){
+            try {
+                Delegacia delegacias = (Delegacia) cidade.comprarConstr(ConstrucoesCompraveis.DELEGACIA);
+                jogoPanel.addConstrucao(delegacias);
+
+            } catch (ExceptionLackOfMoney erro) {
+                System.out.println("");
+            }
+        }
+        for(int i=0;i<loja;i++){
+            try {
+                Loja lojas = (Loja) cidade.comprarConstr(ConstrucoesCompraveis.LOJA);
+                jogoPanel.addConstrucao(lojas);
+
+            } catch (ExceptionLackOfMoney erro) {
+                System.out.println("");
+            }
+        }
+        for(int i=0;i<industria;i++){
+            try {
+                Industria industrias = (Industria) cidade.comprarConstr(ConstrucoesCompraveis.INDUSTRIA);
+                jogoPanel.addConstrucao(industrias);
+
+            } catch (ExceptionLackOfMoney erro) {
+                System.out.println("");
+            }
+        }
+        for(int i=0;i<parque_arb;i++){
+            try {
+                ParqueArborizado parque = (ParqueArborizado) cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
+                jogoPanel.addConstrucao(parque);
+
+            } catch (ExceptionLackOfMoney erro) {
+                System.out.println("");
+            }
+        }
+    }
+
 
 
 }

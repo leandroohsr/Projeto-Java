@@ -35,18 +35,33 @@ public class Stats {
     public int getPop(){
         return listaStats.get(0);
     }
+    public void setPop(int pop){
+        listaStats.set(0, pop);
+    }
 
     public int getFelic(){
         return listaStats.get(1);
     }
+    public void setFelic(int felic){
+        listaStats.set(1, felic);
+    }
+
 
     public int getInfra(){
         return listaStats.get(2);
     }
+    public void setInfra(int infra){
+        listaStats.set(2, infra);
+    }
+
 
     public int getDin(){
         return listaStats.get(3);
     }
+    public void setDin(int din){
+        listaStats.set(3, din);
+    }
+
 
     //setters
     public void setLimitePop(int limitePop) {
