@@ -34,7 +34,7 @@ public class MenuSuperiorPanel extends JPanel {
 
     private void addBotoes() {
 
-        JButton a1 = new JButton("Ampliar Habitável");
+        //JButton a1 = new JButton("Ampliar Habitável");
         JButton a2 = new JButton("Ampliar Infraestr.");
         JButton a3 = new JButton("Ampliar Parque");
         JButton a4 = new JButton("Ampliar Rentável");
@@ -43,16 +43,18 @@ public class MenuSuperiorPanel extends JPanel {
         JButton s7 = new JButton("Salvar");
 
         ArrayList<JButton> arrayBotoes = new ArrayList<>();
-        Collections.addAll(arrayBotoes, a1, a2, a3, a4, u5, u6, s7);
+        Collections.addAll(arrayBotoes, a2, a3, a4, u5, u6, s7);
 
         //Adicionando escutadores de acao
-        a1.addActionListener(new ampliarHab());
+        //a1.addActionListener(new ampliarHab());
         a2.addActionListener(new ampliarInfra());
         a3.addActionListener(new ampliarParque());
         a4.addActionListener(new ampliarRent());
         u5.addActionListener(new upgradeCasa());
         u6.addActionListener(new upgradeParque());
         s7.addActionListener(new salvaJogo());
+
+        add(new comboBoxAmpliarHab());
 
         //Setando a fonte e adicionando no panel
         Font font = new Font("Arial", Font.PLAIN, 15);
@@ -62,11 +64,32 @@ public class MenuSuperiorPanel extends JPanel {
         }
     }
 
+    private class comboBoxAmpliarHab extends JComboBox {
+        private comboBoxAmpliarHab() {
+            super();
+            setModel(new DefaultComboBoxModel());
+            addItem("Ampliar casa");
+            addItem("opcao 2");
+        }
+    }
+
+    private class comboBoxAmpliarInfra extends JComboBox {
+
+    }
+
+    private class comboBoxAmpliarParque extends JComboBox {
+
+    }
+
+    private class comboBoxAmpliarRent extends JComboBox {
+
+    }
+
     //Pop-up para ampliar construcao
     private void dialogAmpliar() throws ExceptionLackOfMoney {
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
         JDialog dialog = new JDialog();
-        dialog.setBounds(400,300,400,100);
+        dialog.setBounds(400,300,400,200);
 
         // Campo e Label para entrada do nome
         JTextField fieldID = new JTextField();
@@ -75,6 +98,7 @@ public class MenuSuperiorPanel extends JPanel {
         descrFieldID.setForeground(Color.white);
         descrFieldID.setLabelFor(fieldID);
         descrFieldID.setBounds(180, 300, 300, 40);
+
         fieldID.setBounds(500, 300, 370, 40);
         fieldID.setFont(fonte_padrao);
 
