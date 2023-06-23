@@ -3,6 +3,7 @@ import ClassesGUI.TamanhoCompon;
 import ClassesJogo.*;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class Predio extends Habitavel{
@@ -40,8 +41,11 @@ public class Predio extends Habitavel{
         return predio;
     }
 
+    //Modifica a aparencia da casa e deixa-a como "ampliada"
     @Override
     public void ampliar() {
-        //TODO
+
+        setFlagAmpliado(true);
+        labelImg.setBorder(new MatteBorder(2, 2, 2, 2, Color.red));
     }
 }

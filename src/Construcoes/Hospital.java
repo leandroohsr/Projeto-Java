@@ -6,6 +6,7 @@ import ClassesJogo.Constantes;
 import ClassesJogo.Imagens;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class Hospital extends Infraestrutura {
@@ -42,8 +43,11 @@ public class Hospital extends Infraestrutura {
         return hospital;
     }
 
+    //Modifica a aparencia da casa e deixa-a como "ampliada"
     @Override
     public void ampliar() {
-        //TO-DO
+
+        setFlagAmpliado(true);
+        labelImg.setBorder(new MatteBorder(2, 2, 2, 2, Color.blue));
     }
 }

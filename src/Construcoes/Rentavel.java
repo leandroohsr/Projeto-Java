@@ -9,6 +9,7 @@ public abstract class Rentavel implements Construcao{
     private final int ID;
     private int coordX;
     private int coordY;
+    private boolean flagAmpliado;
     private final String pathImag;
     private final int precoConstru;
 
@@ -25,6 +26,7 @@ public abstract class Rentavel implements Construcao{
         this.coordY = coordY;
         this.pathImag = pathImag;
         this.precoConstru = precoConstru;
+        flagAmpliado = false;
     }
 
 
@@ -46,6 +48,10 @@ public abstract class Rentavel implements Construcao{
     public int getCoordY() {
         return coordY;
     }
+
+    public boolean getFlagAmpliado() {return flagAmpliado; }
+
+    public void setFlagAmpliado(boolean flag) {flagAmpliado = flag; }
 
     public JLabel getLabelImg() {
         return labelImg;

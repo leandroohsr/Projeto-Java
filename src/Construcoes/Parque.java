@@ -10,6 +10,7 @@ public abstract class Parque implements Construcao{
     private final int ID;
     private int coordX;
     private int coordY;
+    private boolean flagAmpliado;
     private final String PathImag;
 
     protected JLabel labelImg;
@@ -23,6 +24,7 @@ public abstract class Parque implements Construcao{
         this.coordX = coordX;
         this.coordY = coordY;
         PathImag = pathImag;
+        flagAmpliado = false;
     }
 
 
@@ -46,6 +48,10 @@ public abstract class Parque implements Construcao{
     public int getCoordY() {
         return coordY;
     }
+
+    public boolean getFlagAmpliado() {return flagAmpliado; }
+
+    public void setFlagAmpliado(boolean flag) {flagAmpliado = flag; }
 
     public JLabel getLabelImg() {
         return labelImg;

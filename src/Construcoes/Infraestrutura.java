@@ -9,6 +9,7 @@ public abstract class Infraestrutura implements Construcao{
     private final int ID;
     private int coordX;
     private int coordY;
+    private boolean flagAmpliado;
     private final String pathImag;
     private final int precoConstru;
 
@@ -24,6 +25,7 @@ public abstract class Infraestrutura implements Construcao{
         this.coordY = coordY;
         this.precoConstru = precoConstru;
         this.pathImag = pathImag;
+        flagAmpliado = false;
     }
 
     //getters
@@ -44,6 +46,10 @@ public abstract class Infraestrutura implements Construcao{
     public int getCoordY() {
         return coordY;
     }
+
+    public boolean getFlagAmpliado() {return flagAmpliado; }
+
+    public void setFlagAmpliado(boolean flag) {flagAmpliado = flag; }
 
     public JLabel getLabelImg() {
         return labelImg;

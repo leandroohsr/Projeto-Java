@@ -121,7 +121,65 @@ public class Cidade {
         }
     }
 
-    public void ampliarConstr (ConstrucoesTipos tipo_constr, int id) throws ExceptionLackOfMoney {}
+    public void ampliarConstr (ConstrucoesTipos tipo_constr, int id) throws ExceptionLackOfMoney {
+        switch (tipo_constr) {
+            case CASA:
+                Casa casa = (Casa)listaHabitaveis.get(id);
+                casa.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_CASA.getQtd() / 2);
+                stats.atualizarPopAtual(- Constantes.CAPACIDADE_POP_CASA.getQtd() / 2);
+                break;
+
+            case PREDIO:
+                Predio predio = (Predio)listaHabitaveis.get(id);
+                predio.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_UPGR_CASA.getQtd() / 2);
+                stats.atualizarPopAtual(- Constantes.CAPACIDADE_POP_PREDIO.getQtd() / 2);
+                break;
+
+            case DELEGACIA:
+                Delegacia delegacia = (Delegacia)listaInfraestrutura.get(id);
+                delegacia.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_DELEGACIA.getQtd() / 2);
+                stats.atualizarInfraAtual(Constantes.FATOR_INFRA_DELEGACIA.getQtd() / 2);
+                break;
+
+            case HOSPITAL:
+                Hospital hospital = (Hospital)listaInfraestrutura.get(id);
+                hospital.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_HOSPITAL.getQtd() / 2);
+                stats.atualizarInfraAtual(Constantes.FATOR_INFRA_HOSPITAL.getQtd() / 2);
+                break;
+
+            case PARQUE_ARB:
+                ParqueArborizado parqueArborizado = (ParqueArborizado)listaParques.get(id);
+                parqueArborizado.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_PARQUE_ARB.getQtd() / 2);
+                stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_ARB.getQtd() / 2);
+                break;
+
+            case PARQUE_DIVERS:
+                ParqueDiversao parqueDiversao = (ParqueDiversao)listaParques.get(id);
+                parqueDiversao.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_UPGR_PARQUE_ARB.getQtd() / 2);
+                stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_DIVERS.getQtd() / 2);
+                break;
+
+            case LOJA:
+                Loja loja = (Loja)listaRentaveis.get(id);
+                loja.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_LOJA.getQtd() / 2);
+                stats.atualizarTaxaDin(Constantes.FATOR_DIN_LOJA.getQtd() / 2);
+                break;
+
+            case INDUSTRIA:
+                Industria industria = (Industria)listaRentaveis.get(id);
+                industria.ampliar();
+                stats.atualizarDinAtual(- Constantes.PRECO_INDUSTRIA.getQtd() / 2);
+                stats.atualizarTaxaDin(Constantes.FATOR_DIN_INDUSTRIA.getQtd() / 2);
+                break;
+        }
+    }
 
     public Construcao fazerUpgrade (ConstrucoesTipos tipo_constr, int id) throws ExceptionLackOfMoney {
         return null;

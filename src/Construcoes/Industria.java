@@ -6,6 +6,7 @@ import ClassesJogo.Constantes;
 import ClassesJogo.Imagens;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class Industria extends Rentavel {
@@ -42,8 +43,11 @@ public class Industria extends Rentavel {
         return industria;
     }
 
+    //Modifica a aparencia da casa e deixa-a como "ampliada"
     @Override
     public void ampliar() {
 
+        setFlagAmpliado(true);
+        labelImg.setBorder(new MatteBorder(2, 2, 2, 2, Color.green));
     }
 }

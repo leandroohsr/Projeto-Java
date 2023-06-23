@@ -58,6 +58,17 @@ public class MenuSuperiorPanel extends JPanel {
         boxUpgrParque.addItem(Integer.toString(id));
     }
 
+    public void removeItemComboBox(int id, comboBoxAmpliar comboBox) {
+        //Procurando posicao onde id esta localizado no box
+        int n;
+        for (n = 1; n < comboBox.getItemCount(); n++) {
+            if (Integer.parseInt((String)comboBox.getItemAt(n)) == id) { //Se o numero na lista corresponde ao id
+                comboBox.removeItemAt(n);
+                break;
+            }
+        }
+    }
+
     private void addBotoes() {
 
         //Componentes do menu superior:
@@ -177,6 +188,8 @@ public class MenuSuperiorPanel extends JPanel {
 
                     comboBox.setSelectedIndex(0); //Volta a combobox para a opcao padrao
                     cidade.ampliarConstr(tipo, id);
+
+                    removeItemComboBox(id, comboBox);
 
                     dialogAmpliar();
 

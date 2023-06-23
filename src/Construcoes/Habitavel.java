@@ -11,6 +11,7 @@ public abstract class Habitavel implements Construcao {
     private final int ID;
     private int coordX;
     private int coordY;
+    private boolean flagAmpliado;
     private final String pathImag;
 
     protected JLabel labelImg;
@@ -24,6 +25,7 @@ public abstract class Habitavel implements Construcao {
         this.coordX = coordX;
         this.coordY = coordY;
         this.pathImag = pathImag;
+        flagAmpliado = false;
     }
 
 
@@ -47,6 +49,10 @@ public abstract class Habitavel implements Construcao {
     public int getCoordY() {
         return coordY;
     }
+
+    public boolean getFlagAmpliado() {return flagAmpliado; }
+
+    public void setFlagAmpliado(boolean flag) {flagAmpliado = flag; }
 
     public JLabel getLabelImg() {
         return labelImg;
