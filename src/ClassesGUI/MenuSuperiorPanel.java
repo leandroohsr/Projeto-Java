@@ -2,9 +2,8 @@ package ClassesGUI;
 
 import javax.swing.*;
 import ClassesJogo.*;
+import Construcoes.*;
 import ClassesJogo.Excepts.ExceptionLackOfMoney;
-import Construcoes.Casa;
-import Construcoes.Habitavel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,8 +16,12 @@ import java.util.Collections;
 
 public class MenuSuperiorPanel extends JPanel {
     private Cidade cidade;
-    JComboBox box = new JComboBox();
-
+    private comboBoxAmpliar boxHabit;
+    private comboBoxAmpliar boxInfra;
+    private comboBoxAmpliar boxParque;
+    private comboBoxAmpliar boxRentavel;
+    private comboBoxUpgrCasa boxUpgrCasa;
+    private comboBoxUpgrParque boxUpgrParque;
     public MenuSuperiorPanel(Cidade cidade) {
         this.cidade = cidade;
 
@@ -31,128 +34,198 @@ public class MenuSuperiorPanel extends JPanel {
         setVisible(true);
     }
 
+    public void addItemBoxHabit(int id) {
+        boxHabit.addItem(Integer.toString(id));
+    }
+
+    public void addItemBoxInfra(int id) {
+        boxInfra.addItem(Integer.toString(id));
+    }
+
+    public void addItemBoxParque(int id) {
+        boxParque.addItem(Integer.toString(id));
+    }
+
+    public void addItemBoxRentavel(int id) {
+        boxRentavel.addItem(Integer.toString(id));
+    }
+
+    public void addItemBoxUpgrCasa(int id) {
+        boxUpgrCasa.addItem(Integer.toString(id));
+    }
+
+    public void addItemBoxUpgrParque(int id) {
+        boxUpgrParque.addItem(Integer.toString(id));
+    }
 
     private void addBotoes() {
 
-        //JButton a1 = new JButton("Ampliar Habitável");
-        JButton a2 = new JButton("Ampliar Infraestr.");
-        JButton a3 = new JButton("Ampliar Parque");
-        JButton a4 = new JButton("Ampliar Rentável");
-        JButton u5 = new JButton("Upgrade Casa");
-        JButton u6 = new JButton("Upgrade Parque");
+        //Componentes do menu superior:
+        boxHabit = new comboBoxAmpliar(1);
+        boxInfra = new comboBoxAmpliar(2);
+        boxParque = new comboBoxAmpliar(3);
+        boxRentavel = new comboBoxAmpliar(4);
+        boxUpgrCasa = new comboBoxUpgrCasa();
+        boxUpgrParque = new comboBoxUpgrParque();
+
         JButton s7 = new JButton("Salvar");
 
-        ArrayList<JButton> arrayBotoes = new ArrayList<>();
-        Collections.addAll(arrayBotoes, a2, a3, a4, u5, u6, s7);
+        ArrayList<Component> arrayCompon = new ArrayList<>();
+        Collections.addAll(arrayCompon, boxHabit, boxInfra, boxParque, boxRentavel, boxUpgrCasa, boxUpgrParque, s7);
 
         //Adicionando escutadores de acao
-        //a1.addActionListener(new ampliarHab());
-        a2.addActionListener(new ampliarInfra());
-        a3.addActionListener(new ampliarParque());
-        a4.addActionListener(new ampliarRent());
-        u5.addActionListener(new upgradeCasa());
-        u6.addActionListener(new upgradeParque());
+        boxHabit.addActionListener(new ampliarAction());
+        boxInfra.addActionListener(new ampliarAction());
+        boxParque.addActionListener(new ampliarAction());
+        boxRentavel.addActionListener(new ampliarAction());
+        boxUpgrCasa.addActionListener(new upgradeCasa());
+        boxUpgrParque.addActionListener(new upgradeParque());
         s7.addActionListener(new salvaJogo());
 
-        add(new comboBoxAmpliarHab());
 
         //Setando a fonte e adicionando no panel
         Font font = new Font("Arial", Font.PLAIN, 15);
-        for (JButton b : arrayBotoes) {
-            b.setFont(font);
-            add(b);
+        for (Component c : arrayCompon) {
+            c.setFont(font);
+            add(c);
         }
     }
 
-    private class comboBoxAmpliarHab extends JComboBox {
-        private comboBoxAmpliarHab() {
-            super();
-            setModel(new DefaultComboBoxModel());
-            addItem("Ampliar casa");
-            addItem("opcao 2");
-        }
-    }
-
-    private class comboBoxAmpliarInfra extends JComboBox {
-
-    }
-
-    private class comboBoxAmpliarParque extends JComboBox {
-
-    }
-
-    private class comboBoxAmpliarRent extends JComboBox {
-
+    private void dialogFaltouDin() {
+        Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+        JDialog dialog = new JDialog();
+        dialog.setBounds(400,300,300,100);
+        JLabel labelErro = new JLabel("Faltou dinheiro!");
+        labelErro.setFont(fonte_padrao);
+        dialog.add(labelErro);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
     }
 
     //Pop-up para ampliar construcao
     private void dialogAmpliar() throws ExceptionLackOfMoney {
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
         JDialog dialog = new JDialog();
-        dialog.setBounds(400,300,400,200);
-
-        // Campo e Label para entrada do nome
-        JTextField fieldID = new JTextField();
-        JLabel descrFieldID = new JLabel("Digite o número/ID:");
-        descrFieldID.setFont(fonte_padrao);
-        descrFieldID.setForeground(Color.white);
-        descrFieldID.setLabelFor(fieldID);
-        descrFieldID.setBounds(180, 300, 300, 40);
-
-        fieldID.setBounds(500, 300, 370, 40);
-        fieldID.setFont(fonte_padrao);
-
-        dialog.add(fieldID);
+        dialog.setBounds(400,300,300,100);
+        JLabel labelErro = new JLabel("Dialog ampliar!");
+        labelErro.setFont(fonte_padrao);
+        dialog.add(labelErro);
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         dialog.setVisible(true);
     }
 
-    class ampliarHab implements ActionListener {
+
+    //Menus de selecao para ampliar construcoes:
+    //De acordo com i entre 1 e 4, cria diferentes mensagens iniciais
+    private class comboBoxAmpliar extends JComboBox {
+        private int identificador;
+        private comboBoxAmpliar(int i) {
+            super();
+            setModel(new DefaultComboBoxModel());
+            String[] msg = new String[]{"Ampliar Habitável", "Ampliar Infraestr.",
+                                        "Ampliar Parque arb.", "Ampliar Rentável"};
+            //Adicionando mensagens personalizadas para cada box
+            if (i == 1)
+                addItem(msg[0]);
+            else if (i == 2)
+                addItem(msg[1]);
+            else if (i == 3)
+                addItem(msg[2]);
+            else
+                addItem(msg[3]);
+
+            identificador = i;
+        }
+        private int getIdentificador() {return identificador;}
+    }
+
+
+
+    //Menus de selecao para fazer upgrade de construcoes:
+
+    private class comboBoxUpgrCasa extends JComboBox {
+        private comboBoxUpgrCasa() {
+            super();
+            setModel(new DefaultComboBoxModel());
+            addItem("Upgrade de casas");
+        }
+    }
+
+    private class comboBoxUpgrParque extends JComboBox {
+        private comboBoxUpgrParque() {
+            super();
+            setModel(new DefaultComboBoxModel());
+            addItem("Upgrade de parque arb.");
+        }
+    }
+
+
+    //Escutadores de acao
+
+    class ampliarAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                dialogAmpliar();
+                comboBoxAmpliar comboBox = (comboBoxAmpliar)e.getSource(); //Recupera a combobox
+                if (comboBox.getSelectedIndex() != 0) { // Caso nao seja a label inicial
 
+                    String item = (String)comboBox.getSelectedItem();
+                    int id = Integer.parseInt(item);
+
+                    //Registrando o tipo de construcao
+                    ConstrucoesTipos tipo = getTipoConstrBox(id, comboBox.getIdentificador(), cidade);
+
+                    comboBox.setSelectedIndex(0); //Volta a combobox para a opcao padrao
+                    cidade.ampliarConstr(tipo, id);
+
+                    dialogAmpliar();
+
+                }
             } catch (ExceptionLackOfMoney erro) {
-
+                dialogFaltouDin();
+            } catch (NumberFormatException erro) {
+                System.out.println("Falha parseint no menu superior"); //projetado para nao acontecer
+            } catch (IndexOutOfBoundsException erro) {
+                System.out.println("Falha out of bounds no menu superior"); //projetado para nao acontecer
             }
         }
     }
 
-    class ampliarInfra implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                dialogAmpliar();
+    //Identifica e retorna o tipo da construcao "id" clicada em um box com "identificador"
+    private ConstrucoesTipos getTipoConstrBox(int id, int identificador, Cidade cidade) {
 
-            } catch (ExceptionLackOfMoney erro) {
+        ConstrucoesTipos tipo;
+        switch (identificador) {
 
-            }
+            case 1: //box habitaveis
+                if (cidade.getListaHabitaveis().get(id).getClass() == Casa.class)
+                    tipo = ConstrucoesTipos.CASA;
+                else
+                    tipo = ConstrucoesTipos.PREDIO;
+                break;
+
+            case 2: //box infra
+                if (cidade.getListaInfraestrutura().get(id).getClass() == Delegacia.class)
+                    tipo = ConstrucoesTipos.DELEGACIA;
+                else
+                    tipo = ConstrucoesTipos.HOSPITAL;
+                break;
+
+            case 3: //box parques
+                if (cidade.getListaParques().get(id).getClass() == ParqueArborizado.class)
+                    tipo = ConstrucoesTipos.PARQUE_ARB;
+                else
+                    tipo = ConstrucoesTipos.PARQUE_DIVERS;
+                break;
+
+            default: //caso 4, box rentaveis
+                if (cidade.getListaRentaveis().get(id).getClass() == Loja.class)
+                    tipo = ConstrucoesTipos.LOJA;
+                else
+                    tipo = ConstrucoesTipos.INDUSTRIA;
+                break;
         }
-    }
-
-    class ampliarParque implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                dialogAmpliar();
-
-            } catch (ExceptionLackOfMoney erro) {
-
-            }
-        }
-    }
-
-    class ampliarRent implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                dialogAmpliar();
-
-            } catch (ExceptionLackOfMoney erro) {
-
-            }
-        }
+        return tipo;
     }
 
     class upgradeCasa implements ActionListener {

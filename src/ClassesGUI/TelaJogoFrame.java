@@ -30,8 +30,8 @@ public class TelaJogoFrame extends JFrame{
         setLayout(layout);
 
         jogoPanel = new TelaJogoPanel(cidade.getPathBackground());
-        menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel);
         menuSuperiorPanel = new MenuSuperiorPanel(cidade);
+        menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel, menuSuperiorPanel);
         add(menuLateralPanel, BorderLayout.WEST);
         add(menuSuperiorPanel, BorderLayout.NORTH);
         add(jogoPanel, BorderLayout.CENTER);
@@ -55,8 +55,8 @@ public class TelaJogoFrame extends JFrame{
         setLayout(layout);
 
         jogoPanel = new TelaJogoPanel(cidade.getPathBackground());
-        menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel);
         menuSuperiorPanel = new MenuSuperiorPanel(cidade);
+        menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel, menuSuperiorPanel);
         add(menuLateralPanel, BorderLayout.WEST);
         add(menuSuperiorPanel, BorderLayout.NORTH);
         add(jogoPanel, BorderLayout.CENTER);

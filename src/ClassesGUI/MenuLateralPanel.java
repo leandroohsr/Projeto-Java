@@ -19,11 +19,13 @@ public class MenuLateralPanel extends JPanel {
     private JLabel infra;
     private JLabel felic;
     private TelaJogoPanel jogoPanel;
+    private MenuSuperiorPanel superiorPanel;
 
-    public MenuLateralPanel(Cidade cidade, TelaJogoPanel jogoPanel) {
+    public MenuLateralPanel(Cidade cidade, TelaJogoPanel jogoPanel, MenuSuperiorPanel superiorPanel) {
 
         this.cidade = cidade;
         this.jogoPanel = jogoPanel;
+        this.superiorPanel = superiorPanel;
         GridLayout gridLayout = new GridLayout(5,2);
         setLayout(gridLayout);
 
@@ -143,6 +145,8 @@ public class MenuLateralPanel extends JPanel {
             try {
                 Casa casa = (Casa)cidade.comprarConstr(ConstrucoesCompraveis.CASA);
                 jogoPanel.addConstrucao(casa);
+                superiorPanel.addItemBoxHabit(casa.getID());
+                superiorPanel.addItemBoxUpgrCasa(casa.getID());
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -156,6 +160,8 @@ public class MenuLateralPanel extends JPanel {
             try {
                 ParqueArborizado parqueArborizado = (ParqueArborizado)cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
                 jogoPanel.addConstrucao(parqueArborizado);
+                superiorPanel.addItemBoxParque(parqueArborizado.getID());
+                superiorPanel.addItemBoxUpgrParque(parqueArborizado.getID());
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -169,6 +175,7 @@ public class MenuLateralPanel extends JPanel {
             try {
                 Hospital hospital = (Hospital)cidade.comprarConstr(ConstrucoesCompraveis.HOSPITAL);
                 jogoPanel.addConstrucao(hospital);
+                superiorPanel.addItemBoxInfra(hospital.getID());
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -182,6 +189,7 @@ public class MenuLateralPanel extends JPanel {
             try {
                 Delegacia delegacia = (Delegacia)cidade.comprarConstr(ConstrucoesCompraveis.DELEGACIA);
                 jogoPanel.addConstrucao(delegacia);
+                superiorPanel.addItemBoxInfra(delegacia.getID());
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -195,6 +203,7 @@ public class MenuLateralPanel extends JPanel {
             try {
                 Loja loja = (Loja)cidade.comprarConstr(ConstrucoesCompraveis.LOJA);
                 jogoPanel.addConstrucao(loja);
+                superiorPanel.addItemBoxRentavel(loja.getID());
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
@@ -208,6 +217,7 @@ public class MenuLateralPanel extends JPanel {
             try {
                 Industria industria= (Industria) cidade.comprarConstr(ConstrucoesCompraveis.INDUSTRIA);
                 jogoPanel.addConstrucao(industria);
+                superiorPanel.addItemBoxRentavel(industria.getID());
                 dialogComprado();
             } catch (ExceptionLackOfMoney erro) {
                 dialogFaltouDin();
