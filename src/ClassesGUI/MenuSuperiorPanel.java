@@ -20,8 +20,8 @@ public class MenuSuperiorPanel extends JPanel {
     private comboBoxAmpliar boxInfra;
     private comboBoxAmpliar boxParque;
     private comboBoxAmpliar boxRentavel;
-    private comboBoxUpgrCasa boxUpgrCasa;
-    private comboBoxUpgrParque boxUpgrParque;
+    private comboBoxUpgr boxUpgrCasa;
+    private comboBoxUpgr boxUpgrParque;
     public MenuSuperiorPanel(Cidade cidade) {
         this.cidade = cidade;
 
@@ -58,7 +58,7 @@ public class MenuSuperiorPanel extends JPanel {
         boxUpgrParque.addItem(Integer.toString(id));
     }
 
-    public void removeItemComboBox(int id, comboBoxAmpliar comboBox) {
+    public void removeItemComboBox(int id, JComboBox comboBox) {
         //Procurando posicao onde id esta localizado no box
         int n;
         for (n = 1; n < comboBox.getItemCount(); n++) {
@@ -69,6 +69,7 @@ public class MenuSuperiorPanel extends JPanel {
         }
     }
 
+    //Adicionar os botoes na formacao inicial do menu
     private void addBotoes() {
 
         //Componentes do menu superior:
@@ -76,8 +77,8 @@ public class MenuSuperiorPanel extends JPanel {
         boxInfra = new comboBoxAmpliar(2);
         boxParque = new comboBoxAmpliar(3);
         boxRentavel = new comboBoxAmpliar(4);
-        boxUpgrCasa = new comboBoxUpgrCasa();
-        boxUpgrParque = new comboBoxUpgrParque();
+        boxUpgrCasa = new comboBoxUpgr(1);
+        boxUpgrParque = new comboBoxUpgr(2);
 
         JButton s7 = new JButton("Salvar");
 
@@ -89,8 +90,8 @@ public class MenuSuperiorPanel extends JPanel {
         boxInfra.addActionListener(new ampliarAction());
         boxParque.addActionListener(new ampliarAction());
         boxRentavel.addActionListener(new ampliarAction());
-        boxUpgrCasa.addActionListener(new upgradeCasa());
-        boxUpgrParque.addActionListener(new upgradeParque());
+        boxUpgrCasa.addActionListener(new upgradeAction());
+        boxUpgrParque.addActionListener(new upgradeAction());
         s7.addActionListener(new salvaJogo());
 
 
@@ -101,6 +102,8 @@ public class MenuSuperiorPanel extends JPanel {
             add(c);
         }
     }
+
+    //Caixas de dialogo:
 
     private void dialogFaltouDin() {
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
@@ -114,11 +117,23 @@ public class MenuSuperiorPanel extends JPanel {
     }
 
     //Pop-up para ampliar construcao
-    private void dialogAmpliar() throws ExceptionLackOfMoney {
+    private void dialogAmpliar() {
         Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
         JDialog dialog = new JDialog();
         dialog.setBounds(400,300,300,100);
-        JLabel labelErro = new JLabel("Dialog ampliar!");
+        JLabel labelErro = new JLabel("Ampliado!");
+        labelErro.setFont(fonte_padrao);
+        dialog.add(labelErro);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+    }
+
+    //Pop-up para upgrade de construcao
+    private void dialogUpgr() {
+        Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+        JDialog dialog = new JDialog();
+        dialog.setBounds(400,300,300,100);
+        JLabel labelErro = new JLabel("Upgrade realizado!");
         labelErro.setFont(fonte_padrao);
         dialog.add(labelErro);
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -134,7 +149,7 @@ public class MenuSuperiorPanel extends JPanel {
             super();
             setModel(new DefaultComboBoxModel());
             String[] msg = new String[]{"Ampliar Habitável", "Ampliar Infraestr.",
-                                        "Ampliar Parque arb.", "Ampliar Rentável"};
+                                        "Ampliar Parque", "Ampliar Rentável"};
             //Adicionando mensagens personalizadas para cada box
             if (i == 1)
                 addItem(msg[0]);
@@ -153,21 +168,20 @@ public class MenuSuperiorPanel extends JPanel {
 
 
     //Menus de selecao para fazer upgrade de construcoes:
-
-    private class comboBoxUpgrCasa extends JComboBox {
-        private comboBoxUpgrCasa() {
+    //1 para casas, 2 para parque arb.
+    private class comboBoxUpgr extends JComboBox {
+        private int identificador;
+        private comboBoxUpgr(int i) {
             super();
             setModel(new DefaultComboBoxModel());
-            addItem("Upgrade de casas");
-        }
-    }
+            if (i == 1)
+                addItem(String.format("Upgrade Casa: $" + Constantes.PRECO_UPGR_CASA.getQtd()));
+            else
+                addItem(String.format("Upgrade Parque arb: $" + Constantes.PRECO_UPGR_PARQUE_ARB.getQtd()));
 
-    private class comboBoxUpgrParque extends JComboBox {
-        private comboBoxUpgrParque() {
-            super();
-            setModel(new DefaultComboBoxModel());
-            addItem("Upgrade de parque arb.");
+            identificador = i;
         }
+        private int getIdentificador() {return identificador;}
     }
 
 
@@ -204,6 +218,7 @@ public class MenuSuperiorPanel extends JPanel {
         }
     }
 
+    //Metodo auxiliar para ampliarAction
     //Identifica e retorna o tipo da construcao "id" clicada em um box com "identificador"
     private ConstrucoesTipos getTipoConstrBox(int id, int identificador, Cidade cidade) {
 
@@ -241,29 +256,38 @@ public class MenuSuperiorPanel extends JPanel {
         return tipo;
     }
 
-    class upgradeCasa implements ActionListener {
+    class upgradeAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                dialogAmpliar();
+                comboBoxUpgr comboBox = (comboBoxUpgr)e.getSource();
+                if (comboBox.getSelectedIndex() != 0) { // Caso nao seja a label inicial
 
+                    String item = (String) comboBox.getSelectedItem();
+                    int id = Integer.parseInt(item);
+
+                    ConstrucoesTipos tipo;
+                    if (comboBox.getIdentificador() == 1)
+                        tipo = ConstrucoesTipos.CASA;
+                    else
+                        tipo = ConstrucoesTipos.PARQUE_ARB;
+
+                    comboBox.setSelectedIndex(0); //Volta a combobox para a opcao padrao
+                    cidade.fazerUpgrade(tipo, id);
+
+                    removeItemComboBox(id, comboBox);
+                    dialogUpgr();
+                }
             } catch (ExceptionLackOfMoney erro) {
-
+                dialogFaltouDin();
+            } catch (NumberFormatException erro) {
+                System.out.println("Falha parseint no menu superior"); //projetado para nao acontecer
+            } catch (IndexOutOfBoundsException erro) {
+                System.out.println("Falha out of bounds no menu superior"); //projetado para nao acontecer
             }
         }
     }
 
-    class upgradeParque implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                dialogAmpliar();
-
-            } catch (ExceptionLackOfMoney erro) {
-
-            }
-        }
-    }
 
     private int qtdConstrucoesAmpliadas(ConstrucoesTipos tipo_constr){
         int qtd=0;
