@@ -11,7 +11,9 @@ public enum TamanhoCompon {
     X_PANEL_MENU_CIMA(1080),
     Y_PANEL_MENU_CIMA(70),
     X_BOTAO_LAT(100),
-    Y_BOTAO_LAT(100);
+    Y_BOTAO_LAT(100),
+    DIM_IMG_ICON_CONSTRUCAO(130),
+    BORDA(5);
 
     //add dimensoes de outros componentes relevantes
 

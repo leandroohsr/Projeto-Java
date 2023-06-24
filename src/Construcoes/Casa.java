@@ -27,17 +27,18 @@ public class Casa extends Habitavel {
         ImageIcon img = new ImageIcon(Imagens.PATH_CASA.getPath());
         int ximg = TamanhoCompon.X_BOTAO_LAT.getTam();
         int yimg = TamanhoCompon.Y_BOTAO_LAT.getTam();
+        int dim = TamanhoCompon.DIM_IMG_ICON_CONSTRUCAO.getTam();
+
         img.setImage(img.getImage().getScaledInstance(ximg,yimg, Image.SCALE_SMOOTH));
 
         //Legenda da identificacao da construcao
-        labelImg = new JLabel(String.format("Habitável " + getID()));
+        labelImg = new JLabel(String.format("Habitável " + getID()), JLabel.CENTER);
         labelImg.setHorizontalTextPosition(SwingConstants.CENTER);
         labelImg.setVerticalTextPosition(SwingConstants.BOTTOM);
         labelImg.setFont(new Font("Arial", Font.BOLD, 15));
 
         labelImg.setIcon(img);
-        labelImg.setSize(2 * ximg,2 * yimg);
-
+        labelImg.setSize(dim, dim);
     }
 
     //Hidding
@@ -53,7 +54,8 @@ public class Casa extends Habitavel {
     public void ampliar() {
 
         setFlagAmpliado(true);
-        labelImg.setBorder(new MatteBorder(2, 2, 2, 2, Color.red));
+        int borda = TamanhoCompon.BORDA.getTam();
+        labelImg.setBorder(new MatteBorder(borda, borda, borda, borda, Color.red));
     }
 
     public void fazerUpgrade() {

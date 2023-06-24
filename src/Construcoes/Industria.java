@@ -23,16 +23,18 @@ public class Industria extends Rentavel {
         ImageIcon img = new ImageIcon(Imagens.PATH_INDUSTRIA.getPath());
         int ximg = TamanhoCompon.X_BOTAO_LAT.getTam();
         int yimg = TamanhoCompon.Y_BOTAO_LAT.getTam();
+        int dim = TamanhoCompon.DIM_IMG_ICON_CONSTRUCAO.getTam();
+
         img.setImage(img.getImage().getScaledInstance(ximg,yimg, Image.SCALE_SMOOTH));
 
         //Legenda da identificacao da construcao
-        labelImg = new JLabel(String.format("Rentável " + getID()));
+        labelImg = new JLabel(String.format("Rentável " + getID()), JLabel.CENTER);
         labelImg.setHorizontalTextPosition(SwingConstants.CENTER);
         labelImg.setVerticalTextPosition(SwingConstants.BOTTOM);
         labelImg.setFont(new Font("Arial", Font.BOLD, 15));
 
         labelImg.setIcon(img);
-        labelImg.setSize(2 * ximg,2 * yimg);
+        labelImg.setSize(dim, dim);
     }
 
     //Hidding
@@ -48,6 +50,7 @@ public class Industria extends Rentavel {
     public void ampliar() {
 
         setFlagAmpliado(true);
-        labelImg.setBorder(new MatteBorder(2, 2, 2, 2, Color.green));
+        int borda = TamanhoCompon.BORDA.getTam();
+        labelImg.setBorder(new MatteBorder(borda, borda, borda, borda, Color.green));
     }
 }
