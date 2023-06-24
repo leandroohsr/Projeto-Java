@@ -7,7 +7,7 @@ public enum Constantes {
     INFRA_INIC(100),
     DIN_INIC(100),
 
-    TAXA_POP(5),
+    TAXA_POP(25),
     TAXA_FELIC(-2),
     TAXA_INFRA(-2),
     TAXA_DIN(10),

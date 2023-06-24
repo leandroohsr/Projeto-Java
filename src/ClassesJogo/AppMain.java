@@ -1,5 +1,6 @@
 package ClassesJogo;
 
+import ClassesGUI.GameOverFrame;
 import ClassesGUI.InicioFrame;
 import ClassesGUI.MenuLateralPanel;
 import ClassesGUI.TelaJogoFrame;
@@ -40,21 +41,15 @@ public class AppMain {
         //System.out.printf("%s %d", infos[0], Integer.parseInt(infos[1]));
     }
 
-    public static void GameOver(String motivoTermino) {
+    //Termina o jogo, salvando-o
+    public static void GameOver(ConstantesGameOver motivoTermino) {
         
-        String saida = switch (motivoTermino) {
-            case "populacao" -> "a população explodiu";
-            case "felicidade" -> "a felicidade zerou";
-            case "infraestrutura" -> "a infraestrutura zerou";
-            default -> "deu errado, não era pra sair isso";
-        };
-        Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
-        JDialog dialog = new JDialog();
-        dialog.setBounds(400,300,300,100);
-        JLabel labelErro = new JLabel(saida);
-        labelErro.setFont(fonte_padrao);
-        dialog.add(labelErro);
-        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        dialog.setVisible(true);
+        tela.setVisible(false);
+        Cidade cidade = ((TelaJogoFrame)tela).getCidade();
+        JFrame telaOver = new GameOverFrame(motivoTermino, cidade.getTempo(), cidade);
+        ((TelaJogoFrame)tela).salvaJogo();
+        tela.dispose();
+        tela = telaOver;
+        tela.setVisible(true);
     }
 }

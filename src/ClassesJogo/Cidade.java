@@ -18,12 +18,14 @@ public class Cidade {
     private Stats stats;
     private String pathBackground;
     private Random gerador;
-    private static String nome;
+    private String nome;
+    private int tempo;
 
     public Cidade(String nome){
         this.nome = nome;
         stats = new Stats();
         gerador = new Random();
+        tempo = 0;
         int backAleatorio = gerador.nextInt(PathBack.values().length);
         pathBackground = (PathBack.values()[backAleatorio]).getPath();
     }
@@ -32,9 +34,9 @@ public class Cidade {
         return stats;
     }
 
-    public void setStats(Stats stats) {
-        this.stats = stats;
-    }
+    public int getTempo() { return tempo; }
+
+    public void setTempo(int t) { tempo = t; }
 
     public List<Habitavel> getListaHabitaveis() {
         return listaHabitaveis;
@@ -237,7 +239,7 @@ public class Cidade {
             throw new ExceptionLackOfMoney();
     }
 
-    public static String getNome() {
+    public String getNome() {
         return nome;
     }
     public int qtdConstr (ConstrucoesTipos tipo_constr) throws ExceptionLackOfMoney {

@@ -2,8 +2,6 @@ package ClassesGUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -72,6 +70,8 @@ public class TelaJogoFrame extends JFrame{
 
     }
 
+    public Cidade getCidade() { return cidade; };
+
     public void repetirTarefa(){
         Timer timer = new Timer();
         final int[] numero = {0};
@@ -90,14 +90,22 @@ public class TelaJogoFrame extends JFrame{
                     cidade.getStats().verificarJogoInfra();  //verifica de infraestrutura zerou
 
                 }catch(ExceptionGameOverPop e){
-                    AppMain.GameOver("populacao");
+                    AppMain.GameOver(ConstantesGameOver.POPULACAO_ESTOUROU);
+                    timer.cancel();
                 }catch(ExceptionGameOverFelic e){
-                    AppMain.GameOver("felicidade");
+                    AppMain.GameOver(ConstantesGameOver.FELICIDADE_ZEROU);
+                    timer.cancel();
                 }catch(ExceptionGameOverInfra e){
-                    AppMain.GameOver("infraestrutura");
+                    AppMain.GameOver(ConstantesGameOver.INFRAESTRUTURA_ZEROU);
+                    timer.cancel();
                 }
             }
         };
         timer.scheduleAtFixedRate(tarefa, 1000, 1000);
     }
+
+    public void salvaJogo() {
+        menuSuperiorPanel.salvarJogoFuncao();
+    }
+
 }

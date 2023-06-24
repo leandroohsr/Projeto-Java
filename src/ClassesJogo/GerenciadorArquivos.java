@@ -8,10 +8,7 @@ import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import Construcoes.*;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class GerenciadorArquivos {
 
@@ -175,5 +172,85 @@ public class GerenciadorArquivos {
         }
     }
 
+    public static void salvaJogo(Cidade cidade) throws IOException, ExceptionLackOfMoney {
+
+        FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
+        BufferedWriter out = new BufferedWriter(fw);
+
+        String info_jogo = String.format("%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,", cidade.getNome(),
+                cidade.qtdConstr(ConstrucoesTipos.CASA),qtdConstrucoesAmpliadas(ConstrucoesTipos.CASA, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.PREDIO),qtdConstrucoesAmpliadas(ConstrucoesTipos.PREDIO, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.HOSPITAL),qtdConstrucoesAmpliadas(ConstrucoesTipos.HOSPITAL, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.DELEGACIA),qtdConstrucoesAmpliadas(ConstrucoesTipos.DELEGACIA, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.LOJA),qtdConstrucoesAmpliadas(ConstrucoesTipos.LOJA, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.INDUSTRIA),qtdConstrucoesAmpliadas(ConstrucoesTipos.INDUSTRIA, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.PARQUE_ARB),qtdConstrucoesAmpliadas(ConstrucoesTipos.PARQUE_ARB, cidade),
+                cidade.qtdConstr(ConstrucoesTipos.PARQUE_DIVERS),qtdConstrucoesAmpliadas(ConstrucoesTipos.PARQUE_DIVERS, cidade),
+                cidade.getStats().getPop(), cidade.getStats().getDin(), cidade.getStats().getInfra(), cidade.getStats().getFelic(),
+                cidade.getStats().listaTaxas.get(3));
+
+        out.write(info_jogo);
+        out.newLine();
+        out.close();
+
+    }
+
+    private static int qtdConstrucoesAmpliadas(ConstrucoesTipos tipo_constr, Cidade cidade){
+        int qtd=0;
+        switch(tipo_constr){
+            case CASA:
+                for(int i=0;i< cidade.getListaHabitaveis().size();i++){
+                    if(cidade.getListaHabitaveis().get(i).getFlagAmpliado() && cidade.getListaHabitaveis().get(i).getClass() == Casa.class){
+                        qtd+=1;
+                    }
+                }
+            case PREDIO:
+                for(int i=0;i< cidade.getListaHabitaveis().size();i++){
+                    if(cidade.getListaHabitaveis().get(i).getFlagAmpliado() && cidade.getListaHabitaveis().get(i).getClass() == Predio.class){
+                        System.out.println("entrou");
+                        qtd+=1;
+                    }
+                }
+            case DELEGACIA:
+                for(int i=0;i< cidade.getListaInfraestrutura().size();i++){
+                    if(cidade.getListaInfraestrutura().get(i).getFlagAmpliado() && cidade.getListaInfraestrutura().get(i).getClass() == Delegacia.class){
+                        qtd+=1;
+                    }
+                }
+            case HOSPITAL:
+                for(int i=0;i< cidade.getListaInfraestrutura().size();i++){
+                    if(cidade.getListaInfraestrutura().get(i).getFlagAmpliado() && cidade.getListaInfraestrutura().get(i).getClass() == Hospital.class){
+                        qtd+=1;
+                    }
+                }
+            case LOJA:
+                for(int i=0;i< cidade.getListaRentaveis().size();i++){
+                    if(cidade.getListaRentaveis().get(i).getFlagAmpliado() && cidade.getListaRentaveis().get(i).getClass() == Loja.class){
+                        qtd+=1;
+                    }
+                }
+            case INDUSTRIA:
+                for(int i=0;i< cidade.getListaRentaveis().size();i++){
+                    if(cidade.getListaRentaveis().get(i).getFlagAmpliado() && cidade.getListaRentaveis().get(i).getClass() == Industria.class){
+                        qtd+=1;
+                    }
+                }
+            case PARQUE_ARB:
+                for(int i=0;i< cidade.getListaParques().size();i++){
+                    if(cidade.getListaParques().get(i).getFlagAmpliado() && cidade.getListaParques().get(i).getClass() == ParqueArborizado.class){
+                        qtd+=1;
+                    }
+                }
+            case PARQUE_DIVERS:
+                for(int i=0;i< cidade.getListaParques().size();i++){
+                    if(cidade.getListaParques().get(i).getFlagAmpliado() && cidade.getListaParques().get(i).getClass() == ParqueDiversao.class){
+                        qtd+=1;
+                    }
+                }
+
+
+        }
+        return qtd;
+    }
 
 }

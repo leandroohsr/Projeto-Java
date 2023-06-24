@@ -1,6 +1,7 @@
 package ClassesGUI;
 
 import ClassesJogo.AppMain;
+import ClassesJogo.Excepts.ExceptionEmptyName;
 import ClassesJogo.Excepts.ExceptionFileNotFound;
 import ClassesJogo.Excepts.ExceptionLackOfMoney;
 import ClassesJogo.GerenciadorArquivos;
@@ -77,6 +78,7 @@ public class InicioPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             String nome = fieldCidade.getText();
             try {
+                checarNomeNaoVazio(nome);
                 GerenciadorArquivos.procurarArquivo(nome);
 
                 //pop-up de erro
@@ -92,6 +94,16 @@ public class InicioPanel extends JPanel {
                 AppMain.criarNovoJogo(nome);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
+            } catch (ExceptionEmptyName ex) {
+                //pop-up de erro
+                Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+                JDialog dialog = new JDialog();
+                dialog.setBounds(500,300,400,100);
+                JLabel labelErro = new JLabel("Por favor insira um nome válido");
+                labelErro.setFont(fonte_padrao);
+                dialog.add(labelErro);
+                dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                dialog.setVisible(true);
             }
         }
     }
@@ -106,6 +118,7 @@ public class InicioPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             String nome = fieldCidade.getText();
             try {
+                checarNomeNaoVazio(nome);
                 GerenciadorArquivos.procurarArquivo(nome);
                 AppMain.carregarJogo(nome);
 
@@ -122,8 +135,23 @@ public class InicioPanel extends JPanel {
                 dialog.setVisible(true);
             } catch (ExceptionLackOfMoney ex) {
                 throw new RuntimeException(ex);
+            } catch (ExceptionEmptyName ex) {
+                //pop-up de erro
+                Font fonte_padrao = new Font("Arial", Font.PLAIN, 23);
+                JDialog dialog = new JDialog();
+                dialog.setBounds(500,300,400,100);
+                JLabel labelErro = new JLabel("Por favor insira um nome válido");
+                labelErro.setFont(fonte_padrao);
+                dialog.add(labelErro);
+                dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                dialog.setVisible(true);
             }
         }
+    }
+
+    private static void checarNomeNaoVazio(String nome) throws ExceptionEmptyName {
+        if (nome == null || nome.isBlank() || nome.isEmpty())
+            throw new ExceptionEmptyName();
     }
 
 }
