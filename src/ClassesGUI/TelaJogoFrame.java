@@ -84,6 +84,7 @@ public class TelaJogoFrame extends JFrame{
                 cidade.getStats().atualizarInfraTimer();
                 cidade.getStats().atualizarFelicTimer();
                 menuLateralPanel.atualizaLabels();
+                cidade.setTempo(cidade.getTempo() + 1);      //adiciona um segundo no tempo já decorrido
                 try{
                     cidade.getStats().verificarJogoPop();    //verifica se populacao explodiu
                     cidade.getStats().verificarJogoFelic();  //verifica se felicidade zerou
