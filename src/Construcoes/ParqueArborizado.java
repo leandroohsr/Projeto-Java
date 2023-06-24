@@ -60,8 +60,9 @@ public class ParqueArborizado extends Parque{
         labelImg.setBorder(new MatteBorder(borda, borda, borda, borda, Color.cyan));
     }
 
-    public void fazerUpgrade() {
-        //TODO
+    //Cria um novo parque de diversao com as mesma coordenadas e o retorna
+    public ParqueDiversao fazerUpgrade() {
+        return new ParqueDiversao(this.getCoordX(), this.getCoordY());
     }
 
 

@@ -22,8 +22,11 @@ public class MenuSuperiorPanel extends JPanel {
     private comboBoxAmpliar boxRentavel;
     private comboBoxUpgr boxUpgrCasa;
     private comboBoxUpgr boxUpgrParque;
-    public MenuSuperiorPanel(Cidade cidade) {
+    private TelaJogoPanel jogoPanel;
+
+    public MenuSuperiorPanel(Cidade cidade, TelaJogoPanel jogoPanel) {
         this.cidade = cidade;
+        this.jogoPanel = jogoPanel;
 
         setPreferredSize(new Dimension(TamanhoCompon.X_PANEL_MENU_CIMA.getTam(), TamanhoCompon.Y_PANEL_MENU_CIMA.getTam()));
         FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER);
@@ -266,16 +269,34 @@ public class MenuSuperiorPanel extends JPanel {
                     String item = (String) comboBox.getSelectedItem();
                     int id = Integer.parseInt(item);
 
-                    ConstrucoesTipos tipo;
-                    if (comboBox.getIdentificador() == 1)
+                    ConstrucoesTipos tipo; //Recuperacao do tipo da construcao
+                    if (comboBox.getIdentificador() == 1) {
                         tipo = ConstrucoesTipos.CASA;
-                    else
+                    } else {
                         tipo = ConstrucoesTipos.PARQUE_ARB;
+                    }
 
                     comboBox.setSelectedIndex(0); //Volta a combobox para a opcao padrao
-                    cidade.fazerUpgrade(tipo, id);
+                    Construcao construcaoNova = cidade.fazerUpgrade(tipo, id);
 
-                    removeItemComboBox(id, comboBox);
+                    //Removendo das opcoes de botoes de acordo com o tipo de construcao clicado
+                    if (comboBox.getIdentificador() == 1) {
+                        removeItemComboBox(id, boxHabit); //Remove da box de ampliar
+                        jogoPanel.removeConstrucao(cidade.getListaHabitaveis().get(id)); //Remove do jogoPanel
+                    } else {
+                        removeItemComboBox(id, boxParque);
+                        jogoPanel.removeConstrucao(cidade.getListaParques().get(id));
+                    }
+                    removeItemComboBox(id, comboBox); //Remove da box de upgr
+
+                    jogoPanel.addConstrucao(construcaoNova);
+
+                    //Adicionando a nova construcao nos botoes
+                    if (comboBox.getIdentificador() == 1)
+                        addItemBoxHabit(construcaoNova.getID());
+                    else
+                        addItemBoxParque(construcaoNova.getID());
+
                     dialogUpgr();
                 }
             } catch (ExceptionLackOfMoney erro) {

@@ -21,4 +21,5 @@ public interface Construcao {
 
     public int getCoordY();
 
+    public int getID();
 }

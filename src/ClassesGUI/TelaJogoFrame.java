@@ -17,6 +17,8 @@ public class TelaJogoFrame extends JFrame{
     private TelaJogoPanel jogoPanel;
     private MenuLateralPanel menuLateralPanel;
     private MenuSuperiorPanel menuSuperiorPanel;
+
+    //Construtor usado para criar novo jogo
     public TelaJogoFrame(Cidade cidade) {
 
         this.cidade = cidade;
@@ -30,7 +32,7 @@ public class TelaJogoFrame extends JFrame{
         setLayout(layout);
 
         jogoPanel = new TelaJogoPanel(cidade.getPathBackground());
-        menuSuperiorPanel = new MenuSuperiorPanel(cidade);
+        menuSuperiorPanel = new MenuSuperiorPanel(cidade, jogoPanel);
         menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel, menuSuperiorPanel);
         add(menuLateralPanel, BorderLayout.WEST);
         add(menuSuperiorPanel, BorderLayout.NORTH);
@@ -41,6 +43,8 @@ public class TelaJogoFrame extends JFrame{
         repetirTarefa();
 
     }
+
+    //Construtor usado para carregar um jogo existente
     public TelaJogoFrame(Cidade cidade, int casas, int predios, int hospital, int delegacia, int loja, int industria,
                          int parque_arb, int parque_div, String[] infos) {
 
@@ -55,7 +59,7 @@ public class TelaJogoFrame extends JFrame{
         setLayout(layout);
 
         jogoPanel = new TelaJogoPanel(cidade.getPathBackground());
-        menuSuperiorPanel = new MenuSuperiorPanel(cidade);
+        menuSuperiorPanel = new MenuSuperiorPanel(cidade, jogoPanel);
         menuLateralPanel = new MenuLateralPanel(cidade, jogoPanel, menuSuperiorPanel);
         add(menuLateralPanel, BorderLayout.WEST);
         add(menuSuperiorPanel, BorderLayout.NORTH);

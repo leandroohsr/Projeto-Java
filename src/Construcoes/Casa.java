@@ -58,8 +58,9 @@ public class Casa extends Habitavel {
         labelImg.setBorder(new MatteBorder(borda, borda, borda, borda, Color.red));
     }
 
-    public void fazerUpgrade() {
-        //TODO
+    //Cria um novo predio com as mesma coordenadas e o retorna
+    public Predio fazerUpgrade() {
+        return new Predio(this.getCoordX(), this.getCoordY());
     }
 
 }
