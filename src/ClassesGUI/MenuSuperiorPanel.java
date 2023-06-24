@@ -265,6 +265,64 @@ public class MenuSuperiorPanel extends JPanel {
         }
     }
 
+    private int qtdConstrucoesAmpliadas(ConstrucoesTipos tipo_constr){
+        int qtd=0;
+        switch(tipo_constr){
+            case CASA:
+                for(int i=0;i< cidade.getListaHabitaveis().size();i++){
+                    if(cidade.getListaHabitaveis().get(i).getFlagAmpliado() && cidade.getListaHabitaveis().get(i).getClass() == Casa.class){
+                        qtd+=1;
+                    }
+                }
+            case PREDIO:
+                for(int i=0;i< cidade.getListaHabitaveis().size();i++){
+                    if(cidade.getListaHabitaveis().get(i).getFlagAmpliado() && cidade.getListaHabitaveis().get(i).getClass() == Predio.class){
+                        System.out.println("entrou");
+                        qtd+=1;
+                    }
+                }
+            case DELEGACIA:
+                for(int i=0;i< cidade.getListaInfraestrutura().size();i++){
+                    if(cidade.getListaInfraestrutura().get(i).getFlagAmpliado() && cidade.getListaInfraestrutura().get(i).getClass() == Delegacia.class){
+                        qtd+=1;
+                    }
+                }
+            case HOSPITAL:
+                for(int i=0;i< cidade.getListaInfraestrutura().size();i++){
+                    if(cidade.getListaInfraestrutura().get(i).getFlagAmpliado() && cidade.getListaInfraestrutura().get(i).getClass() == Hospital.class){
+                        qtd+=1;
+                    }
+                }
+            case LOJA:
+                for(int i=0;i< cidade.getListaRentaveis().size();i++){
+                    if(cidade.getListaRentaveis().get(i).getFlagAmpliado() && cidade.getListaRentaveis().get(i).getClass() == Loja.class){
+                        qtd+=1;
+                    }
+                }
+            case INDUSTRIA:
+                for(int i=0;i< cidade.getListaRentaveis().size();i++){
+                    if(cidade.getListaRentaveis().get(i).getFlagAmpliado() && cidade.getListaRentaveis().get(i).getClass() == Industria.class){
+                        qtd+=1;
+                    }
+                }
+            case PARQUE_ARB:
+                for(int i=0;i< cidade.getListaParques().size();i++){
+                    if(cidade.getListaParques().get(i).getFlagAmpliado() && cidade.getListaParques().get(i).getClass() == ParqueArborizado.class){
+                        qtd+=1;
+                    }
+                }
+            case PARQUE_DIVERS:
+                for(int i=0;i< cidade.getListaParques().size();i++){
+                    if(cidade.getListaParques().get(i).getFlagAmpliado() && cidade.getListaParques().get(i).getClass() == ParqueDiversao.class){
+                        qtd+=1;
+                    }
+                }
+
+
+        }
+        return qtd;
+    }
+
     //O arquivo eh escrito na convencao a seguir:
     //Nome | Casas | Predio | Hospital | Delegacia | Loja | Indústria | Parques Arborizados | Parque de Divercoes | Populacao | Dinheiro | Infraestrutura | Felicidade
     class salvaJogo implements ActionListener {
@@ -274,10 +332,18 @@ public class MenuSuperiorPanel extends JPanel {
 
                 FileWriter fw = new FileWriter("src/ClassesJogo/Jogos.csv", true);
                 BufferedWriter out = new BufferedWriter(fw);
-                String info_jogo = String.format("%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,", Cidade.getNome(), cidade.qtdConstr(ConstrucoesTipos.CASA), cidade.qtdConstr(ConstrucoesTipos.PREDIO), cidade.qtdConstr(ConstrucoesTipos.HOSPITAL), cidade.qtdConstr(ConstrucoesTipos.DELEGACIA),
-                        cidade.qtdConstr(ConstrucoesTipos.LOJA), cidade.qtdConstr(ConstrucoesTipos.INDUSTRIA),
-                        cidade.qtdConstr(ConstrucoesTipos.PARQUE_ARB), cidade.qtdConstr(ConstrucoesTipos.PARQUE_DIVERS), cidade.getStats().getPop(),
-                        cidade.getStats().getDin(), cidade.getStats().getInfra(), cidade.getStats().getFelic());
+
+                String info_jogo = String.format("%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,", Cidade.getNome(),
+                        cidade.qtdConstr(ConstrucoesTipos.CASA),qtdConstrucoesAmpliadas(ConstrucoesTipos.CASA),
+                        cidade.qtdConstr(ConstrucoesTipos.PREDIO),qtdConstrucoesAmpliadas(ConstrucoesTipos.PREDIO),
+                        cidade.qtdConstr(ConstrucoesTipos.HOSPITAL),qtdConstrucoesAmpliadas(ConstrucoesTipos.HOSPITAL),
+                        cidade.qtdConstr(ConstrucoesTipos.DELEGACIA),qtdConstrucoesAmpliadas(ConstrucoesTipos.DELEGACIA),
+                        cidade.qtdConstr(ConstrucoesTipos.LOJA),qtdConstrucoesAmpliadas(ConstrucoesTipos.LOJA),
+                        cidade.qtdConstr(ConstrucoesTipos.INDUSTRIA),qtdConstrucoesAmpliadas(ConstrucoesTipos.INDUSTRIA),
+                        cidade.qtdConstr(ConstrucoesTipos.PARQUE_ARB),qtdConstrucoesAmpliadas(ConstrucoesTipos.PARQUE_ARB),
+                        cidade.qtdConstr(ConstrucoesTipos.PARQUE_DIVERS),qtdConstrucoesAmpliadas(ConstrucoesTipos.PARQUE_DIVERS),
+                        cidade.getStats().getPop(), cidade.getStats().getDin(), cidade.getStats().getInfra(), cidade.getStats().getFelic(),
+                        cidade.getStats().listaTaxas.get(3));
 
                 out.write(info_jogo);
                 out.newLine();

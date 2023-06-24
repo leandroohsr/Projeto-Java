@@ -42,7 +42,7 @@ public class TelaJogoFrame extends JFrame{
 
     }
     public TelaJogoFrame(Cidade cidade, int casas, int predios, int hospital, int delegacia, int loja, int industria,
-                         int parque_arb, int parque_div) {
+                         int parque_arb, int parque_div, String[] infos) {
 
         this.cidade = cidade;
         setTitle("Projeto-Java: NoCity");
@@ -63,7 +63,7 @@ public class TelaJogoFrame extends JFrame{
 
         setVisible(true);
 
-        menuLateralPanel.carregarConstr(casas, predios, hospital, delegacia, loja, industria, parque_arb, parque_div);
+        menuLateralPanel.carregarConstr(casas, predios, hospital, delegacia, loja, industria, parque_arb, parque_div, infos);
         repetirTarefa();
 
     }

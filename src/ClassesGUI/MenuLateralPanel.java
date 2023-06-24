@@ -236,8 +236,8 @@ public class MenuLateralPanel extends JPanel {
     }
     //
     public void carregarConstr(int casas, int predios, int hospital, int delegacia, int loja, int industria,
-                               int parque_arb, int parque_div) {
-        GerenciadorArquivos.carregarTodasConstrucoes(casas, predios, hospital, delegacia, loja, industria, parque_arb, parque_div, cidade, jogoPanel);
+                               int parque_arb, int parque_div, String[] infos) {
+        GerenciadorArquivos.carregarTodasConstrucoes(casas, predios, hospital, delegacia, loja, industria, parque_arb, parque_div, cidade, jogoPanel, infos, superiorPanel);
     }
 
 
