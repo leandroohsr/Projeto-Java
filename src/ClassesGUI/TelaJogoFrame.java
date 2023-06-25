@@ -91,13 +91,13 @@ public class TelaJogoFrame extends JFrame{
                     cidade.getStats().verificarJogoInfra();  //verifica de infraestrutura zerou
 
                 }catch(ExceptionGameOverPop e){
-                    AppMain.GameOver(ConstantesGameOver.POPULACAO_ESTOUROU);
+                    AppMain.GameOver(ConstantesGameOver.POPULACAO_ESTOUROU, TelaJogoFrame.this);
                     timer.cancel();
                 }catch(ExceptionGameOverFelic e){
-                    AppMain.GameOver(ConstantesGameOver.FELICIDADE_ZEROU);
+                    AppMain.GameOver(ConstantesGameOver.FELICIDADE_ZEROU, TelaJogoFrame.this);
                     timer.cancel();
                 }catch(ExceptionGameOverInfra e){
-                    AppMain.GameOver(ConstantesGameOver.INFRAESTRUTURA_ZEROU);
+                    AppMain.GameOver(ConstantesGameOver.INFRAESTRUTURA_ZEROU, TelaJogoFrame.this);
                     timer.cancel();
                 }
             }

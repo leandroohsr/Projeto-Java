@@ -13,7 +13,7 @@ public class ParqueArborizado extends Parque{
 
     private final int precoUpgrade;
     private final int precoConstru;
-
+    private boolean flagUpgrade = false;
     public ParqueArborizado(int coordX, int coordY) {
         super(Constantes.FATOR_FELIC_PARQUE_ARB.getQtd(), Constantes.PRECO_PARQUE_ARB.getQtd() / 2 ,
                 coordX, coordY, Imagens.PATH_PARQUEARB.getPath());
@@ -60,8 +60,17 @@ public class ParqueArborizado extends Parque{
         labelImg.setBorder(new MatteBorder(borda, borda, borda, borda, Color.cyan));
     }
 
+    public boolean getFlagUpgrade() {
+        return flagUpgrade;
+    }
+
+    public void setFlagUpgrade(boolean flag) {
+        flagUpgrade = flag;
+    }
+
     //Cria um novo parque de diversao com as mesma coordenadas e o retorna
     public ParqueDiversao fazerUpgrade() {
+        setFlagUpgrade(true);
         return new ParqueDiversao(this.getCoordX(), this.getCoordY());
     }
 

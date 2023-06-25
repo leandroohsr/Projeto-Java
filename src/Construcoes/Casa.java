@@ -10,6 +10,7 @@ import java.util.Random;
 public class Casa extends Habitavel {
     private int precoUpgrade;
     private final int precoConstru;
+    private boolean flagUpgrade = false;
     private int precoAmpliarAtual = Constantes.PRECO_CASA.getQtd() / 2;
 
     public Casa(int x, int y) {
@@ -58,8 +59,17 @@ public class Casa extends Habitavel {
         labelImg.setBorder(new MatteBorder(borda, borda, borda, borda, Color.red));
     }
 
+    public boolean getFlagUpgrade() {
+        return flagUpgrade;
+    }
+
+    public void setFlagUpgrade(boolean flag) {
+        flagUpgrade = flag;
+    }
+
     //Cria um novo predio com as mesma coordenadas e o retorna
     public Predio fazerUpgrade() {
+        setFlagUpgrade(true);
         return new Predio(this.getCoordX(), this.getCoordY());
     }
 

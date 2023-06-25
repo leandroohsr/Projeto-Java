@@ -51,10 +51,10 @@ public class GameOverFrame extends JFrame {
         add(mensagem);
         add(mensagem2);
         try {
-            GerenciadorArquivos.salvaJogo(cidade);
+            GerenciadorArquivos.salvaJogoGameOver(cidade);
             dialogJogoSalvo();
 
-        } catch (IOException | ExceptionLackOfMoney e) {
+        } catch (IOException e) {
             dialogNaoSalvo();
         }
     }

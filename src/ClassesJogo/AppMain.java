@@ -42,14 +42,14 @@ public class AppMain {
     }
 
     //Termina o jogo, salvando-o
-    public static void GameOver(ConstantesGameOver motivoTermino) {
+    public static void GameOver(ConstantesGameOver motivoTermino, TelaJogoFrame tela) {
         
-        tela.setVisible(false);
-        Cidade cidade = ((TelaJogoFrame)tela).getCidade();
+        AppMain.tela.setVisible(false);
+        Cidade cidade = tela.getCidade();
         JFrame telaOver = new GameOverFrame(motivoTermino, cidade.getTempo(), cidade);
-        ((TelaJogoFrame)tela).salvaJogo();
-        tela.dispose();
-        tela = telaOver;
-        tela.setVisible(true);
+        //(tela).salvaJogo();
+        AppMain.tela.dispose();
+        AppMain.tela = telaOver;
+        AppMain.tela.setVisible(true);
     }
 }

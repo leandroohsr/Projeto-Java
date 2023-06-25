@@ -127,80 +127,104 @@ public class Cidade {
         switch (tipo_constr) {
             case CASA:
                 if(stats.getDin() > Constantes.PRECO_CASA.getQtd() / 2) {
-                    Casa casa = (Casa) listaHabitaveis.get(id);
-                    casa.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_CASA.getQtd() / 2);
-                    stats.atualizarPopAtual(-Constantes.CAPACIDADE_POP_CASA.getQtd() / 2);
+                    if(listaHabitaveis.get(id).getClass() == Casa.class){
+                        Casa casa = (Casa) listaHabitaveis.get(id);
+                        casa.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_CASA.getQtd() / 2);
+                        stats.atualizarPopAtual(-Constantes.CAPACIDADE_POP_CASA.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case PREDIO:
                 if(stats.getDin() > Constantes.PRECO_UPGR_CASA.getQtd() / 2) {
-                    Predio predio = (Predio)listaHabitaveis.get(id);
-                    predio.ampliar();
-                    stats.atualizarDinAtual(- Constantes.PRECO_UPGR_CASA.getQtd() / 2);
-                    stats.atualizarPopAtual(- Constantes.CAPACIDADE_POP_PREDIO.getQtd() / 2);
+                    if(listaHabitaveis.get(id).getClass() == Predio.class){
+                        Predio predio = (Predio)listaHabitaveis.get(id);
+                        predio.ampliar();
+                        stats.atualizarDinAtual(- Constantes.PRECO_UPGR_CASA.getQtd() / 2);
+                        stats.atualizarPopAtual(- Constantes.CAPACIDADE_POP_PREDIO.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case DELEGACIA:
                 if(stats.getDin() > Constantes.PRECO_DELEGACIA.getQtd() / 2) {
-                    Delegacia delegacia = (Delegacia) listaInfraestrutura.get(id);
-                    delegacia.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_DELEGACIA.getQtd() / 2);
-                    stats.atualizarInfraAtual(Constantes.FATOR_INFRA_DELEGACIA.getQtd() / 2);
+                    if(listaInfraestrutura.get(id).getClass() == Delegacia.class){
+                        Delegacia delegacia = (Delegacia) listaInfraestrutura.get(id);
+                        delegacia.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_DELEGACIA.getQtd() / 2);
+                        stats.atualizarInfraAtual(Constantes.FATOR_INFRA_DELEGACIA.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case HOSPITAL:
                 if(stats.getDin() > Constantes.PRECO_HOSPITAL.getQtd() / 2) {
-                    Hospital hospital = (Hospital) listaInfraestrutura.get(id);
-                    hospital.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_HOSPITAL.getQtd() / 2);
-                    stats.atualizarInfraAtual(Constantes.FATOR_INFRA_HOSPITAL.getQtd() / 2);
+                    if(listaInfraestrutura.get(id).getClass() == Hospital.class){
+                        Hospital hospital = (Hospital) listaInfraestrutura.get(id);
+                        hospital.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_HOSPITAL.getQtd() / 2);
+                        stats.atualizarInfraAtual(Constantes.FATOR_INFRA_HOSPITAL.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case PARQUE_ARB:
                 if(stats.getDin() > Constantes.PRECO_PARQUE_ARB.getQtd() / 2) {
-                    ParqueArborizado parqueArborizado = (ParqueArborizado) listaParques.get(id);
-                    parqueArborizado.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_PARQUE_ARB.getQtd() / 2);
-                    stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_ARB.getQtd() / 2);
+                    if(listaParques.get(id).getClass() == ParqueArborizado.class){
+                        ParqueArborizado parqueArborizado = (ParqueArborizado) listaParques.get(id);
+                        parqueArborizado.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_PARQUE_ARB.getQtd() / 2);
+                        stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_ARB.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case PARQUE_DIVERS:
                 if(stats.getDin() > Constantes.PRECO_UPGR_PARQUE_ARB.getQtd() / 2) {
-                    ParqueDiversao parqueDiversao = (ParqueDiversao) listaParques.get(id);
-                    parqueDiversao.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_UPGR_PARQUE_ARB.getQtd() / 2);
-                    stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_DIVERS.getQtd() / 2);
+                    if(listaParques.get(id).getClass() == ParqueDiversao.class){
+                        ParqueDiversao parqueDiversao = (ParqueDiversao) listaParques.get(id);
+                        parqueDiversao.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_UPGR_PARQUE_ARB.getQtd() / 2);
+                        stats.atualizarFelicAtual(Constantes.FATOR_FELIC_PARQUE_DIVERS.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case LOJA:
                 if(stats.getDin() > Constantes.PRECO_LOJA.getQtd() / 2) {
-                    Loja loja = (Loja) listaRentaveis.get(id);
-                    loja.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_LOJA.getQtd() / 2);
-                    stats.atualizarTaxaDin(Constantes.FATOR_DIN_LOJA.getQtd() / 2);
+                    if(listaRentaveis.get(id).getClass() == Loja.class){
+                        Loja loja = (Loja) listaRentaveis.get(id);
+                        loja.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_LOJA.getQtd() / 2);
+                        stats.atualizarTaxaDin(Constantes.FATOR_DIN_LOJA.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
 
             case INDUSTRIA:
                 if(stats.getDin() > Constantes.PRECO_INDUSTRIA.getQtd() / 2) {
-                    Industria industria = (Industria) listaRentaveis.get(id);
-                    industria.ampliar();
-                    stats.atualizarDinAtual(-Constantes.PRECO_INDUSTRIA.getQtd() / 2);
-                    stats.atualizarTaxaDin(Constantes.FATOR_DIN_INDUSTRIA.getQtd() / 2);
+                    if(listaRentaveis.get(id).getClass() == Industria.class){
+                        Industria industria = (Industria) listaRentaveis.get(id);
+                        industria.ampliar();
+                        stats.atualizarDinAtual(-Constantes.PRECO_INDUSTRIA.getQtd() / 2);
+                        stats.atualizarTaxaDin(Constantes.FATOR_DIN_INDUSTRIA.getQtd() / 2);
+                    }
+
                 } else
                     throw new ExceptionLackOfMoney();
                 break;
