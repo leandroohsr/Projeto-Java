@@ -2,7 +2,7 @@ package ClassesJogo;
 
 public enum Constantes {
     POP_INIC(0),
-    POP_MAX(500),
+    POP_MAX(100),
     FELIC_INIC(100),
     INFRA_INIC(100),
     DIN_INIC(100),

@@ -92,12 +92,13 @@ public class GerenciadorArquivos {
 
                 Casa casa = (Casa)cidade.comprarConstr(ConstrucoesCompraveis.CASA);
                 Predio predio = casa.fazerUpgrade();
+                //predio.setLabelImg(new JLabel("Habitável " + (predio.getID()-1), JLabel.CENTER));
                 jogoPanel.addConstrucao(predio);
                 cidade.getListaHabitaveis().add(predio);
                 if(i<Integer.parseInt(infos[4])){
                     cidade.ampliarConstr(ConstrucoesTipos.PREDIO, 2*i+casas+1);
                 } else {
-                    superiorPanel.addItemBoxHabit(i);
+                    superiorPanel.addItemBoxHabit(i+casas+predios);
                 }
 
             } catch (ExceptionLackOfMoney erro) {
@@ -200,6 +201,8 @@ public class GerenciadorArquivos {
                 ParqueArborizado pa = (ParqueArborizado) cidade.comprarConstr(ConstrucoesCompraveis.PARQUE_ARB);
                 ParqueDiversao pd = pa.fazerUpgrade();
                 cidade.getListaParques().add(pd);
+
+
                 jogoPanel.addConstrucao(pd);
                 if(i<Integer.parseInt(infos[16])){
                     cidade.ampliarConstr(ConstrucoesTipos.PARQUE_DIVERS, 2*i+parque_div+1);
