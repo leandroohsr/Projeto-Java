@@ -10,8 +10,12 @@
 231718 ∷ Vitor Rodrigues Zanata Da Silva
 
 #
-### 📋 Diagrama UML: https://app.diagrams.net/#G1nXsmcUysOQQRqp3Z4IqRhQbYRoFes2ou
+### 📋 Diagrama UML: https://app.diagrams.net/#G1nXsmcUysOQQRqp3Z4IqRhQbYRoFes2ou  (presente também em arquivo .png no mesmo diretório do readme)
 #
+
+
+### Os arquivos das classes estão em "src", AppMain está no pacote "ClassesJogo".
+
 
 ### 🗒️ Descrição do Projeto
 #### 1 - Conceitualização
