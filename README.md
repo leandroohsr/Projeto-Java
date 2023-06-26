@@ -20,15 +20,16 @@ O jogo desenvolvido tem como bases os gêneros "clicker" e "idle" e assemelha-se
 Outros recursos do jogo são: uma GUI interativa, recurso de salvar e de continuar um jogo prévio, tratamento de erros do usuário, entre outros.
 
 
-#### Core mechanics
+#### 2 - Core mechanics
 
 Aqui serão descritos os elementos principais do jogo:
-- "Poupança" do jogador aumentada em taxa constante por segundo, podendo essa taxa ser aumentada de acordo com os tipos de construção presentes;
-- Construções que podem ser compradas, ter sua capacidade ampliada ou receber uma transformação/"upgrade" (por exemplo, uma casa pode ser aumentada ou transformada em um prédio);
-- ClassesJogo.Stats de População, Felicidade e Infraestrutura, que devem ser balanceados;
+- Dinheiro do jogador, o qual cresce em taxa constante por segundo, podendo essa taxa ser aumentada se o usuário comprar lojas ou indústrias;
+- Infraestrutura e Felicidade da cidade decrescem em taxa constante por segundo, para que o jogador não perca é necessária a compra de parques e hospitais e delegacias, os quais aumentam as taxas de felicidade e infraestrutura, respectivamente.
+- População da cidade aumenta em taxa constante por segundo, assim é necessário que o usuário compre casas/prédios para receber essa nova população e, portanto impedindo-a de "estourar".
+- Construções que forem compradas, podem ter suas capacidade ampliadas ou receberem uma "upgrade" (i.e. uma casa pode ser transformada em um prédio);
 - Salvamento e carregamento de sessões de jogo;
 
-#### Ideias da estrutura da base do programa
+#### 3 - Ideias da estrutura da base do programa
 
 - "Construcao" será classe **interface**, determinando características comuns às das construções do jogo
 - Classes como "Habtavel" serão pais **abstratos** dos tipos diferentes de contrução do mesmo nicho, como nesse caso, "Habtavel" é pai de "Casa" e "Predio".
@@ -36,12 +37,13 @@ Aqui serão descritos os elementos principais do jogo:
 - Existe uma classe "ElementosGraficos" responsável por criar e gerenciar os elementos da GUI e ligar os Triggers dos elementos às classes e métodos apropriados. Será a gerenciadora do Swing.
 - A classe "AppMain" apenas estará encarregada de instanciar e iniciar o programa.
 
-#### Resumo do funcionamento geral
+#### 4 - Resumo do funcionamento geral
 - Main lida com "ElementosGraficos" e seus métodos, iniciando o programa e a GUI.
 - O andamento será gerenciado pelos Triggers programados por Swing e Timers.
 - O backend é armazenado e executado por ClassesJogo.Cidade
 - Classes adicionais podem ser criadas como auxiliares.
 - Erros/exceções como "Comprar algo sem ter dinheiro" ou "Carregar um jogo inexistente" são tratados corretamente
+
 
 #
 
