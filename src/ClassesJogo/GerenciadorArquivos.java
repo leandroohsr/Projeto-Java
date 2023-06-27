@@ -205,7 +205,7 @@ public class GerenciadorArquivos {
 
                 jogoPanel.addConstrucao(pd);
                 if(i<Integer.parseInt(infos[16])){
-                    cidade.ampliarConstr(ConstrucoesTipos.PARQUE_DIVERS, 2*i+parque_div+1);
+                    cidade.ampliarConstr(ConstrucoesTipos.PARQUE_DIVERS, 2*i+parque_arb+1);
                 } else {
                     superiorPanel.addItemBoxHabit(i);
                 }
